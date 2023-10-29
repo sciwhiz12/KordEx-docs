@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+	SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+	   title="Welcome" id="Welcome" help-id="Section-Starting-Page">
+
+	<section-starting-page>
+		<title>Welcome</title>
+
+		<description>
+			Kord Extensions is a Discord bot framework, with powerful (and easy-to-use) tooling and utilities for
+			writing Discord bots.
+		</description>
+
+		<primary>
+			<title>First Steps</title>
+
+			<a href="About.topic" type="learn" summary="General information about Kord Extensions"/>
+			<a href="Getting-Started.md" type="development" summary="Jump into your first project right away"/>
+		</primary>
+
+		<secondary>
+			<title>Topics and Components</title>
+
+			<a href="Core-Documentation.topic" type="start"
+			   summary="Everything that comes with Kord Extensions, and information about building and maintaining your Discord bots"/>
+
+			<a href="Data-Adapters.topic" type="data"
+			   summary="First-party data adapters, what they are, and how to use them"/>
+
+			<a href="Functional-Modules.topic" type="mixed"
+			   summary="First-party modules, which provide user-facing functionality for your bots"/>
+
+			<a href="Utility-Modules.topic" type="library"
+			   summary="Extra utility modules, which provide specific development tools and libraries"/>
+		</secondary>
+
+		<misc>
+			<cards narrow="true">
+				<title>Relevant links</title>
+
+				<a href="https://discord.gg/nYzQWcjAmK/"
+				   type="account"
+				   summary="Chat about Kord Extensions, get help or share your projects">Official Discord Server</a>
+
+				<a href="https://github.com/Kord-Extensions/"
+				   type="open-source"
+				   summary="Read the source code, report problems or contribute via Pull Request">GitHub Organisation</a>
+
+				<a href="https://github.com/Kord-Extensions/template"
+				   type="tools"
+				   summary="Get started quickly by using our template to create your bot">Template Project</a>
+			</cards>
+
+			<cards narrow="true">
+				<a href="https://kord.dev"
+				   type="world"
+					summary="Learn about Kord, the protocol library Kord Extensions is based upon">Kord Website</a>
+
+				<a href="https://github.com/kordlib/kord/"
+				   type="open-source"
+				   summary="Read Kord's source code, report problems or contribute via Pull Request">Kord on GitHub</a>
+
+				<a href="https://discord.gg/6jcx5ev"
+				   type="account"
+				   summary="Chat about Kord, get help or talk with its developers">Kord Discord Server</a>
+			</cards>
+		</misc>
+	</section-starting-page>
+
+</topic>

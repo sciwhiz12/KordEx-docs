@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <variables>
+		<algolia-api-key>77906f3f11b79df631efbdc8d382ffc5</algolia-api-key>
+		<algolia-id>00TQKB9RBW</algolia-id>
+		<algolia-index>KordEx Docs</algolia-index>
+
+		<browser-edits-url>https://github.com/Kord-Extensions/kord-extensions/tree/root/Writerside</browser-edits-url>
+		<color-preset>contrast</color-preset>
+		<download-page>https://github.com/Kord-Extensions/kord-extensions</download-page>
+		<download-title>GitHub</download-title>
+		<header-logo>logo.svg</header-logo>
+		<enable-browser-edits>true</enable-browser-edits>
+		<noindex-content>false</noindex-content>
+		<primary-color>blueberry</primary-color>
+		<showDownloadButton>true</showDownloadButton>
+		<sideblocks>true</sideblocks>
+	</variables>
+
+    <build-profile instance="kordex">
+        <variables>
+			<noindex-content>false</noindex-content>
+		</variables>
+    </build-profile>
+
+	<footer>
+		<copyright>Kord Extensions, 2023</copyright>
+
+		<link href="https://discord.gg/nYzQWcjAmK">Discord</link>
+		<link href="https://github.com/Kord-Extensions/kord-extensions">GitHub</link>
+		<link href="https://ko-fi.com/gsc">Ko-Fi</link>
+	</footer>
+</buildprofiles>
