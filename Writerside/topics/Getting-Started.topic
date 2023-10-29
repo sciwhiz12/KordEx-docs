@@ -6,44 +6,199 @@
 
     <title>Getting Started</title>
 
-    <p>Start typing here...</p>
+    <tldr>
+        <p>
+            <format style="bold">Latest Version:</format>
+            %version
+        </p>
 
-    <chapter title="Dependencies" id="dependencies">
+        <p>
+            <format style="bold">Repo:</format>
+            Maven Central or
+            <a href="https://s01.oss.sonatype.org/content/repositories/snapshots">
+                Sonatype Snapshots (s01)
+            </a>
+        </p>
+
+        <p>
+            <format style="bold">Coordinate:</format>
+            <code>com.kotlindiscord.kord.extensions:kord-extensions</code>
+        </p>
+    </tldr>
+
+    <p>Before getting started, please ensure you have the following installed:</p>
+
+    <list type="bullet">
+        <li><a href="https://git-scm.com">Git</a></li>
+        <li>
+            <p>
+                <a href="https://adoptium.net">Java Development Kit</a> (version 13 or later)
+            </p>
+
+            <warning>
+                Ensure that the version of Java you install is
+                <a href="https://docs.gradle.org/current/userguide/compatibility.html">compatible with Gradle</a>.
+                It can take a while for Gradle to add support for the latest versions of Java, so this is important!
+            </warning>
+        </li>
+    </list>
+
+    <chapter title="For New Projects" id="new-projects">
+        <p>
+            If you're starting a new project,
+            we highly recommend that you make use of
+            <a href="https://github.com/Kord-Extensions/template">the template project</a>.
+        </p>
+
+        <p>
+            If you have a GitHub account, you can click the "Use this template" button to quickly create a new
+            repository using the contents of the template project.
+            This will get you started quickly, with a basic bot provided for you to play with.
+        </p>
+
+        <p>
+            Alternatively, you can clone or download the repository and push it up to a repository host with your
+            tool of choice.
+        </p>
+    </chapter>
+
+    <chapter title="For Existing Projects" id="existing-projects">
         <tabs group="build-system">
             <tab group-key="gradle-kotlin" title="Gradle (Kotlin)">
-                apple
-                <p>apple</p>
+                <p>
+                    First, add a dependency to your <code>gradle/libs.versions.toml</code>.
+                </p>
+                <br/>
+
+                <code-block>
+                    [versions]
+                    kord-extensions = "%version%"
+
+                    [libraries]
+                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref =
+                    "kord-extensions" }
+                </code-block>
+
+                <p>
+                    Then, update your <code>build.gradle.kts</code>.
+                </p>
+                <br/>
+
+                <code-block lang="kotlin">
+                    repositories {
+                    // ...
+
+                    mavenCentral()
+
+                    maven {
+                    name = "Sonatype Snapshots (Legacy)"
+                    url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+                    }
+
+                    maven {
+                    name = "Sonatype Snapshots"
+                    url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
+                    }
+                    }
+
+                    dependencies {
+                    // ...
+
+                    implementation(libs.kord.extensions)
+                    }
+                </code-block>
             </tab>
 
             <tab group-key="gradle-groovy" title="Gradle (Groovy)">
-                banana
-                <p>banana</p>
+                <p>
+                    First, add a dependency to your <code>gradle/libs.versions.toml</code>.
+                </p>
+                <br/>
+
+                <code-block>
+                    [versions]
+                    kord-extensions = "%version%"
+
+                    [libraries]
+                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref =
+                    "kord-extensions" }
+                </code-block>
+
+                <p>
+                    Then, update your <code>build.gradle</code>.
+                </p>
+                <br/>
+
+                <code-block lang="groovy">
+                    repositories {
+                    // ...
+
+                    mavenCentral()
+
+                    maven {
+                    name "Sonatype Snapshots (Legacy)"
+                    url "https://oss.sonatype.org/content/repositories/snapshots"
+                    }
+
+                    maven {
+                    name "Sonatype Snapshots"
+                    url "https://s01.oss.sonatype.org/content/repositories/snapshots"
+                    }
+                    }
+
+                    dependencies {
+                    // ...
+
+                    implementation(libs.kord.extensions)
+                    }
+                </code-block>
             </tab>
 
             <tab group-key="maven" title="Maven">
-                carrot
-                <p>carrot</p>
+                <warning>
+                    <p>
+                        Kord Extensions is developed using Gradle, and none of the developers are familiar with Maven.
+                    </p>
+                    <p>
+                        While Gradle is highly recommended, if you do decide to use Maven, we'd appreciate feedback
+                        on the below instructions,
+                        especially if corrections or more detail is required.
+                    </p>
+                </warning>
+                <p>
+                    Add the following to your <code>pom.xml</code>.
+                    For more information, see
+                    <a href="https://kotlinlang.org/docs/maven.html">the official Maven guide for Kotlin</a>.
+                </p>
+                <br/>
+
+                <code-block lang="xml">
+                    &lt;repositories&gt;
+                    &lt;!-- ... --&gt;
+
+                    &lt;repository&gt;
+                    &lt;id&gt;sonatype-snapshots-legacy&lt;/id&gt;
+                    &lt;name&gt;Sonatype Snapshots (Legacy)&lt;/name&gt;
+                    &lt;url&gt;https://oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;
+                    &lt;/repository&gt;
+
+                    &lt;repository&gt;
+                    &lt;id&gt;sonatype-snapshots&lt;/id&gt;
+                    &lt;name&gt;Sonatype Snapshots&lt;/name&gt;
+                    &lt;url&gt;https://s01.oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;
+                    &lt;/repository&gt;
+
+                    &lt;dependencies&gt;
+                    &lt;!-- ... --&gt;
+
+                    &lt;dependency&gt;
+                    &lt;groupId&gt;com.kotlindiscord.kord.extensions&lt;/groupId&gt;
+                    &lt;artifactId&gt;kord-extensions&lt;/artifactId&gt;
+                    &lt;version&gt;%version%&lt;/version&gt;
+                    &lt;/dependency&gt;
+                    &lt;/dependencies&gt;
+                </code-block>
             </tab>
         </tabs>
     </chapter>
-
-    <chapter title="Project" id="project">
-        <tabs group="build-system">
-            <tab group-key="gradle-kotlin" title="Gradle (Kotlin)">
-                apple
-                <p>apple</p>
-            </tab>
-
-            <tab group-key="gradle-groovy" title="Gradle (Groovy)">
-                banana
-                <p>banana</p>
-            </tab>
-
-            <tab group-key="maven" title="Maven">
-                carrot
-                <p>carrot</p>
-            </tab>
-        </tabs>
-    </chapter>
-
 </topic>

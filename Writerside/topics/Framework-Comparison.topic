@@ -189,9 +189,15 @@
 			</tr>
 
 			<tr>
+				<td><format style="bold">Plugin System</format></td>
+				<td>❌</td>
+				<td>🟡 Currently in development</td>
+			</tr>
+
+			<tr>
 				<td><format style="bold">Rich Command Arguments</format></td>
-				<td>✅</td>
-				<td>✅</td>
+				<td>✅ (Customizable)</td>
+				<td>✅ (Customizable)</td>
 			</tr>
 
 			<tr>

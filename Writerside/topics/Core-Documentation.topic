@@ -2,8 +2,28 @@
 <!DOCTYPE topic
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-	   title="Core Documentation" id="Core-Documentation" help-id="Kord-Extensions-Core">
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Core Documentation" id="Core-Documentation" help-id="Kord-Extensions-Core">
 
-    <p>Start typing here...</p>
+    <section-starting-page>
+        <title>Core Documentation</title>
+        <description>Learn about everything Kord Extensions has to offer</description>
+
+        <spotlight>
+            <a href="Getting-Started.topic" type="learn"/>
+            <a href="" type="check-list"/>
+        </spotlight>
+
+        <primary>
+            <title>Primary Section</title>
+            <a href="" type="check-list"/>
+			<a href="" type="check-list"/>
+		</primary>
+
+		<secondary>
+			<title>Secondary Section</title>
+			<a href="" type="check-list"/>
+			<a href="" type="check-list"/>
+		</secondary>
+    </section-starting-page>
 </topic>
