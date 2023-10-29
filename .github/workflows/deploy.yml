@@ -9,8 +9,7 @@ on:
 
 env:
   ALGOLIA_ARTIFACT: "algolia-indexes-KORDEX.zip"
-  ARTIFACT: "webHelpKORDEX2.zip"
-  DOCKER_VERSION: "232.10165.1"
+  ARTIFACT: "webHelpKORDEX2-all.zip"
   INSTANCE: "Writerside/kordex"
 
 permissions:
@@ -29,7 +28,6 @@ jobs:
         with:
           instance: ${{ env.INSTANCE }}
           artifact: ${{ env.ARTIFACT }}
-          docker-version: ${{ env.DOCKER_VERSION }}
 
       - uses: actions/upload-artifact@v3
 
