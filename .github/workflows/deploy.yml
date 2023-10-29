@@ -10,7 +10,7 @@ on:
 env:
   ALGOLIA_ARTIFACT: "algolia-indexes-KORDEX.zip"
   ARTIFACT: "webHelpKORDEX2.zip"
-  DOCKER_VERSION: "232.10165.1"
+  DOCKER_VERSION: "2.1.1479-p3869"
   INSTANCE: "Writerside/kordex"
 
 permissions:
@@ -23,9 +23,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Mark safe directory
-        run: "git config --global --add safe.directory /github/workspace"
 
       - uses: JetBrains/writerside-github-action@v4
 
