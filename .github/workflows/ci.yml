@@ -21,6 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Kotlin
+        uses: fwilhe2/setup-kotlin@main
+
+      - name: Calculate latest KordEx version
+        run: kotlin .github/set-version.main.kts
+
       - uses: JetBrains/writerside-github-action@v4
 
         with:
