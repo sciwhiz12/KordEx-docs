@@ -27,7 +27,7 @@
         <primary>
             <title>First Steps</title>
 
-			<a href="Getting-Started.md" type="development" summary="Jump into your first project right away."/>
+			<a href="Getting-Started.topic" type="development" summary="Jump into your first project right away."/>
 
             <a href="Core-Documentation.topic" type="start"
                summary="Everything that comes with Kord Extensions, and information about building and maintaining your Discord bots."/>

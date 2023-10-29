@@ -11,7 +11,7 @@
 		<toc-element topic="Framework-Comparison.topic"/>
 	</toc-element>
 	<toc-element topic="Core-Documentation.topic">
-		<toc-element topic="Getting-Started.md"/>
+		<toc-element topic="Getting-Started.topic"/>
 	</toc-element>
 	<toc-element topic="Data-Adapters.topic"/>
 	<toc-element topic="Functional-Modules.topic">
