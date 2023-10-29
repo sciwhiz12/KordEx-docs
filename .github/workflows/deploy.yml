@@ -74,8 +74,8 @@ jobs:
 
         run: |
           git checkout -b deployment
-          
-          bash -O extglob -c "rm -rf !(.git)"
+
+      #     bash -O extglob -c "rm -rf !(.git)"
 
       - uses: actions/download-artifact@v3
 
