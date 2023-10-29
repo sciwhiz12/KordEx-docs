@@ -52,9 +52,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Mark safe directory
-        run: "git config --global --add safe.directory /github/workspace"
-
       - uses: actions/download-artifact@v1
 
         with:
@@ -73,14 +70,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Mark safe directory
-        run: "git config --global --add safe.directory /github/workspace"
-
       - name: Switch branch
 
         run: |
           git checkout -b deployment
-          rm -rf !(.git)
+          
+          bash -O extglob -c "rm -rf !(.git)"
 
       - uses: actions/download-artifact@v3
 
