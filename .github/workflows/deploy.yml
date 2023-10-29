@@ -69,11 +69,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Switch branch
+      - name: Switch branch, create Algolia directory
 
         run: |
           git checkout -b deployment
+          mkdir algolia
 
       #     bash -O extglob -c "rm -rf !(.git)"
 
@@ -81,14 +84,6 @@ jobs:
 
         with:
           name: algolia-indexes
-
-      - uses: wangchucheng/algolia-uploader@master
-
-        with:
-          app_id: "00TQKB9RBW"
-          admin_key: ${{ secrets.ALGOLIA_ADMIN_KEY }}
-          index_name: "KordEx Docs"
-          index_file_path: ${{ env.ALGOLIA_ARTIFACT }}
 
       - uses: actions/download-artifact@v3
 
@@ -100,6 +95,23 @@ jobs:
         with:
           args: unzip -qq ${{ env.ARTIFACT }} -d docs
 
+      - uses: montudor/action-zip@v1
+
+        with:
+          args: unzip -qq ${{ env.ALGOLIA_ARTIFACT }} -d algolia
+
+      - name: Combine algolia JSON files
+
+        run: "jq -s . algolia/*.json > algolia/index.json"
+
+      - uses: wangchucheng/algolia-uploader@master
+
+        with:
+          app_id: "00TQKB9RBW"
+          admin_key: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          index_name: "KordEx Docs"
+          index_file_path: "algolia/index.json"
+
       - name: Copy files, commit and push
 
         run: |
@@ -108,6 +120,7 @@ jobs:
           
           cp -r docs/* .
           rm -rf docs
+          rm -rf algolia
           
           git add .
           git commit -am "Automatic deployment"
