@@ -12,8 +12,8 @@ on:
 env:
   ALGOLIA_ARTIFACT: "algolia-indexes-KORDEX.zip"
   ARTIFACT: "webHelpKORDEX2.zip"
-  DOCKER_VERSION: "2.1.1479-p3869"
-  INSTANCE: "Writerside/kordex"
+  DOCKER_VERSION: "232.10165.1"
+  INSTANCE: "docs/kordex"
 
 jobs:
   build:
