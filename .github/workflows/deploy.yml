@@ -119,8 +119,8 @@ jobs:
           git config --global user.email "username@users.noreply.github.com"
           
           cp -r docs/* .
-          rm -rf docs
-          rm -rf algolia
+          
+          sudo rm -rf docs algolia
           
           git add .
           git commit -am "Automatic deployment"
