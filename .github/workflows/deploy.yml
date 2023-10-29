@@ -75,7 +75,7 @@ jobs:
       - name: Switch branch, create Algolia directory
 
         run: |
-          git checkout -b deployment
+          git checkout --orphan tmp-branch
           mkdir algolia
 
       #     bash -O extglob -c "rm -rf !(.git)"
