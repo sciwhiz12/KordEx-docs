@@ -65,6 +65,8 @@
             </cards>
 
             <cards narrow="true">
+                <title>&nbsp;</title>
+
                 <a href="https://kord.dev"
                    type="world"
                    summary="Learn about Kord, the protocol library Kord Extensions is based upon.">Kord Website</a>
