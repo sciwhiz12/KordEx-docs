@@ -70,7 +70,7 @@
                 </p>
                 <br/>
 
-                <code-block>
+                <code-block lang="ini">
                     [versions]
                     kord-extensions = "%version%"
 
@@ -117,7 +117,7 @@
                 </p>
                 <br/>
 
-                <code-block>
+                <code-block lang="ini">
                     [versions]
                     kord-extensions = "%version%"
 
