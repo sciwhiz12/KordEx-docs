@@ -13,10 +13,19 @@
 	<toc-element topic="Core-Documentation.topic">
 		<toc-element topic="Getting-Started.topic"/>
 	</toc-element>
-	<toc-element topic="Data-Adapters.topic"/>
-	<toc-element topic="Functional-Modules.topic">
+	<toc-element topic="Data-Adapters.topic">
+		<toc-element topic="MongoDB.topic"/>
 	</toc-element>
-	<toc-element topic="Utility-Modules.topic"/>
+	<toc-element topic="Functional-Modules.topic">
+		<toc-element topic="Mappings.topic"/>
+		<toc-element topic="Phishing.topic"/>
+		<toc-element topic="PluralKit.topic"/>
+	</toc-element>
+	<toc-element topic="Utility-Modules.topic">
+		<toc-element topic="Datetime-Converters.topic"/>
+		<toc-element topic="Token-Parser.topic"/>
+		<toc-element topic="Unsafe.topic"/>
+	</toc-element>
 
 	<toc-element toc-title="Discord" href="https://discord.gg/nYzQWcjAmK"/>
 	<toc-element toc-title="GitHub" href="https://github.com/Kord-Extensions/kord-extensions"/>
