@@ -80,10 +80,6 @@ if ("-SNAPSHOT" in latest.toString()) {
 		.compile("//snapshotVersions/snapshotVersion[1]/value")
 		.evaluate(metadataDocument, XPathConstants.STRING) as String
 
-//	println(latestBuilds)
-//
-//	val latestBuild = latestBuilds.item(0).childNodes.item(1).nodeValue
-
 	javaVersion = getJavaFromModule("$baseUrl/kord-extensions-$latestBuild.module")
 } else {
 	javaVersion = getJavaFromModule(

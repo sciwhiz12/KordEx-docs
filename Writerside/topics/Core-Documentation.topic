@@ -10,8 +10,15 @@
         <description>Learn about everything Kord Extensions has to offer</description>
 
         <spotlight>
-            <a href="Getting-Started.topic" type="learn"/>
-            <a href="" type="check-list"/>
+            <a href="Getting-Started.topic"
+               summary="What you'll need to start working with Kord Extensions."
+               type="check-list"
+            />
+
+            <a href="Beginner-Tutorial.topic"
+               summary="A tutorial for absolute beginners, taking you from nothing to a simple functional bot."
+               type="learn"
+            />
         </spotlight>
 
         <primary>
