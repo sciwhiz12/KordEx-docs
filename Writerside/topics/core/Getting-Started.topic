@@ -9,7 +9,11 @@
     <tldr>
         <p>
             <format style="bold">Latest Version:</format>
-            %version
+            %version%
+        </p>
+        <p>
+            <format style="bold">Minimum JDK:</format>
+            %java-version%
         </p>
 
         <p>
@@ -32,7 +36,7 @@
         <li><a href="https://git-scm.com">Git</a></li>
         <li>
             <p>
-                <a href="https://adoptium.net">Java Development Kit</a> (version 13 or later)
+                <a href="https://adoptium.net">Java Development Kit</a> (version %java-version% or later)
             </p>
 
             <warning>

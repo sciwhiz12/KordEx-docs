@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Beginner Tutorial" id="Beginner-Tutorial">
+
+    <p>
+        This tutorial is for absolute beginners — people who are still learning about Kotlin and its build tools. If
+        you're already familiar with the basics, you should skip this and look at
+        <a href="https://github.com/kord-extensions/template">the template project</a> instead.
+    </p>
+
+    <seealso style="cards">
+        <category ref="relevant-links">
+            <a href="https://github.com/kord-extensions/template"
+               summary="Get started quickly by using our template to create your bot."
+            >Template Project</a>
+        </category>
+    </seealso>
+</topic>

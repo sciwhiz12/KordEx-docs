@@ -2,5 +2,7 @@
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
     <var name="product" value="Kord Extensions" />
+
 	<var name="version" value="{VERSION}" />
+	<var name="java-version" value="{JAVA_VERSION}" />
 </vars>

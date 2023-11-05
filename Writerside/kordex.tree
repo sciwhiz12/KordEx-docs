@@ -12,6 +12,7 @@
 	</toc-element>
 	<toc-element topic="Core-Documentation.topic">
 		<toc-element topic="Getting-Started.topic"/>
+		<toc-element topic="Beginner-Tutorial.topic"/>
 	</toc-element>
 	<toc-element topic="Data-Adapters.topic">
 		<toc-element topic="MongoDB.topic"/>
