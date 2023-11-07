@@ -6,13 +6,35 @@
 				  name="Kord Extensions"
 				  start-page="Welcome.topic">
 
-	<toc-element topic="Welcome.topic"/>x
+	<toc-element topic="Welcome.topic">
+	</toc-element>x
 	<toc-element topic="About.topic">
 		<toc-element topic="Framework-Comparison.topic"/>
 	</toc-element>
 	<toc-element topic="Core-Documentation.topic">
 		<toc-element topic="Getting-Started.topic"/>
 		<toc-element topic="Beginner-Tutorial.topic"/>
+		<toc-element topic="Concepts.topic">
+			<toc-element topic="The-Bot.topic"/>
+			<toc-element topic="Extensions.topic"/>
+			<toc-element topic="Event-Handling.topic"/>
+			<toc-element topic="Checks.topic"/>
+		</toc-element>
+		<toc-element topic="Internationalisation.topic"/>
+		<toc-element topic="Commands.topic">
+			<toc-element topic="Chat-Commands.topic"/>
+			<toc-element topic="Context-Commands.topic"/>
+			<toc-element topic="Slash-Commands.topic"/>
+			<toc-element topic="Converters.topic">
+				<toc-element topic="Custom-Converters.topic"/>
+			</toc-element>
+		</toc-element>
+		<toc-element topic="Utilities.topic">
+			<toc-element topic="Koin.topic"/>
+			<toc-element topic="Paginators.topic"/>
+			<toc-element topic="Schedulers.topic"/>
+			<toc-element topic="Sentry.topic"/>
+		</toc-element>
 	</toc-element>
 	<toc-element topic="Data-Adapters.topic">
 		<toc-element topic="MongoDB.topic"/>
@@ -24,9 +46,11 @@
 	</toc-element>
 	<toc-element topic="Utility-Modules.topic">
 		<toc-element topic="Datetime-Converters.topic"/>
+		<toc-element topic="Plugin-Loader.topic"/>
 		<toc-element topic="Token-Parser.topic"/>
 		<toc-element topic="Unsafe.topic"/>
 	</toc-element>
+	<toc-element topic="Community-Projects.topic"/>
 
 	<toc-element toc-title="Discord" href="https://discord.gg/nYzQWcjAmK"/>
 	<toc-element toc-title="GitHub" href="https://github.com/Kord-Extensions/kord-extensions"/>
