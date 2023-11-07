@@ -333,7 +333,7 @@
 
         <p>
             If this is not the case, please review the steps above.
-            You may also ask for help on <a href="https://discord.gg/nYzQWcjAmK">our Discord server</a>.
+            You may also ask for help on <a href="%kordex-discord%">our Discord server</a>.
         </p>
     </chapter>
 
@@ -520,7 +520,7 @@
 
         <p>
             If you run into any problems, feel free to
-            <a href="https://discord.gg/nYzQWcjAmK">join our Discord server</a> for support!
+            <a href="%kordex-discord%">join our Discord server</a> for support!
         </p>
     </chapter>
 

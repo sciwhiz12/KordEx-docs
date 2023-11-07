@@ -50,7 +50,7 @@
             <cards narrow="true">
                 <title>Relevant links</title>
 
-                <a href="https://discord.gg/nYzQWcjAmK/"
+                <a href="%kordex-discord%"
                    type="account"
                    summary="Chat about Kord Extensions, get help or share your projects.">Official Discord Server</a>
 
@@ -75,7 +75,7 @@
                    type="open-source"
                    summary="Read Kord's source code, report problems or contribute via Pull Request.">Kord on GitHub</a>
 
-                <a href="https://discord.gg/6jcx5ev"
+                <a href="%kord-discord%"
                    type="account"
                    summary="Chat about Kord, get help or talk with its developers.">Kord Discord Server</a>
             </cards>

@@ -5,4 +5,7 @@
 
 	<var name="version" value="{VERSION}" />
 	<var name="java-version" value="{JAVA_VERSION}" />
+
+	<var name="kordex-discord" value="https://discord.gg/nYzQWcjAmK" />
+	<var name="kord-discord" value="https://discord.gg/6jcx5ev" />
 </vars>
