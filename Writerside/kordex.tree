@@ -7,15 +7,32 @@
 				  start-page="Welcome.topic">
 
 	<toc-element topic="Welcome.topic">
-	</toc-element>x
+	</toc-element>
+	x
 	<toc-element topic="About.topic">
 		<toc-element topic="Framework-Comparison.topic"/>
 	</toc-element>
 	<toc-element topic="Core-Documentation.topic">
 		<toc-element topic="Getting-Started.topic"/>
 		<toc-element topic="Beginner-Tutorial.topic"/>
+		<toc-element topic="The-Bot.topic"/>
+		<toc-element topic="Configuration.topic">
+			<toc-element topic="Config-Cache.topic"/>
+			<toc-element topic="Config-Components.topic"/>
+			<toc-element topic="Config-Commands.topic"/>
+			<toc-element topic="Config-Data-Adapter.topic"/>
+			<toc-element topic="Config-Error-Responses.topic"/>
+			<toc-element topic="Config-Extensions.topic"/>
+			<toc-element topic="Config-Hooks.topic"/>
+			<toc-element topic="Config-Intents.topic"/>
+			<toc-element topic="Config-Internationalization.topic"/>
+			<toc-element topic="Config-Kord.topic"/>
+			<toc-element topic="Config-Members.topic"/>
+			<toc-element topic="Config-Plugins.topic"/>
+			<toc-element topic="Config-Presence.topic"/>
+			<toc-element topic="Config-Sharding.topic"/>
+		</toc-element>
 		<toc-element topic="Concepts.topic">
-			<toc-element topic="The-Bot.topic"/>
 			<toc-element topic="Extensions.topic"/>
 			<toc-element topic="Events.topic"/>
 			<toc-element topic="Checks.topic"/>

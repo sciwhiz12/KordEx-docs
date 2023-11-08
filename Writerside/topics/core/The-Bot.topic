@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="The Bot" id="The-Bot">
+
+    <p>
+        At the core of your bot is the <code>ExtensibleBot</code> class.
+        This class is the most important part of Kord Extensions, as the jumping-off point for your bot.
+        Among other things, it dispatches commands and event handlers, and keeps track of extensions.
+        It also contains several useful APIs.
+    </p>
+
+    <chapter title="Creating a Bot" id="creating-a-bot">
+        <p>
+            Before you do anything else, you'll need to create a bot via the <code>ExtensibleBot</code> factory
+            function.
+            This function is a builder that always requires a Discord bot token parameter. The builder can then be
+            used to configure the bot.
+        </p>
+
+        <code-block lang="kotlin">
+            val bot = ExtensibleBot(TOKEN) {
+                applicationCommands {
+                    defaultGuild(envOrNull("TESTING_GUILD"))
+                }
+
+                extensions {
+                    add(::MyExtension)
+
+                    help {
+                        color { getRandomColor() }
+                    }
+                }
+
+                hooks {
+                    beforeKoinSetup {
+                        loadModule {
+                            single { Database() } bind Database::class
+                        }
+                    }
+                }
+
+                @OptIn(PrivilegedIntent::class)
+                intents {
+                    +Intent.GuildMembers
+                    +Intent.MessageContent
+                }
+            }
+        </code-block>
+    </chapter>
+
+    <chapter title="Configuration" id="configuration">
+        <p>
+            The <code>ExtensibleBot</code> builder contains your bot's configuration, which is split up into a series
+            of builder functions.
+            For more information on what options are available and how to use them, see
+            <a href="Configuration.topic">the Configuration section</a>.
+        </p>
+    </chapter>
+</topic>

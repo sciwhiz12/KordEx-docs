@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       is-library="true"
+       title="Snippets" id="Snippets">
+
+    <snippet id="config-note">
+        <note>
+            This page describes one aspect of bot configuration. For more information on how to create and set up a bot,
+            see <a href="The-Bot.topic">the relevant documentation</a>.
+        </note>
+    </snippet>
+</topic>
