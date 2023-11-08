@@ -5,8 +5,6 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="The Bot ✏️" id="The-Bot">
 
-    <show-structure depth="2" />
-
     <p>
         At the core of your bot is the <code>ExtensibleBot</code> class.
         This class is the most important part of Kord Extensions, as the jumping-off point for your bot.
@@ -21,9 +19,9 @@
             This function is a builder that always requires a Discord bot token parameter.
         </p>
 
-        <code-block lang="kotlin">
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
             val bot = ExtensibleBot(TOKEN) {
-
+                // ...
             }
         </code-block>
 
@@ -38,7 +36,7 @@
             <a href="https://dokka.kord.dev/core/dev.kord.core.cache/-kord-cache-builder/index.html">
                 Kord's caching settings
             </a>.
-            Kord Extensions provides some additional default settings over Kord's:
+            Kord Extensions provides some additional default settings over Kord's own:
         </p>
 
         <list>
@@ -89,86 +87,97 @@
             </p>
         </warning>
 
-        <chapter title="Usage &amp; Documentation" id="cache-docs">
-            <code-block lang="kotlin">
-                cache {
-                    cachedMessages = 10_000
-                    defaultStrategy = EntitySupplyStrategy.cacheWithCachingRestFallback
-                }
-            </code-block>
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            cache {
+                cachedMessages = 10_000
+                defaultStrategy = EntitySupplyStrategy.cacheWithCachingRestFallback
+            }
+        </code-block>
 
-            <chapter title="Builders" id="cache-builders">
-                <table style="header-row">
-                    <tr>
-                        <td>Builder</td>
-                        <td>Receiver</td>
-                        <td>Parameters</td>
-                        <td>Description</td>
-                    </tr>
+        <chapter title="Builders" id="cache-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Builder</td>
+                    <td>Receiver</td>
+                    <td>Parameters</td>
+                    <td>Description</td>
+                </tr>
 
-                    <tr>
-                        <td><code>kord</code></td>
+                <tr>
+                    <td><code>kord</code></td>
 
-                        <td>
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.cache/-kord-cache-builder/index.html">
                             <code>KordCacheBuilder</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core.cache/-kord-cache-builder/index.html">🔗</a>
-                        </td>
+                        </a>
+                    </td>
 
-                        <td>
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core/-client-resources/index.html">
                             <code>ClientResources</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core/-client-resources/index.html">🔗</a>
-                        </td>
+                        </a>
+                    </td>
 
-                        <td>Register a callback that will be used to directly configure Kord's cache.</td>
-                    </tr>
+                    <td>Register a callback that will be used to directly configure Kord's cache.</td>
+                </tr>
 
-                    <tr>
-                        <td><code>transformCache</code></td>
+                <tr>
+                    <td><code>transformCache</code></td>
 
-                        <td>
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core/-kord/index.html">
                             <code>Kord</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core/-kord/index.html">🔗</a>
-                        </td>
+                        </a>
+                    </td>
 
-                        <td><code>DataCache</code></td>
-                        <td>Register a callback that will be used to directly modify Kord's data cache settings.</td>
-                    </tr>
-                </table>
-            </chapter>
+                    <td>
+                        <a href="https://javadoc.io/doc/dev.kord.cache/cache-api/latest/api/dev.kord.cache.api/-data-cache/index.html">
+                            <code>DataCache</code>
+                        </a>
+                    </td>
 
-            <chapter title="Properties" id="cache-properties">
-                <table style="header-row">
-                    <tr>
-                        <td>Name</td>
-                        <td>Type</td>
-                        <td>Default</td>
-                        <td>Description</td>
-                    </tr>
+                    <td>Register a callback that will be used to directly modify Kord's data cache settings.</td>
+                </tr>
+            </table>
+        </chapter>
 
-                    <tr>
-                        <td><code>cachedMessages</code></td>
-                        <td><code>Int?</code></td>
-                        <td>10,000</td>
-                        <td>Number of recent messages to store in Kord's cache by default. Use <code>null</code> to disable.</td>
-                    </tr>
+        <chapter title="Properties" id="cache-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Default</td>
+                    <td>Description</td>
+                </tr>
 
-                    <tr>
-                        <td><code>defaultStrategy</code></td>
+                <tr>
+                    <td><code>cachedMessages</code></td>
+                    <td><code>Int?</code></td>
+                    <td>10,000</td>
+                    <td>
+                        Number of recent messages Kord's cache should store by default. Use <code>null</code> to
+                        disable.
+                    </td>
+                </tr>
 
-                        <td>
+                <tr>
+                    <td><code>defaultStrategy</code></td>
+
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.supplier/-entity-supply-strategy/index.html">
                             <code>EntitySupplyStrategy</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core.supplier/-entity-supply-strategy/index.html">🔗</a>
-                        </td>
+                        </a>
+                    </td>
 
-                        <td>
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.supplier/-entity-supply-strategy/-companion/index.html">
                             <code>cacheWithCachingRestFallback</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core.supplier/-entity-supply-strategy/-companion/index.html">🔗</a>
-                        </td>
+                        </a>
+                    </td>
 
-                        <td>Kord's default caching strategy.</td>
-                    </tr>
-                </table>
-            </chapter>
+                    <td>Kord's default caching strategy.</td>
+                </tr>
+            </table>
         </chapter>
 
     </chapter>
@@ -179,36 +188,28 @@
             out your own implementation.
         </p>
 
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            components {
+                registry(::MyComponentRegistrySubclass)
+            }
+        </code-block>
 
-        <chapter title="Usage &amp; Documentation" id="components-docs">
-            <code-block lang="kotlin">
-                components {
-                    registry(::MyComponentRegistrySubclass)
-                }
-            </code-block>
+        <chapter title="Builders" id="components-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Builder</td>
+                    <td>Description</td>
+                </tr>
 
-            <chapter title="Builders" id="components-builders">
-                <table style="header-row">
-                    <tr>
-                        <td>Builder</td>
-                        <td>Receiver</td>
-                        <td>Parameters</td>
-                        <td>Description</td>
-                    </tr>
+                <tr>
+                    <td><code>registry</code></td>
 
-                    <tr>
-                        <td><code>callbackRegistry</code></td>
-
-                        <td> </td>
-                        <td> </td>
-
-                        <td>
-                            Register a callable object (usually a constructor) that returns an alternative
-                            implementation of the <code>ComponentRegistry</code> type.
-                        </td>
-                    </tr>
-                </table>
-            </chapter>
+                    <td>
+                        Register a callable object (usually a constructor) that returns an alternative
+                        implementation of the <code>ComponentRegistry</code> type.
+                    </td>
+                </tr>
+            </table>
         </chapter>
     </chapter>
 
@@ -256,7 +257,7 @@
                 <a href="Slash-Commands.topic">slash commands</a>.
             </p>
 
-            <code-block lang="kotlin">
+            <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
                 applicationCommands {
                     defaultGuild(TEST_GUILD_ID)
                 }
@@ -267,13 +268,11 @@
                     <tr>
                         <td>Builder</td>
                         <td>Receiver</td>
-                        <td>Parameters</td>
                         <td>Description</td>
                     </tr>
 
                     <tr>
                         <td><code>applicationCommandRegistry</code></td>
-                        <td> </td>
                         <td> </td>
                         <td>
                             Register a callable object (usually a constructor) that returns an alternative
@@ -284,7 +283,6 @@
                     <tr>
                         <td><code>messageCommandCheck</code></td>
                         <td><code>MessageCommandCheck</code></td>
-                        <td> </td>
 
                         <td>
                             Register <a href="Checks.topic">a check</a> that will apply to all registered
@@ -295,7 +293,6 @@
                     <tr>
                         <td><code>slashCommandCheck</code></td>
                         <td><code>SlashCommandCheck</code></td>
-                        <td> </td>
 
                         <td>
                             Register <a href="Checks.topic">a check</a> that will apply to all registered
@@ -306,7 +303,6 @@
                     <tr>
                         <td><code>userCommandCheck</code></td>
                         <td><code>UserCommandCheck</code></td>
-                        <td> </td>
 
                         <td>
                             Register <a href="Checks.topic">a check</a> that will apply to all registered
@@ -328,8 +324,9 @@
                         <td><code>defaultGuild</code></td>
 
                         <td>
-                            <code>Snowflake</code>
-                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">🔗</a>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
                         </td>
 
                         <td>
@@ -413,7 +410,7 @@
                 sense or provide an objectively worse user experience.
             </warning>
 
-            <code-block lang="kotlin">
+            <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
                 chatCommands  {
                     defaultPrefix = "!"
                     enabled = true
@@ -435,8 +432,9 @@
                         <td> </td>
 
                         <td>
-                            <code>MessageCreateEvent</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">🔗</a>
+                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">
+                                <code>MessageCreateEvent</code>
+                            </a>
                         </td>
 
                         <td>
@@ -449,8 +447,9 @@
                         <td><code>prefix</code></td>
 
                         <td>
-                            <code>MessageCreateEvent</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">🔗</a>
+                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">
+                                <code>MessageCreateEvent</code>
+                            </a>
                         </td>
 
                         <td><code>String</code></td>
@@ -468,8 +467,9 @@
                         <td> </td>
 
                         <td>
-                            <code>MessageCreateEvent</code>
-                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">🔗</a>
+                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">
+                                <code>MessageCreateEvent</code>
+                            </a>
                         </td>
 
                         <td>
@@ -527,15 +527,668 @@
         </chapter>
     </chapter>
 
-    <chapter title="Extensions" id="configuration-extensions">
+    <chapter title="Data Adapter" id="configuration-data-adapter">
+        <p>
+            The <code>dataAdapter</code> builder allows you to register a custom data adapter class, by providing a
+            callable object (usually a constructor) that returns an alternative implementation of
+            <code>DataAdapter</code>.
+        </p>
 
+        <p>
+            For more information on data adapters and what they do, see
+            <a href="Data-Adapters.topic">the dedicated documentation</a>.
+        </p>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            dataAdapter(::TomlDataAdapter)
+        </code-block>
+    </chapter>
+
+    <chapter title="Error Responses" id="configuration-error-responses">
+<!--        suspend (MessageCreateBuilder).(message: String, type: FailureReason<*>)-->
+        <p>
+            The <code>errorResponse</code> function allows you to register a custom failure response callback. This
+            callback takes the form of a receiver function against
+            <a href="https://dokka.kord.dev/rest/dev.kord.rest.builder.message.create/-message-create-builder/index.html">MessageCreateBuilder</a>
+            that takes two parameters:
+        </p>
+
+        <list>
+            <li>
+                <code>message</code>: A <code>String</code> representing the error message text.
+            </li>
+
+            <li>
+                <code>type</code>: A <code>FailureReason</code> representing the type of error, and containing the
+                relevant exception.
+            </li>
+        </list>
+
+        <p>
+            By default, Kord Extensions will relay the message text to Discord without editing it, preventing anyone
+            from being pinged by any mentions in the message text.
+            If you'd like, you can customize this by treating it as if you were sending any other message.
+        </p>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            errorResponse {
+                allowedMentions { }
+
+                embed {
+                    title = "Oopsy whoopsie!"
+                    color = DISCORD_MAGENTA
+
+                    description = message
+                }
+            }
+        </code-block>
+    </chapter>
+
+    <chapter title="Extensions" id="configuration-extensions">
+        <p>
+            The <code>extensions</code> builder allows you to register extensions, and configure bundled and
+            third-party extensions.
+        </p>
+
+        <tip>
+            <p>
+                If you're developing an extension for others to use (and you aren't using the plugin system),
+                it's expected that you provide an extension function with this builder as the receiver.
+                For example:
+            </p>
+
+            <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+                fun ExtensibleBotBuilder.ExtensionsBuilder.extMyExtension(/* args */) {
+                    // ...any extra configuration..
+
+                    add(::MyExtension)
+                }
+            </code-block>
+        </tip>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            extensions {
+                add(::MyExtension)
+
+                help {
+                    pingInReply = false
+
+                    color { DISCORD_BLURPLE }
+                }
+
+                sentry {
+                    enable = true
+                    dsn = "abc123"
+                }
+            }
+        </code-block>
+
+        <chapter title="Builders" id="extensions-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Builder</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>add</code></td>
+                    <td> </td>
+
+                    <td>
+                        Register an extension to be loaded via a callable object (usually a constructor) that returns an
+                        implementation of the <code>Extension</code> type.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>help</code></td>
+                    <td><code>HelpExtensionBuilder</code></td>
+
+                    <td>
+                        Configure the currently loaded help extension, and enable or disable the bundled one.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>sentry</code></td>
+                    <td><code>SentryExtensionBuilder</code></td>
+
+                    <td>
+                        Configure the Kord Extensions <a href="https://sentry.io">Sentry</a> extension and integration.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Help Extension" id="extensions-help">
+            <p>
+                The <code>help</code> builder allows you to configure the currently loaded chat command help extension,
+                and enable or disable the bundled one.
+            </p>
+
+            <tip>
+                <p>
+                    Kord Extensions provides an off-the-shelf extension for displaying chat command help.
+                    However, you're free to use a third-party extension or build your own.
+                    You may do so by creating an extension that implements the <code>HelpProvider</code> type, and
+                    registering it as usual.
+                </p>
+
+                <p>
+                    If you develop a help extension meant for external use, you should disable the bundled one in your
+                    extension function.
+                </p>
+
+                <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+                    fun ExtensibleBotBuilder.ExtensionsBuilder.myHelpExtension() {
+                        help {
+                            enableBundledExtension = false
+                        }
+
+                        add(::MyHelpExtension)
+                    }
+                </code-block>
+            </tip>
+
+            <chapter title="Builders" id="extensions-help-builders">
+                <table style="header-row">
+                    <tr>
+                        <td>Builder</td>
+                        <td>Receiver</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>colo(u)r</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">
+                                <code>MessageCreateEvent</code>
+                            </a>
+                        </td>
+
+                        <td>
+                            Register a callback that returns a
+                            <a href="https://dokka.kord.dev/common/dev.kord.common/-color/index.html">Color</a> object
+                            to use for display in help embeds.
+                            Will be called for every embed generated.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>check</code></td>
+                        <td><code>ChatCommandCheck</code></td>
+
+                        <td>
+                            Register a <a href="Checks.topic">check</a> that must pass for help commands to be
+                            executed.
+                        </td>
+                    </tr>
+                </table>
+            </chapter>
+
+            <chapter title="Properties" id="extensions-help-properties">
+                <table style="header-row">
+                    <tr>
+                        <td>Name</td>
+                        <td>Type</td>
+                        <td>Default</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>deleteInvocationOnPaginatorTimeout</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>false</code></td>
+
+                        <td>
+                            Whether to delete the message containing the help command invocation once the paginator
+                            timeout has been reached.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>deletePaginatorOnTimeout</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>false</code></td>
+
+                        <td>
+                            Whether to delete the paginator output by the help command after the paginator timeout has
+                            been reached.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>enableBundledExtension</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>true</code></td>
+
+                        <td>Whether to enable the bundled help extension.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>paginatorTimeout</code></td>
+                        <td><code>Long</code></td>
+                        <td><code>60</code></td>
+
+                        <td>
+                            How long since the user's last button press to wait before the help paginator times out,
+                            in seconds.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>pingInReply</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>true</code></td>
+
+                        <td>
+                            Whether to mention (ping) users in reply to their help command invocation.
+                        </td>
+                    </tr>
+                </table>
+            </chapter>
+        </chapter>
+
+        <chapter title="Sentry Extension" id="extensions-sentry">
+            <p>
+                The <code>sentry</code> builder is used to configure the
+                <a href="Sentry.topic">Kord Extensions Sentry integration</a>, as well as enabling or disabling the
+                bundled extension used for collecting feedback from users when errors occur.
+            </p>
+
+            <warning>
+                Ensure that you've <a href="Sentry.topic">properly configured the Sentry integration</a> before enabling
+                it.
+                Failure to do so <format style="bold">will</format> result in strange and undecipherable errors!
+            </warning>
+
+            <chapter title="Builders" id="extensions-sentry-builders">
+                <table style="header-row">
+                    <tr>
+                        <td>Builder</td>
+                        <td>Receiver</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>builder</code></td>
+                        <td> </td>
+
+                        <td>
+                            Register a callable object (usually a constructor) that returns an alternative
+                            implementation of the <code>SentryAdapter</code> type.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>setup</code></td>
+                        <td><code>SentryAdapter</code></td>
+                        <td>
+                            Replace the bundled setup callback with your own function, which must configure the
+                            <code>SentryAdapter</code> by calling its <code>setup</code> function.
+                            This should only be used if you need to customize precisely what gets passed to that
+                            function.
+                        </td>
+                    </tr>
+                </table>
+            </chapter>
+
+            <chapter title="Properties" id="extensions-sentry-properties">
+                <p>
+                    The following properties are used to configure the
+                    <a href="Sentry.topic">Kord Extensions Sentry integration</a>,
+                    rather than the Sentry API itself.
+                </p>
+
+                <table style="header-row">
+                    <tr>
+                        <td>Name</td>
+                        <td>Type</td>
+                        <td>Default</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>enable</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>false</code></td>
+
+                        <td>
+                            Whether to enable the <a href="Sentry.topic">Kord Extensions Sentry integration</a>.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>feedbackExtension</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>false</code></td>
+
+                        <td>
+                            Whether to enable the bundled Sentry feedback extension, which adds <code>feedback</code>
+                            chat and slash commands, and provides error IDs with messages for errors submitted to
+                            Sentry,
+                            which users can use with the commands to submit feedback for.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>pingInReply</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>true</code></td>
+
+                        <td>
+                            Whether to ping users in response to their <code>feedback</code> chat command invocations.
+                        </td>
+                    </tr>
+                </table>
+
+                <p>
+                    The following properties are used to configure the Sentry API directly.
+                    Only the most common options are exposed here, but you can use the <code>setup</code> builder if
+                    you need to configure other options.
+                    For more information, see
+                    <a href="https://docs.sentry.io/platforms/java/configuration/options/">the Sentry documentation</a>.
+                </p>
+
+                <table style="header-row">
+                    <tr>
+                        <td>Name</td>
+                        <td>Type</td>
+                        <td>Default</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>debug</code></td>
+                        <td><code>Boolean</code></td>
+                        <td><code>false</code></td>
+
+                        <td>
+                            Whether to enable
+                            <a href="https://docs.sentry.io/platforms/java/configuration/options/#debug">Sentry's debug mode</a>.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>dsn</code></td>
+                        <td><code>String?</code></td>
+                        <td><code>null</code></td>
+
+                        <td>
+                            Your
+                            <a href="https://docs.sentry.io/platforms/java/configuration/options/#dsn">Sentry DSN</a>,
+                            required to enable the integration.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>distribution</code></td>
+                        <td><code>String?</code></td>
+                        <td><code>null</code></td>
+
+                        <td>
+                            Sentry's
+                            <a href="https://docs.sentry.io/platforms/java/configuration/options/#dist">Distribution</a>
+                            option.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>environment</code></td>
+                        <td><code>String?</code></td>
+                        <td><code>null</code></td>
+
+                        <td>
+                            Sentry's
+                            <a href="https://docs.sentry.io/platforms/java/configuration/options/#environment">Environment</a>
+                            option.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>release</code></td>
+                        <td><code>String?</code></td>
+                        <td><code>null</code></td>
+
+                        <td>
+                            Sentry's
+                            <a href="https://docs.sentry.io/platforms/java/configuration/options/#release">Release</a>
+                            option.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>serverName</code></td>
+                        <td><code>String?</code></td>
+                        <td><code>null</code></td>
+
+                        <td>
+                            Sentry's
+                            <a href="https://docs.sentry.io/platforms/java/configuration/options/#server-name">Server Name</a>
+                            option.
+                        </td>
+                    </tr>
+                </table>
+            </chapter>
+        </chapter>
     </chapter>
 
     <chapter title="Hooks" id="configuration-hooks">
+        <p>
+            The <code>hooks</code> builder allows you to register blocks of code to be executed at various stages of
+            your bot's lifecycle.
+            This has a number of important use-cases, which will be explored below.
+        </p>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            hooks {
+                kordShutdownHook = true
+
+                beforeKoinSetup {
+                    loadModule {
+                        single { Database() } bind Database::class
+                    }
+                }
+            }
+        </code-block>
+
+        <chapter title="Builders" id="hooks-builders">
+            <p>
+                The following builders relate to <format style="bold">extension loading states</format>.
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>beforeExtensionsAdded</code></td>
+                    <td><code>ExtensibleBot</code></td>
+                    <td>Run during startup, before any registered extensions are loaded.</td>
+                </tr>
+
+                <tr>
+                    <td><code>extensionAdded</code></td>
+                    <td> </td>
+                    <td>Run whenever an extension is loaded, at any point in the bot's lifecycle.</td>
+                </tr>
+
+                <tr>
+                    <td><code>afterExtensionsAdded</code></td>
+                    <td><code>ExtensibleBot</code></td>
+                    <td>Run during startup, after all registered extensions are loaded.</td>
+                </tr>
+            </table>
+
+            <p>
+                The following builders relate to <format style="bold">Koin setup progress</format>.
+                You can learn more about Koin in <a href="Koin.topic">our dedicated Koin documentation</a>, which
+                explains how you should use it and what Kord Extensions does differently to the norm.
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>beforeKoinSetup</code></td>
+
+                    <td>
+                        Run during startup, after Koin has been started,
+                        but before the default Koin modules have been registered.
+                        This is a great place to register any extra Koin modules you'll need.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>afterKoinSetup</code></td>
+                    <td>Run during startup, after the default Koin modules have been registered.</td>
+                </tr>
+            </table>
+
+            <p>
+                The following builders relate to <format style="bold">the bot lifecycle itself</format>.
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>created</code></td>
+                    <td><code>ExtensibleBot</code></td>
+
+                    <td>
+                        Run during startup, right after the <code>ExtensibleBot</code> object has been created, and
+                        before its setup function has been run.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>setup</code></td>
+                    <td><code>ExtensibleBot</code></td>
+
+                    <td>
+                        Run during startup, right after the <code>ExtensibleBot</code>'s setup function has been run.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>beforeStart</code></td>
+                    <td><code>ExtensibleBot</code></td>
+
+                    <td>
+                        Run during startup, just before the <code>ExtensibleBot</code> tries to connect to Discord.
+                        This hook will also be run if the <code>ExtensibleBot</code> has been stopped and restarted
+                        via the relevant functions.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="hooks-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Default</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>kordShutdownHook</code></td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code></td>
+
+                    <td>
+                        Whether to register Kord's shutdown hook, which formally disconnects from the gateway when the
+                        process shuts down.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+    </chapter>
+
+    <chapter title="Intents" id="configuration-intents">
+        <p>
+            The <code>intents</code> builder allows you to configure which
+            <a href="https://discord.com/developers/docs/topics/gateway#gateway-intents">Gateway Intents</a> your bot
+            requires.
+            Intents define what events your bot is sent by the gateway, and what data it has access to.
+            Defining a limited set of intents can be useful to cut down on event processing or to help ensure your
+            users' privacy, by preventing your bot from processing data it doesn't strictly need.
+        </p>
+
+        <p>
+            Additionally, there are a number of
+            <a href="https://support-dev.discord.com/hc/en-us/articles/6207308062871-What-are-Privileged-Intents-">privileged intents</a>,
+            which must be enabled in the developer console for your bot.
+            Verified bots must justify to Discord why they need these intents, and their access to them may be
+            restricted by Discord.
+        </p>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            intents(true, true) {
+                +Intent.GuildMembers
+                +Intent.GuildPresences
+            }
+        </code-block>
+
+        <p>
+            Intents may be added and removed using the unary <code>+</code> and <code>-</code> operators, respectively.
+            There are also some additional parameters you can pass to the <code>intents</code> builder function:
+        </p>
+
+        <table style="header-row">
+            <tr>
+                <td>Parameter</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+
+            <tr>
+                <td><code>addDefaultIntents</code></td>
+                <td><code>Boolean</code></td>
+                <td><code>true</code></td>
+
+                <td>
+                    Whether to add all non-privileged intents to the builder by default.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>addExtensionIntents</code></td>
+                <td><code>Boolean</code></td>
+                <td><code>true</code></td>
+
+                <td>
+                    Whether to automatically add the intents required by the bot's loaded extensions to the builder.
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            The above parameters mirror the default behavior of the <code>intents</code> builder, if you choose not to
+            provide your own.
+        </p>
+    </chapter>
+
+    <chapter title="Internationalization" id="configuration-internationalization">
 
     </chapter>
 
-    <chapter title="Internationalisation" id="configuration-internationalisation">
+    <chapter title="Kord Customization" id="configuration-kord">
 
     </chapter>
 
@@ -544,6 +1197,14 @@
     </chapter>
 
     <chapter title="Plugins" id="configuration-plugins">
+
+    </chapter>
+
+    <chapter title="Presence" id="configuration-presence">
+
+    </chapter>
+
+    <chapter title="Sharding" id="configuration-sharding">
 
     </chapter>
 </topic>

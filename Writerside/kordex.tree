@@ -17,7 +17,7 @@
 		<toc-element topic="Concepts.topic">
 			<toc-element topic="The-Bot.topic"/>
 			<toc-element topic="Extensions.topic"/>
-			<toc-element topic="Event-Handling.topic"/>
+			<toc-element topic="Events.topic"/>
 			<toc-element topic="Checks.topic"/>
 		</toc-element>
 		<toc-element topic="Internationalisation.topic"/>

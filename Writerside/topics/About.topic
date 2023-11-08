@@ -42,7 +42,7 @@
 		Kotlin's niceties.
 	</p>
 
-	<tip>
+	<note>
 		<title>Why not other Kord-based frameworks?</title>
 
 		<p>
@@ -55,7 +55,7 @@
 			This matrix includes all the major Kord-based frameworks, so be sure to inform yourself about them before
 			deciding on a specific framework.
 		</p>
-	</tip>
+	</note>
 
 	<seealso style="cards">
 		<category ref="components">

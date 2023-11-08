@@ -17,11 +17,11 @@
             Before getting started, you'll need to install and set up some pieces of software.
         </p>
 
-        <tip>
+        <note>
             This tutorial assumes you'll be using a standard Kotlin setup, and recommends the use
             of IntelliJ IDEA by JetBrains — but you can use another IDE that you're more familiar
             with, as long as it supports Kotlin.
-        </tip>
+        </note>
 
         <list type="bullet">
             <li>
