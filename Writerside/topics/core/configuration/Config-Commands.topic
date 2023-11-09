@@ -62,7 +62,7 @@
             }
         </code-block>
 
-        <chapter title="Builders" id="application-commands-builders">
+        <chapter title="Builders" id="application-command-builders">
             <table style="header-row">
                 <tr>
                     <td>Builder</td>
@@ -111,7 +111,7 @@
             </table>
         </chapter>
 
-        <chapter title="Functions" id="application-commands-functions">
+        <chapter title="Functions" id="application-command-functions">
             <table style="header-row">
                 <tr>
                     <td>Function</td>
@@ -159,7 +159,7 @@
             </table>
         </chapter>
 
-        <chapter title="Properties" id="application-commands-properties">
+        <chapter title="Properties" id="application-command-properties">
             <table style="header-row">
                 <tr>
                     <td>Name</td>
@@ -204,7 +204,7 @@
 
         <warning>
             Discord has stated that all verified Discord bots must use
-            <a href="#application-commands">application commands</a> instead of chat commands wherever possible.
+            <a anchor="application-commands">application commands</a> instead of chat commands wherever possible.
             However, your bot may still use chat commands for situations where application commands don't make
             sense or provide an objectively worse user experience.
         </warning>
@@ -221,7 +221,7 @@
             }
         </code-block>
 
-        <chapter title="Builders" id="chat-commands-builders">
+        <chapter title="Builders" id="chat-command-builders">
             <table style="header-row">
                 <tr>
                     <td>Builder</td>
@@ -283,7 +283,7 @@
             </table>
         </chapter>
 
-        <chapter title="Properties" id="chat-commands-properties">
+        <chapter title="Properties" id="chat-command-properties">
             <table style="header-row">
                 <tr>
                     <td>Name</td>

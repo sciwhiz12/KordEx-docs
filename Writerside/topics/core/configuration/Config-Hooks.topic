@@ -29,7 +29,7 @@
         }
     </code-block>
 
-    <chapter title="Builders" id="hooks-builders">
+    <chapter title="Builders" id="builders">
         <p>
             The following builders relate to <format style="bold">extension loading states</format>.
         </p>
@@ -131,7 +131,7 @@
         </table>
     </chapter>
 
-    <chapter title="Properties" id="hooks-properties">
+    <chapter title="Properties" id="properties">
         <table style="header-row">
             <tr>
                 <td>Name</td>

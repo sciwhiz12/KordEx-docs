@@ -74,7 +74,7 @@
         }
     </code-block>
 
-    <chapter title="Builders" id="cache-builders">
+    <chapter title="Builders" id="builders">
         <table style="header-row">
             <tr>
                 <td>Builder</td>
@@ -121,7 +121,7 @@
         </table>
     </chapter>
 
-    <chapter title="Properties" id="cache-properties">
+    <chapter title="Properties" id="properties">
         <table style="header-row">
             <tr>
                 <td>Name</td>

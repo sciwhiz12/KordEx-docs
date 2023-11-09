@@ -32,9 +32,9 @@
 			<toc-element topic="Config-Presence.topic"/>
 			<toc-element topic="Config-Sharding.topic"/>
 		</toc-element>
-		<toc-element topic="Concepts.topic">
-			<toc-element topic="Extensions.topic"/>
-			<toc-element topic="Events.topic"/>
+        <toc-element topic="Extensions.topic"/>
+        <toc-element topic="Concepts.topic">
+            <toc-element topic="Events.topic"/>
 			<toc-element topic="Checks.topic"/>
 		</toc-element>
 		<toc-element topic="Internationalisation.topic"/>

@@ -51,7 +51,7 @@
         }
     </code-block>
 
-    <chapter title="Builders" id="extensions-builders">
+    <chapter title="Builders" id="builders">
         <table style="header-row">
             <tr>
                 <td>Builder</td>
@@ -89,7 +89,7 @@
         </table>
     </chapter>
 
-    <chapter title="Help Extension" id="extensions-help">
+    <chapter title="Help Extension" id="help">
         <p>
             The <code>help</code> builder allows you to configure the currently loaded chat command help extension,
             and enable or disable the bundled one.
@@ -119,7 +119,7 @@
             </code-block>
         </tip>
 
-        <chapter title="Builders" id="extensions-help-builders">
+        <chapter title="Builders" id="help-builders">
             <table style="header-row">
                 <tr>
                     <td>Builder</td>
@@ -156,7 +156,7 @@
             </table>
         </chapter>
 
-        <chapter title="Properties" id="extensions-help-properties">
+        <chapter title="Properties" id="help-properties">
             <table style="header-row">
                 <tr>
                     <td>Name</td>
@@ -219,7 +219,7 @@
         </chapter>
     </chapter>
 
-    <chapter title="Sentry Extension" id="extensions-sentry">
+    <chapter title="Sentry Extension" id="sentry">
         <p>
             The <code>sentry</code> builder is used to configure the
             <a href="Sentry.topic">Kord Extensions Sentry integration</a>, as well as enabling or disabling the
@@ -232,7 +232,7 @@
             Failure to do so <format style="bold">will</format> result in strange and undecipherable errors!
         </warning>
 
-        <chapter title="Builders" id="extensions-sentry-builders">
+        <chapter title="Builders" id="sentry-builders">
             <table style="header-row">
                 <tr>
                     <td>Builder</td>
@@ -263,7 +263,7 @@
             </table>
         </chapter>
 
-        <chapter title="Properties" id="extensions-sentry-properties">
+        <chapter title="Properties" id="sentry-properties">
             <p>
                 The following properties are used to configure the
                 <a href="Sentry.topic">Kord Extensions Sentry integration</a>,
