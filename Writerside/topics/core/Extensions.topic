@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Extensions ✏️" id="Extensions">
+       title="Extensions" id="Extensions">
 
     <p>
         Once you've <a href="The-Bot.topic">created your bot</a> and
@@ -261,11 +261,163 @@
             </p>
 
             <list>
+                <li><a href="Checks.topic" /></li>
                 <li><a href="Commands.topic" /></li>
                 <li><a href="Events.topic" /></li>
                 <li><a href="Internationalisation.topic" /></li>
                 <li><a href="Utilities.topic" /></li>
             </list>
         </note>
+
+        <chapter title="Functions" id="functions">
+            <table style="header-row">
+                <tr>
+                    <td>Function</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>setup</code></td>
+
+                    <td>
+                        Extension setup function, as explained above.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>unload</code></td>
+
+                    <td>
+                        If your extension requires tear-down or cleanup steps to be run when it's unloaded, override
+                        this function.
+                        Called whenever the extension is disabled.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="properties">
+            <p>
+                The following properties are marked <code>open</code> and are intended to be overridden by extensions.
+            </p>
+
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Default</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>allowApplicationCommandsInDMs</code></td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code></td>
+
+                    <td>
+                        Whether <a href="Commands.topic">application commands</a> registered by this extension should
+                        be allowed in DMs by default.
+                        May be overridden or set by your <code>setup</code> function.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>bundle</code></td>
+                    <td><code>String?</code></td>
+                    <td><code>null</code></td>
+
+                    <td>
+                        Translation bundle to be used for string translations in this extension by default.
+                        For more information,
+                        see <a href="Internationalisation.topic">the dedicated documentation</a>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>intents</code></td>
+                    <td><code>MutableSet&lt;Intent&gt;</code></td>
+                    <td><code>{ }</code></td>
+
+                    <td>
+                        Intents required by this extension, which will be automatically requested at bot startup.
+                        This is populated automatically by event handlers and chat commands, but you can always add
+                        other required intents if needed.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>name</code></td>
+                    <td><code>String</code></td>
+                    <td> </td>
+
+                    <td>
+                        Human-readable short extension name, as explained above.
+                    </td>
+                </tr>
+            </table>
+
+            <p>
+                The following properties are set automatically, and you shouldn't need to modify them.
+            </p>
+
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>loaded</code></td>
+                    <td><code>Boolean</code></td>
+
+                    <td>
+                        Whether the extension is currently loaded.
+                        This is a short-hand reference to <code>state</code>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>state</code></td>
+                    <td><code>ExtensionState</code></td>
+
+                    <td>
+                        The extension's loading state, which describes which state of its lifecycle it's currently in.
+                    </td>
+                </tr>
+            </table>
+
+            <p>
+                The following properties provide quick access to various parts of Kord Extensions, via
+                <a href="Koin.topic">Koin</a>.
+            </p>
+
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                </tr>
+
+                <tr>
+                    <td><code>applicationCommandRegistry</code></td>
+                    <td><code>ApplicationCommandRegistry</code></td>
+                </tr>
+
+                <tr>
+                    <td><code>bot</code></td>
+                    <td><code>ExtensibleBot</code></td>
+                </tr>
+
+                <tr>
+                    <td><code>chatCommandRegistry</code></td>
+                    <td><code>ChatCommandRegistry</code></td>
+                </tr>
+
+                <tr>
+                    <td><code>kord</code></td>
+                    <td><code>Kord</code></td>
+                </tr>
+            </table>
+        </chapter>
     </chapter>
 </topic>
