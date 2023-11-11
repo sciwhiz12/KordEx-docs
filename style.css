@@ -1,9 +1,9 @@
 tr[id~=":div:bottom"] td {
-    border-bottom: 4px double var(--lt-color-border-dark) !important;
+    border-bottom: 4px double var(--wh-color-border-default) !important;
 }
 
 tr[id~=":div:top"] td {
-    border-top: 4px double var(--lt-color-border-dark) !important;
+    border-top: 4px double var(--wh-color-border-default) !important;
 }
 
 tr[id~=":header"] td, td[id~=":header"] {
@@ -33,13 +33,13 @@ tr[id~=":header"] td, td[id~=":header"] {
 }
 
 .toc li[data-toc-scroll~=":div:bottom"] {
-    border-bottom: 1px solid var(--lt-color-border-dark) !important;
+    border-bottom: 1px solid var(--wh-color-border-default) !important;
     margin-bottom: 22px;
     padding-bottom: 22px;
 }
 
 .toc li[data-toc-scroll~=":div:top"] {
-    border-top: 1px solid var(--lt-color-border-dark) !important;
+    border-top: 1px solid var(--wh-color-border-default) !important;
     margin-top: 22px;
     padding-top: 22px;
 }
