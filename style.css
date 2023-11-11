@@ -2,11 +2,11 @@ tr[id~=":div:bottom"] td {
     border-bottom: 4px double var(--wh-color-border-default) !important;
 }
 
-tr[id~=":div:top"] td {
+tr[id~=":div:top"] td, tr[id~=":div:top"] th {
     border-top: 4px double var(--wh-color-border-default) !important;
 }
 
-tr[id~=":header"] td, td[id~=":header"] {
+tr[id~=":header"] td, tr[id~=":header"] th, td[id~=":header"], th[id~=":header"] {
     background-color: var(--wh-color-backlight-secondary) !important;
     font-weight: 610;
 }
