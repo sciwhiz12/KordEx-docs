@@ -35,10 +35,6 @@ jobs:
           instance: ${{ env.INSTANCE }}
           artifact: ${{ env.ARTIFACT }}
 
-      - name: Add CSS and script to zip
-        run: |
-          sudo zip artifacts/${{ env.ARTIFACT }} style.css .github/update-css.main.kts
-
       - uses: actions/upload-artifact@v3
 
         with:
@@ -47,6 +43,8 @@ jobs:
           path: |
             artifacts/${{ env.ARTIFACT }}
             artifacts/report.json
+            style.css
+            .github/update-css.main.kts
 
           retention-days: 7
 
@@ -90,8 +88,6 @@ jobs:
         run: |
           git checkout --orphan deployment
           mkdir algolia
-
-      #     bash -O extglob -c "rm -rf !(.git)"
 
       - uses: actions/download-artifact@v3
 
