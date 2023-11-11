@@ -1,9 +1,14 @@
 tr[id~=":div:bottom"] td {
-    border-bottom-color: var(--lt-color-text-default) !important;
+    border-bottom: 4px double var(--lt-color-border-dark) !important;
 }
 
 tr[id~=":div:top"] td {
-    border-top-color: var(--lt-color-text-default) !important;
+    border-top: 4px double var(--lt-color-border-dark) !important;
+}
+
+tr[id~=":header"] td, td[id~=":header"] {
+    background-color: var(--wh-color-backlight-secondary) !important;
+    font-weight: 610;
 }
 
 .toc li[data-toc-scroll~=":link"]::before {
@@ -28,9 +33,13 @@ tr[id~=":div:top"] td {
 }
 
 .toc li[data-toc-scroll~=":div:bottom"] {
-    border-bottom: 1px solid var(--lt-color-text-default) !important;
+    border-bottom: 1px solid var(--lt-color-border-dark) !important;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
 }
 
 .toc li[data-toc-scroll~=":div:top"] {
-    border-top: 1px solid var(--lt-color-text-default) !important;
+    border-top: 1px solid var(--lt-color-border-dark) !important;
+    margin-top: 22px;
+    padding-top: 22px;
 }

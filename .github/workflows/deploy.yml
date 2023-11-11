@@ -130,7 +130,6 @@ jobs:
           sudo rm -rf docs algolia Writerside
           
           wget https://raw.githubusercontent.com/Kord-Extensions/docs/root/.github/update-css.main.kts
-          wget https://raw.githubusercontent.com/Kord-Extensions/docs/root/style.css
           
           kotlin update-css.main.kts
           
