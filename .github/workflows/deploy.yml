@@ -37,7 +37,7 @@ jobs:
 
       - name: Add CSS and script to zip
         run: |
-          zip artifacts/${{ env.ARTIFACT }} style.css .github/update-css.main.kts
+          sudo zip artifacts/${{ env.ARTIFACT }} style.css .github/update-css.main.kts
 
       - uses: actions/upload-artifact@v3
 
