@@ -3,10 +3,198 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Events ✏️" id="Events">
+       title="Events" id="Events">
+
+    <show-structure depth="2" />
 
     <p>
         To react to things happening on Discord (and within your bot), you can register event handlers in your
         extensions.
+        This is done simply:
     </p>
+
+    <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+        override suspend fun setup() {
+            event&lt;MessageCreateEvent&gt; {
+                action {
+                    if (event.message.content == "hello") {
+                        event.message.respond("Hello!")
+                    }
+                }
+            }
+        }
+    </code-block>
+
+    <p>
+        The <code>event</code> function takes several parameters:
+    </p>
+
+    <list>
+        <li><code>T: Event</code> - the type of event to listen for.</li>
+
+        <li>
+            <code>constructor</code> - allows you to provide a callable object (usually a constructor) that returns
+            an alternative implementation of <code>EventHandler</code>.
+        </li>
+
+        <li>
+            <code>body</code> - the function receiver which binds <code>this</code> tho
+            <code>EventHandler&lt;T&gt;</code>.
+        </li>
+    </list>
+
+    <chapter title="Event Handler API" id="event-handler">
+        <p>
+            The <code>EventHandler</code> type provides several APIs that aid in working with events.
+        </p>
+
+        <chapter title="Builders" id="event-handler-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Builder</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>action</code></td>
+
+                    <td>
+                        <a anchor="event-context">
+                            <code>EventContext&lt;T&gt;</code>
+                        </a>
+                    </td>
+
+                    <td>
+                        Provide the code that should be run when the event defined by <code>T</code> is fired.
+                        <format style="bold">Note:</format> All event handlers must have an <code>action</code>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>check</code></td>
+
+                    <td>
+                        <a href="Checks.topic">
+                            <code>CheckContext&lt;T&gt;</code>
+                        </a>
+                    </td>
+
+                    <td>
+                        Register <a href="Checks.topic">a check</a> that must pass for the event's <code>action</code>
+                        to be run.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Functions" id="event-handler-functions">
+            <p>
+                The following functions are extension functions on the <code>Event</code> type, and must be called
+                against an <code>Event</code> object.
+                For brevity, this object will be represented by <code>E</code> below.
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Function</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>E.getLocale</code></td>
+
+                    <td>
+                        Resolve the contextual locale for the given event, using the resolvers defined in
+                        <a href="Config-Internationalization.topic">the bot's configuration</a>.
+                        Will default to the configured default bot locale if one can't be resolved.
+                        This may be useful for work related to <a href="Internationalisation.topic"/>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>E.translate</code></td>
+
+                    <td>
+                        There are a number of overloads for this function.
+                        It allows you to translate a given string key based on the event's locale, or
+                        another given locale.
+                        For more information on translations, see
+                        <a href="Internationalisation.topic">the dedicated documentation</a>,
+                        and examine the functions in your IDE for more information on their parameters.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="event-handler-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>extension</code></td>
+
+                    <td>
+                        <a href="Extensions.topic">
+                            <code>Extension</code>
+                        </a>
+                    </td>
+
+                    <td>The extension this event handler belongs to.</td>
+                </tr>
+
+                <tr>
+                    <td><code>kord</code></td>
+
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core/-kord/index.html">
+                            <code>Kord</code>
+                        </a>
+                    </td>
+
+                    <td>The extension this event handler belongs to.</td>
+                </tr>
+
+                <tr>
+                    <td><code>sentry</code></td>
+
+                    <td>
+                        <a href="Sentry.topic">
+                            <code>SentryAdapter</code>
+                        </a>
+                    </td>
+
+                    <td>The extension this event handler belongs to.</td>
+                </tr>
+
+                <tr>
+                    <td><code>translationsProvider</code></td>
+
+                    <td>
+                        <a href="Internationalisation.topic">
+                            <code>TranslationsProvider</code>
+                        </a>
+                    </td>
+
+                    <td>The extension this event handler belongs to.</td>
+                </tr>
+            </table>
+        </chapter>
+    </chapter>
+
+    <chapter title="Event Context API" id="event-context">
+
+    </chapter>
+
+    <chapter title="Extra Events" id="extra-events">
+        <!-- This should probably be its own page -->
+    </chapter>
+
+    <chapter title="Custom Events" id="custom-events">
+        <!-- This should probably be on the extra events page -->
+    </chapter>
 </topic>

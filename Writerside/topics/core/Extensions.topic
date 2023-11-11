@@ -5,6 +5,8 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="Extensions" id="Extensions">
 
+    <show-structure depth="2" />
+
     <p>
         Once you've <a href="The-Bot.topic">created your bot</a> and
         <a href="Configuration.topic">configured it to your needs</a>, you can start adding functionality.

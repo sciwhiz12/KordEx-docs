@@ -16,7 +16,7 @@
 		<toc-element topic="Getting-Started.topic"/>
 		<toc-element topic="Beginner-Tutorial.topic"/>
 		<toc-element topic="The-Bot.topic"/>
-		<toc-element topic="Configuration.topic">
+		<toc-element topic="Configuration.topic" id="banana">
 			<toc-element topic="Config-Cache.topic"/>
 			<toc-element topic="Config-Components.topic"/>
 			<toc-element topic="Config-Commands.topic"/>
@@ -67,7 +67,7 @@
 	</toc-element>
 	<toc-element topic="Community-Projects.topic"/>
 
-	<toc-element toc-title="Discord" href="https://discord.gg/nYzQWcjAmK"/>
-	<toc-element toc-title="GitHub" href="https://github.com/Kord-Extensions/kord-extensions"/>
-	<toc-element toc-title="Ko-fi" href="https://ko-fi.com/gsc"/>
+	<toc-element id="discord :div:top :link" toc-title="Discord" href="https://discord.gg/nYzQWcjAmK"/>
+	<toc-element id="github :link" toc-title="GitHub" href="https://github.com/Kord-Extensions/kord-extensions"/>
+	<toc-element id="kofi :link" toc-title="Ko-fi" href="https://ko-fi.com/gsc"/>
 </instance-profile>

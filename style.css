@@ -1,0 +1,36 @@
+tr[id~=":div:bottom"] td {
+    border-bottom-color: var(--lt-color-text-default) !important;
+}
+
+tr[id~=":div:top"] td {
+    border-top-color: var(--lt-color-text-default) !important;
+}
+
+.toc li[data-toc-scroll~=":link"]::before {
+    content: "🔗";
+    position: absolute;
+    left: 5px;
+    padding-top: 7px;
+    font-size: 1.3em;
+}
+
+.toc li[data-toc-scroll="Welcome"]::before {
+    content: "🏠";
+    position: absolute;
+    left: 5px;
+    padding-top: 7px;
+    font-size: 1.3em;
+}
+
+.toc li[data-toc-scroll~=":link"] a::after {
+    content: "";
+    margin-left: 0;
+}
+
+.toc li[data-toc-scroll~=":div:bottom"] {
+    border-bottom: 1px solid var(--lt-color-text-default) !important;
+}
+
+.toc li[data-toc-scroll~=":div:top"] {
+    border-top: 1px solid var(--lt-color-text-default) !important;
+}
