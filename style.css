@@ -1,4 +1,4 @@
-tr[id~=":div:bottom"] td {
+tr[id~=":div:bottom"] td, tr[id~=":div:bottom"] th {
     border-bottom: 4px double var(--wh-color-border-default) !important;
 }
 
