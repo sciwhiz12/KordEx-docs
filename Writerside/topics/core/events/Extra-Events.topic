@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Extra Events ✏️" id="Extra-Events">
+
+    <show-structure depth="3" />
+
+    <p>
+        Kord Extensions provides a number of extra event types. You can make use of these in your extensions
+        in <a href="Events.topic">the usual way</a>.
+    </p>
+
+    <note>
+        <p>
+            There's a huge number of extra events, especially in relation to commands.
+            For the sake of brevity (and the author's wrists), only the base types and a description of the behaviors
+            represented by the very dense event types have been provided.
+        </p>
+
+        <p>
+            For more information, inspect the base types in your IDE and navigate to their implementations.
+        </p>
+    </note>
+
+    <chapter title="Command Events" id="command">
+        <p>
+            Command events relate to various stages in a command's execution.
+        </p>
+
+        <chapter title="Generic Types" id="command-generic">
+
+        </chapter>
+
+        <chapter title="Chat Commands" id="command-chat">
+
+        </chapter>
+
+        <chapter title="Message Commands" id="command-message">
+
+        </chapter>
+
+        <chapter title="Slash Commands" id="command-slash">
+
+        </chapter>
+
+        <chapter title="User Commands" id="command-user">
+
+        </chapter>
+
+    </chapter>
+
+    <chapter title="Extension Events" id="extension">
+        <p>
+            Extension events directly relate to extensions, rather than the components that belong to them.
+        </p>
+
+    </chapter>
+
+    <chapter title="Modal Events" id="modal">
+        <p>
+            Modal events relate to the <a href="Modals.topic">Modals framework</a>, and its various states of execution.
+        </p>
+
+    </chapter>
+
+    <chapter title="Supplementary Events" id="supplementary">
+        <p>
+            Supplementary events fill in the gaps, providing extra events for situations Kord doesn't provide a useful
+            event for.
+            This may include experimental Discord features, or Discord features that aren't widely supported.
+        </p>
+
+        <p>
+            If Kord doesn't support a Discord event, it will fire an
+            <a code="https://dokka.kord.dev/core/dev.kord.core.event/-unknown-event/index.html">
+                <code>UnknownEvent</code>
+            </a>.
+            If you're listening for this event, make sure you avoid processing it when you're listening for the
+            corresponding supplementary event.
+        </p>
+
+        <chapter title="Guild Join Requests" id="supplementary-guild-join-requests">
+            <p>
+                Guild join request events are fired during the various stages of onboarding a user must pass through
+                before being granted access to a guilds.
+            </p>
+
+            <p>
+                These events also include the data for an old, experimental Discord feature, which allowed servers to
+                create a set of questions users must answer when joining a guilds, preventing them from interacting
+                until the guilds's staff team reviewed them.
+            </p>
+
+            <p>
+                Discord ultimately decided against going through with this feature, as it negatively impacted user
+                retention (and thus made the guilds using it less profitable for the platform).
+                However, the guilds that took part in the experiment no longer have a way to configure or disable it,
+                necessitating access to this event data.
+            </p>
+
+            <p>
+                For guilds not taking part in the above experiment, these events may still be fired as part of the
+                normal onboarding process.
+            </p>
+
+            <note>
+                <p>
+                    The events in this section represent the following Discord event types, as provided by the Kord
+                    <a code="https://dokka.kord.dev/core/dev.kord.core.event/-unknown-event/index.html">
+                        <code>UnknownEvent</code>
+                    </a>
+                    type:
+                </p>
+
+                <list>
+                    <li><code>GUILD_JOIN_REQUEST_DELETE</code></li>
+                    <li><code>GUILD_JOIN_REQUEST_UPDATE</code></li>
+                </list>
+            </note>
+
+            <chapter title="Delete Event" id="supplementary-guild-join-request-delete">
+                <p>
+                    The type for this event is <code>GuildJoinRequestDeleteEvent</code>.
+                    It extends the following types:
+                </p>
+
+                <list>
+                    <li>
+                        <a href="Custom-Events.topic"><code>KordExEvent</code></a>
+                    </li>
+                    <li>
+                        <a href="Custom-Events.topic" anchor="rich-base-types"><code>MemberEvent</code></a>
+                    </li>
+                    <li>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.entity/-strategizable/index.html">
+                            <code>Strategizable</code>
+                        </a>
+                    </li>
+                </list>
+
+                <p>
+                    This event is fired when a user's guild join request is deleted, which happens when they leave
+                    the server before submitting or finishing their application.
+                    No delta information is provided by Discord, so you may need to keep track of your own state along
+                    with the relevant member's <code>pending</code> property.
+                </p>
+
+                <p>
+                    This event supports the following extra properties:
+                </p>
+
+                <table style="header-row">
+                    <tr>
+                        <td>Name</td>
+                        <td>Type</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>data</code></td>
+                        <td><code>GuildJoinRequestDelete</code></td>
+                        <td>Container class representing the data from Discord.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>guildId</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
+                        </td>
+
+                        <td>The relevant guild ID.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>requestId</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
+                        </td>
+
+                        <td>The relevant guild request ID.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>userId</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
+                        </td>
+
+                        <td>The relevant user ID.</td>
+                    </tr>
+                </table>
+            </chapter>
+
+            <chapter title="Update Event" id="supplementary-guild-join-request-update">
+                <p>
+                    The type for this event is <code>GuildJoinRequestUpdateEvent</code>.
+                    It extends the following types:
+                </p>
+
+                <list>
+                    <li>
+                        <a href="Custom-Events.topic"><code>KordExEvent</code></a>
+                    </li>
+                    <li>
+                        <a href="Custom-Events.topic" anchor="rich-base-types"><code>MemberEvent</code></a>
+                    </li>
+                    <li>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.entity/-strategizable/index.html">
+                            <code>Strategizable</code>
+                        </a>
+                    </li>
+                </list>
+
+                <p>
+                    This event is fired when a user's guild join request is created or updated.
+                    No delta information is provided by Discord, so you may need to keep track of your own state along
+                    with the relevant member's <code>pending</code> property.
+                </p>
+
+                <p>
+                    This event supports the following extra properties:
+                </p>
+
+                <table style="header-row">
+                    <tr>
+                        <td>Name</td>
+                        <td>Type</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>data</code></td>
+                        <td><code>GuildJoinRequestUpdate</code></td>
+                        <td>Container class representing the data from Discord.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>guildId</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
+                        </td>
+
+                        <td>The relevant guild ID.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>request</code></td>
+                        <td><code>GuildJoinRequest</code></td>
+
+                        <td>
+                            Guild join request data class, mostly containing data relating to guild access application
+                            questions.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><code>requestId</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
+                        </td>
+
+                        <td>The relevant guild request ID.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>status</code></td>
+                        <td><code>ApplicationStatus</code></td>
+                        <td>Enum representing the status of the current guild join request.</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>userId</code></td>
+
+                        <td>
+                            <a href="https://dokka.kord.dev/common/dev.kord.common.entity/-snowflake/index.html">
+                                <code>Snowflake</code>
+                            </a>
+                        </td>
+
+                        <td>The relevant user ID.</td>
+                    </tr>
+                </table>
+            </chapter>
+        </chapter>
+
+    </chapter>
+</topic>

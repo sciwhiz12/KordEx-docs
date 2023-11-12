@@ -33,7 +33,10 @@
 			<toc-element topic="Config-Sharding.topic"/>
 		</toc-element>
         <toc-element topic="Extensions.topic"/>
-		<toc-element topic="Events.topic"/>
+		<toc-element topic="Events.topic">
+			<toc-element topic="Custom-Events.topic"/>
+			<toc-element topic="Extra-Events.topic"/>
+		</toc-element>
 		<toc-element topic="Commands.topic">
 			<toc-element topic="Chat-Commands.topic"/>
 			<toc-element topic="Context-Commands.topic"/>
@@ -43,6 +46,8 @@
 			</toc-element>
 		</toc-element>
 		<toc-element topic="Checks.topic"/>
+		<toc-element topic="Components.topic"/>
+		<toc-element topic="Modals.topic"/>
 		<toc-element topic="Internationalisation.topic"/>
 		<toc-element topic="Utilities.topic">
 			<toc-element topic="Koin.topic"/>
