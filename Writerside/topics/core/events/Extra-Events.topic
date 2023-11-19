@@ -470,7 +470,7 @@
 
         <p>
             If Kord doesn't support a Discord event, it will fire an
-            <a code="https://dokka.kord.dev/core/dev.kord.core.event/-unknown-event/index.html">
+            <a href="https://dokka.kord.dev/core/dev.kord.core.event/-unknown-event/index.html">
                 <code>UnknownEvent</code>
             </a>.
             If you're listening for this event, make sure you avoid processing it when you're listening for the
@@ -504,7 +504,7 @@
             <note>
                 <p>
                     The events in this section represent the following Discord event types, as provided by the Kord
-                    <a code="https://dokka.kord.dev/core/dev.kord.core.event/-unknown-event/index.html">
+                    <a href="https://dokka.kord.dev/core/dev.kord.core.event/-unknown-event/index.html">
                         <code>UnknownEvent</code>
                     </a>
                     type:
