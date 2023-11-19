@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Extra Events ✏️" id="Extra-Events">
+       title="Extra Events" id="Extra-Events">
 
     <show-structure depth="3" />
 
@@ -30,23 +30,330 @@
         </p>
 
         <chapter title="Generic Types" id="command-generic">
+            <p>
+                The generic command event types represent the different actions command events may be fired for.
+                These base types include the properties you'll need to work with the relevant commands and events,
+                along with other shared properties.
+            </p>
 
+            <p>
+                All generic command events take two generic types, which will be used later:
+            </p>
+
+            <list>
+                <li><code>C</code>, the <code>Command</code> type.</li>
+
+                <li>
+                    <code>E</code>, the
+
+                    <a href="https://dokka.kord.dev/core/dev.kord.core.event/-event/index.html">
+                        <code>Event</code>
+                    </a>
+
+                    type.
+                </li>
+            </list>
+
+            <p>
+                The above types are used to define two properties that are common to all command events:
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>command</code></td>
+                    <td><code>C</code></td>
+
+                    <td>The relevant command object.</td>
+                </tr>
+
+                <tr>
+                    <td><code>event</code></td>
+                    <td><code>E</code></td>
+
+                    <td>The relevant event object.</td>
+                </tr>
+            </table>
+
+            <chapter title="Command Invocation" id="command-generic-invocation">
+                <p>
+                    The type for this event is <code>CommandInvocationEvent</code>.
+                </p>
+
+                <p>
+                    This event is fired when a command is invoked, before any processing happens.
+                    As this event is fired as soon as the command is invoked, you'll receive it regardless of whether
+                    the invocation succeeds or fails.
+                </p>
+
+                <p>
+                    This event does not support any extra properties.
+                </p>
+            </chapter>
+
+            <chapter title="Command Invocation Success" id="command-generic-invocation-success">
+                <p>
+                    The type for this event is <code>CommandSucceededEvent</code>.
+                </p>
+
+                <p>
+                    This event is fired after a successful command invocation.
+                </p>
+
+                <p>
+                    This event does not support any extra properties.
+                </p>
+            </chapter>
+
+            <chapter title="Command Invocation Failure" id="command-generic-invocation-failure">
+                <p>
+                    The type for this event is <code>CommandFailedEvent</code>.
+                </p>
+
+                <p>
+                    This event is fired after a failed command invocation.
+                    As command invocations may fail for a number of reasons, this is a base type that's extended by
+                    more specific event types.
+                </p>
+
+                <p>
+                    This event does not support any extra properties.
+                </p>
+
+                <chapter title="Command Invocation Failure: Check" id="command-generic-invocation-failure-checks">
+                    <p>
+                        The type for this event is <code>CommandFailedChecksEvent</code>.
+                    </p>
+
+                    <p>
+                        This event is fired after a failed command invocation, where the invocation failed because
+                        a required <a href="Checks.topic">check</a> didn't pass.
+                    </p>
+
+                    <p>
+                        This event supports the following extra properties:
+                    </p>
+
+                    <table style="header-row">
+                        <tr>
+                            <td>Name</td>
+                            <td>Type</td>
+                            <td>Description</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>reason</code></td>
+                            <td><code>String</code></td>
+
+                            <td>A human-readable string, which is the error string returned by the failing check.</td>
+                        </tr>
+                    </table>
+                </chapter>
+
+                <chapter title="Command Invocation Failure: Exception" id="command-generic-invocation-failure-exception">
+                    <p>
+                        The type for this event is <code>CommandFailedWithExceptionEvent</code>.
+                    </p>
+
+                    <p>
+                        This event is fired after a failed command invocation, where the invocation failed because
+                        an unexpected exception was thrown
+                    </p>
+
+                    <p>
+                        This event supports the following extra properties:
+                    </p>
+
+                    <table style="header-row">
+                        <tr>
+                            <td>Name</td>
+                            <td>Type</td>
+                            <td>Description</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>throwable</code></td>
+                            <td><code>Throwable</code></td>
+
+                            <td>
+                                The unexpected <code>Throwable</code> that was thrown.
+                                This will usually be an <code>Exception</code>, but an extension can realistically
+                                throw anything that extends <code>Throwable</code>, so this isn't guaranteed.
+                            </td>
+                        </tr>
+                    </table>
+                </chapter>
+
+                <chapter title="Command Invocation Failure: Parsing" id="command-generic-invocation-failure-parsing">
+                    <p>
+                        The type for this event is <code>CommandFailedParsingEvent</code>.
+                    </p>
+
+                    <p>
+                        This event is fired after a failed command invocation, where the invocation failed because
+                        of a command argument processing failure.
+                        This event type will only be fired by slash and chat commands, as other command types
+                        do not support argument parsing.
+                    </p>
+
+                    <p>
+                        This event supports the following extra properties:
+                    </p>
+
+                    <table style="header-row">
+                        <tr>
+                            <td>Name</td>
+                            <td>Type</td>
+                            <td>Description</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>exception</code></td>
+                            <td><code>ArgumentParsingException</code></td>
+
+                            <td>
+                                An exception object representing the argument parsing failure.
+                                Contains the reason for the failure.
+                            </td>
+                        </tr>
+                    </table>
+                </chapter>
+            </chapter>
         </chapter>
 
         <chapter title="Chat Commands" id="command-chat">
+            <p>Chat command events extend the generic command events, with the following generic types supplied:</p>
 
+            <list>
+                <li><code>C: ChatCommand&lt;*&gt;</code></li>
+
+                <li>
+                    <a href="https://dokka.kord.dev/core/dev.kord.core.event.message/-message-create-event/index.html">
+                        <code>E: MessageCreateEvent</code>
+                    </a>
+                </li>
+            </list>
+
+            <p>The following subtypes are supported for chat commands:</p>
+
+            <list>
+                <li><code>ChatCommandInvocationEvent</code></li>
+                <li><code>ChatCommandSucceededEvent</code></li>
+                <li><code>ChatCommandFailedChecksEvent</code></li>
+                <li><code>ChatCommandFailedParsingEvent</code></li>
+                <li><code>ChatCommandFailedWithExceptionEvent</code></li>
+            </list>
         </chapter>
 
         <chapter title="Message Commands" id="command-message">
+            <p>Message command events extend the generic command events, with the following generic types supplied:</p>
 
+            <list>
+                <li><code>C: MessageCommand&lt;*, *&gt;</code></li>
+
+                <li>
+                    <a href="https://dokka.kord.dev/core/dev.kord.core.event.interaction/-message-command-interaction-create-event/index.html">
+                        <code>E: MessageCommandInteractionCreateEvent</code>
+                    </a>
+                </li>
+            </list>
+
+            <p>The following generic base types are supported for message commands:</p>
+
+            <list>
+                <li><code>MessageCommandInvocationEvent</code></li>
+                <li><code>MessageCommandSucceededEvent</code></li>
+                <li><code>MessageCommandFailedEvent</code></li>
+                <li><code>MessageCommandFailedChecksEvent</code></li>
+                <li><code>MessageCommandFailedWithExceptionEvent</code></li>
+            </list>
+
+            <p>
+                The above generic base types exist because message commands are a form of application command.
+                Concrete types exist, with the following prefixes based on the current interaction type:
+            </p>
+
+            <list>
+                <li><code>Ephemeral</code> for the ephemeral interaction type.</li>
+                <li><code>Public</code> for the public interaction type.</li>
+            </list>
         </chapter>
 
         <chapter title="Slash Commands" id="command-slash">
+            <p>Slash command events extend the generic command events, with the following generic types supplied:</p>
 
+            <list>
+                <li><code>C: SlashCommand&lt;*, *, *&gt;</code></li>
+
+                <li>
+                    <a href="https://dokka.kord.dev/core/dev.kord.core.event.interaction/-chat-input-command-interaction-create-event/index.html">
+                        <code>E: ChatInputCommandInteractionCreateEvent</code>
+                    </a>
+
+                    (Discord calls these interactions "chat input command interactions", so Kord mirrors that naming
+                    scheme).
+                </li>
+            </list>
+
+            <p>The following generic base types are supported for slash commands:</p>
+
+            <list>
+                <li><code>SlashCommandInvocationEvent</code></li>
+                <li><code>SlashCommandSucceededEvent</code></li>
+                <li><code>SlashCommandFailedEvent</code></li>
+                <li><code>SlashCommandFailedChecksEvent</code></li>
+                <li><code>SlashCommandFailedParsingEvent</code></li>
+                <li><code>SlashCommandFailedWithExceptionEvent</code></li>
+            </list>
+
+            <p>
+                The above generic base types exist because slash commands are a form of application command.
+                Concrete types exist, with the following prefixes based on the current interaction type:
+            </p>
+
+            <list>
+                <li><code>Ephemeral</code> for the ephemeral interaction type.</li>
+                <li><code>Public</code> for the public interaction type.</li>
+            </list>
         </chapter>
 
         <chapter title="User Commands" id="command-user">
+            <p>User command events extend the generic command events, with the following generic types supplied:</p>
 
+            <list>
+                <li><code>C: UserCommand&lt;*, *&gt;</code></li>
+
+                <li>
+                    <a href="https://dokka.kord.dev/core/dev.kord.core.event.interaction/-user-command-interaction-create-event/index.html">
+                        <code>E: UserCommandInteractionCreateEvent</code>
+                    </a>
+                </li>
+            </list>
+
+            <p>The following generic base types are supported for user commands:</p>
+
+            <list>
+                <li><code>UserCommandInvocationEvent</code></li>
+                <li><code>UserCommandSucceededEvent</code></li>
+                <li><code>UserCommandFailedEvent</code></li>
+                <li><code>UserCommandFailedChecksEvent</code></li>
+                <li><code>UserCommandFailedWithExceptionEvent</code></li>
+            </list>
+
+            <p>
+                The above generic base types exist because user commands are a form of application command.
+                Concrete types exist, with the following prefixes based on the current interaction type:
+            </p>
+
+            <list>
+                <li><code>Ephemeral</code> for the ephemeral interaction type.</li>
+                <li><code>Public</code> for the public interaction type.</li>
+            </list>
         </chapter>
 
     </chapter>
@@ -56,6 +363,46 @@
             Extension events directly relate to extensions, rather than the components that belong to them.
         </p>
 
+        <chapter title="Extension State Change" id="extension-state">
+            <p>
+                The type for this event is <code>ExtensionStateEvent</code>.
+            </p>
+
+            <p>
+                This event is fired when an extension's loading state changes.
+                This may happen during any point in the bot's lifecycle, as extensions are loaded and unloaded.
+            </p>
+
+            <p>
+                This event supports the following extra properties:
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>extension</code></td>
+                    <td><code>Extension</code></td>
+
+                    <td>The extension which has had its state changed.</td>
+                </tr>
+
+                <tr>
+                    <td><code>state</code></td>
+                    <td><code>ExtensionState</code></td>
+
+                    <td>
+                        The extension's new state, one of: <code>FAILED_LOADING</code>, <code>FAILED_UNLOADING</code>,
+                        <code>LOADED</code>, <code>LOADING</code>, <code>UNLOADED</code> or <code>UNLOADING</code>.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
     </chapter>
 
     <chapter title="Modal Events" id="modal">
@@ -63,6 +410,55 @@
             Modal events relate to the <a href="Modals.topic">Modals framework</a>, and its various states of execution.
         </p>
 
+        <chapter title="Modal Interaction complete" id="modal-complete">
+            <p>
+                The type for this event is <code>ModalInteractionCompleteEvent</code>.
+            </p>
+
+            <p>
+                This event is fired when a modal interaction has completed.
+                Generally, this is used by the <a href="Commands.topic">commands framework</a>
+                to figure out when a modal action should be run.
+                You can use this to respond to modals yourself as well.
+                For more information on modals, see <a href="Modals.topic">the dedicated documentation</a>.
+            </p>
+
+            <p>
+                This event supports the following extra properties:
+            </p>
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>id</code></td>
+                    <td><code>String</code></td>
+
+                    <td>The modal form's ID.</td>
+                </tr>
+
+                <tr>
+                    <td><code>interaction</code></td>
+
+                    <td>
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.entity.interaction/-modal-submit-interaction/index.html">
+                            <code>ModalSubmitInteraction</code>
+                        </a>
+                    </td>
+
+                    <td>
+                        The interaction object provided by
+
+                        <a href="https://dokka.kord.dev/core/dev.kord.core.event.interaction/-modal-submit-interaction-create-event/index.html">
+                            the corresponding Kord event</a>.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
     </chapter>
 
     <chapter title="Supplementary Events" id="supplementary">
@@ -130,9 +526,11 @@
                     <li>
                         <a href="Custom-Events.topic"><code>KordExEvent</code></a>
                     </li>
+
                     <li>
                         <a href="Custom-Events.topic" anchor="rich-base-types"><code>MemberEvent</code></a>
                     </li>
+
                     <li>
                         <a href="https://dokka.kord.dev/core/dev.kord.core.entity/-strategizable/index.html">
                             <code>Strategizable</code>
