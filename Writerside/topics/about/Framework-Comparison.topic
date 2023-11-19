@@ -173,7 +173,11 @@
 			<tr>
 				<td><format style="bold">Dependency Injection</format></td>
 				<td>✅ Integrated</td>
-				<td>✅ Automatic</td>
+
+				<td>
+					✅
+					<a href="https://insert-koin.io">Koin</a>-based
+				</td>
 			</tr>
 
 			<tr>

@@ -5,5 +5,56 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="Commands ✏️" id="Commands">
 
-    <p>Start typing here...</p>
+    <p>
+        Kord Extensions provides a rich, type-safe commands framework which is only as complex as you need it to be.
+        As commands are the backbone of most non-trivial bots, it's important to have a thorough understanding of the
+        framework.
+    </p>
+
+    <p>
+        At the moment, three basic types of commands are supported:
+    </p>
+
+    <list>
+        <li>
+            <a href="Chat-Commands.topic" />, prefix-based commands that are sent directly within messages on Discord.
+        </li>
+
+        <li>
+            <a href="Context-Commands.topic" />, which are special commands that appear in right-click (or tap-and-hold)
+            menus in the Discord client.
+        </li>
+
+        <li>
+            <a href="Slash-Commands.topic" />, which are invoked by typing a slash character (<code>/</code>) into the
+            Discord chat input.
+        </li>
+    </list>
+
+    <p>
+        Each type of command has a specific set of use-cases and functionality,
+        and thus provides a different API surface.
+        However, all commands have quite a few things in common.
+    </p>
+
+    <p>
+        The following sections describe commands in generic terms. For more information on the specific types of
+        supported commands (and how to use them), please see the pages linked above.
+    </p>
+
+    <chapter title="Command Objects" id="command-objects">
+
+    </chapter>
+
+    <chapter title="Context Objects" id="context-objects">
+
+    </chapter>
+
+    <chapter title="Arguments Objects" id="arguments-objects">
+
+    </chapter>
+
+    <chapter title="Modal Forms" id="modal-forms">
+
+    </chapter>
 </topic>

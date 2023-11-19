@@ -37,7 +37,6 @@
 			<toc-element topic="Custom-Events.topic"/>
 			<toc-element topic="Extra-Events.topic"/>
 		</toc-element>
-		<toc-element topic="Exceptions.topic"/>
 		<toc-element topic="Commands.topic">
 			<toc-element topic="Chat-Commands.topic"/>
 			<toc-element topic="Context-Commands.topic"/>
@@ -47,6 +46,7 @@
 			</toc-element>
 		</toc-element>
 		<toc-element topic="Checks.topic"/>
+		<toc-element topic="Exceptions.topic"/>
 		<toc-element topic="Components.topic"/>
 		<toc-element topic="Modals.topic"/>
 		<toc-element topic="Internationalisation.topic"/>
