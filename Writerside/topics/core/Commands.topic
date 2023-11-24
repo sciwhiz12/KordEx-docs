@@ -42,19 +42,19 @@
         supported commands (and how to use them), please see the pages linked above.
     </p>
 
+    <chapter title="Arguments Classes" id="arguments-classes">
+
+    </chapter>
+
+    <chapter title="Modal Forms" id="modal-forms">
+
+    </chapter>
+
     <chapter title="Command Objects" id="command-objects">
 
     </chapter>
 
     <chapter title="Context Objects" id="context-objects">
-
-    </chapter>
-
-    <chapter title="Arguments Objects" id="arguments-objects">
-
-    </chapter>
-
-    <chapter title="Modal Forms" id="modal-forms">
 
     </chapter>
 </topic>
