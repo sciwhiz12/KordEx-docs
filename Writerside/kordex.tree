@@ -64,6 +64,7 @@
             <toc-element topic="Schedulers.topic"/>
             <toc-element topic="Sentry.topic"/>
         </toc-element>
+        <toc-element topic="Registries.topic"/>
     </toc-element>
 
     <toc-element topic="Data-Adapters.topic">
