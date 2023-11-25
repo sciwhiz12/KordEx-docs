@@ -5,5 +5,189 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="Chat Commands ✏️" id="Chat-Commands">
 
-    <p>Start typing here...</p>
+    <warning>
+        <p>
+            <format style="bold">Privileged Intents and You</format>
+        </p>
+
+        <p>
+            Chat commands require the use of the "message content" privileged intent.
+            While chat commands were traditionally how users interacted with bots on Discord,
+            <format style="bold">this is no longer what Discord recommends or encourages for your bots.</format>
+        </p>
+
+        <p>
+            If your bot is on 75 or more guilds (or you plan to grow it to that point), you should consider using
+            <a href="Slash-Commands.topic"/> and <a href="Context-Commands.topic"/> instead of chat commands as much
+            as possible.
+        </p>
+
+        <p>
+            Your bot will need to go through a verification process (which starts at 75 guilds) before it can join
+            over 100 guilds.
+            Discord <format style="bold">will not verify bots</format> that are using the "message content" privileged
+            intent without a good reason for it.
+        </p>
+
+        <p>
+            The only situations that we advise you to use chat commands for are
+            <format style="bold">
+                those where the other types of commands provide an objectively worse user experience.
+            </format>
+            This largely only applies to commands that need to take a large amount of text as input (where modals do
+            not suffice), or where your bot needs
+            to make use of file attachments uploaded to Discord without downloading them.
+        </p>
+
+        <p>
+            Additionally, it's worth noting that
+            <format style="bold">
+                the Discord client encourages users to make use of <a href="Slash-Commands.topic"/>
+            </format> when they attempt to use a chat command.
+            This means that users will expect your bots to support <a href="Slash-Commands.topic"/> and
+            <a href="Context-Commands.topic"/> as a default mode of interaction.
+        </p>
+    </warning>
+
+    <note>
+        <p>
+            <format style="bold">Maintenance status</format>
+        </p>
+
+        <p>
+            Due to the situation explained in the above warning, <format style="bold">
+                chat commands are not regularly used or tested by Kord Extensions' users or developers.
+            </format>
+            As a result, there may be small bugs or formatting problems that we haven't noticed or had time to fix.
+        </p>
+
+        <p>
+            If you run into any problems with the chat commands framework or its help extension, please let us know
+            or submit a Pull Request to address the issue.
+        </p>
+    </note>
+
+    <p>
+        Please don't skip over the above admonitions — they're important!
+    </p>
+
+    <chapter title="Introduction" id="intro">
+        <p>
+            Chat commands are a fairly simple concept.
+            When a user sends a message starting with a command prefix (or bot mention), the command name and arguments,
+            Kord Extensions can process it accordingly.
+        </p>
+
+        <p>
+            To get started with chat commands, first <a href="Extensions.topic">create an extension</a>.
+            Command arguments are provided as described on
+        </p>
+
+        <p>
+            All builder functions should be called within your bot's `setup` function when you're registering commands
+            before the bot starts up.
+            However, it is also possible to register commands later on in the bot's lifecycle by calling the same
+            functions.
+        </p>
+
+        <p>
+            Chat commands support command arguments, which are specified as explained on
+            <a href="Commands.topic" anchor="arguments-classes">the commands overview page</a>.
+            However, unlike the other command types, they do not support <a href="Modals.topic"/>.
+        </p>
+    </chapter>
+
+    <chapter title="Standalone Commands" id="standalone">
+        <p>
+            Standalone commands are the simplest type of chat command, and they're defined using the `chatCommand`
+            builder function.
+            This builder is a receiver function against the <code>ChatCommand</code> type, which provides a number of
+            APIs that can be used to configure your command and its metadata.
+        </p>
+
+        <p>
+            At minimum, a command must have a <code>name</code>, <code>description</code> and <code>action</code>
+            defined.
+        </p>
+
+        <p>
+            The following APIs are available for use when writing a chat command, in addition to those provided by
+            <a href="Commands.topic" anchor="command-objects">the base <code>Command</code> type.</a>.
+        </p>
+
+        <chapter title="Builders" id="standalone-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr id="standalone-builders-required:div:bottom">
+                    <td><code>action</code></td>
+                    <td><code>ChatCommandContext&lt;Arguments&gt;</code></td>
+
+                    <td>
+                        <format style="bold">Required:</format> Register the command's action, which will be run when
+                        the command is invoked.
+                        Provide the constructor for an <code>Arguments</code> subtype as the first argument to this
+                        function if your command takes any arguments.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>check</code></td>
+                    <td><code>CheckWithCache&lt;MessageCreateEvent&gt;</code></td>
+
+                    <td>
+                        Register <a href="Checks.topic">a check</a> that must pass for the command's <code>action</code>
+                        to be run.
+                        For more information on checks, see <a href="Checks.topic">the dedicated documentation</a>.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="standalone-properties">
+
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>description</code></td>
+                    <td><code>String</code></td>
+
+                    <td>
+                        The command's description.
+                        This should be a string that explains what the command does.
+                        If the string spans multiple lines, the first line should be a short summary of what the
+                        command does, with a blank line underneath.
+                    </td>
+                </tr>
+
+                <tr id="standalone-properties-required:div:bottom">
+                    <td><code>name</code></td>
+                    <td><code>String</code></td>
+
+                    <td>
+                        The command's name, which is used to identify the command internally and for invoking the
+                        command on Discord.
+                    </td>
+                </tr>
+
+<!--                <tr>-->
+<!--                    <td><code></code></td>-->
+<!--                    <td><code></code></td>-->
+
+<!--                    <td>-->
+<!--                        -->
+<!--                    </td>-->
+<!--                </tr>-->
+            </table>
+        </chapter>
+    </chapter>
 </topic>
