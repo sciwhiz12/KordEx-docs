@@ -222,7 +222,7 @@
     <chapter title="Sentry Extension" id="sentry">
         <p>
             The <code>sentry</code> builder is used to configure the
-            <a href="Sentry.topic">Kord Extensions Sentry integration</a>, as well as enabling or disabling the
+            <a href="Sentry.topic">Sentry integration</a>, as well as enabling or disabling the
             bundled extension used for collecting feedback from users when errors occur.
         </p>
 
@@ -251,11 +251,59 @@
                 </tr>
 
                 <tr>
+                    <td><code>defaultDataTypes</code></td>
+                    <td><code>SentryDataTypeBuilder</code></td>
+
+                    <td>
+                        Configure the default data types that Kord Extensions is allowed to send to Sentry in
+                        breadcrumbs and exception reports.
+                        This is done by setting the relevant <code>Boolean</code> properties that are exposed
+                        on the provided <code>SentryDataTypeBuilder</code> object.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>dataTypeTransformer</code></td>
+                    <td><code>SentryDataTypeBuilder.(SentryCapture)</code></td>
+
+                    <td>
+                        <p>
+                            Register a Sentry data type transformer, allowing you to change the types of data that
+                            may be submitted to Sentry based on the given <code>SentryCapture</code> object.
+                        </p>
+
+                        <p>
+                            Data type transformers are run before Kord Extensions adds the data defined in the
+                            <code>SentryCapture</code> object's properties are added to the relevant Sentry object.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>predicate</code></td>
+                    <td><code>SentryCapture</code></td>
+
+                    <td>
+                        <p>
+                            Register a Sentry submission predicate, allowing you to prevent the data in the given
+                            <code>SentryCapture</code> object from being submitted to Sentry by returning
+                            <code>false</code>.
+                        </p>
+
+                        <p>
+                            Sentry submission predicates are run just before Kord Extensions attempts to submit the
+                            data defined in the <code>SentryCapture</code> object to Sentry, and thus runs after
+                            the relevant data has been sanitized and processed.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
                     <td><code>setup</code></td>
                     <td><code>SentryAdapter</code></td>
                     <td>
                         Replace the bundled setup callback with your own function, which must configure the
-                        <code>SentryAdapter</code> by calling its <code>setup</code> function.
+                        <code>SentryAdapter</code> by calling its <code>init</code> function.
                         This should only be used if you need to customize precisely what gets passed to that
                         function.
                     </td>
