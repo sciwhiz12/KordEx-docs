@@ -16,7 +16,6 @@
 		<noindex-content>false</noindex-content>
 		<primary-color>blueberry</primary-color>
 		<showDownloadButton>true</showDownloadButton>
-		<sideblocks>true</sideblocks>
 	</variables>
 
     <build-profile instance="kordex">
@@ -26,7 +25,7 @@
     </build-profile>
 
 	<footer>
-		<copyright>Kord Extensions ⚖️ CC0</copyright>
+		<copyright>⚖️ CC0</copyright>
 
 		<link href="https://discord.gg/nYzQWcjAmK">Discord</link>
 		<link href="https://github.com/Kord-Extensions/kord-extensions">GitHub</link>
