@@ -59,6 +59,7 @@
 
         <toc-element topic="Utilities.topic">
             <toc-element topic="Koin.topic"/>
+            <toc-element topic="Messages.topic"/>
             <toc-element topic="Paginators.topic"/>
             <toc-element topic="Parsers.topic"/>
             <toc-element topic="Schedulers.topic"/>

@@ -81,6 +81,37 @@
             }
         </code-block>
 
+        The <code>Arguments</code> type provides the following API properties:
+
+        <table style="header-row">
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Description</td>
+            </tr>
+
+            <tr>
+                <td><code>parseForAutocomplete</code></td>
+                <td><code>Boolean</code></td>
+
+                <td>
+                    <p>
+                        When working with <a href="Slash-Commands.topic"/>,
+                        your arguments may make use of Discord's autocomplete system.
+                        If you have later arguments with an autocompletion that requires the value of a previous
+                        argument, setting this to <code>true</code> will tell Kord Extensions to fill in those
+                        arguments before calling your <code>autocomplete</code> block.
+                    </p>
+
+                    <p>
+                        As some converter types provide a default <code>autocomplete</code> block, you may need to
+                        enable this when you're using them, even when you don't provide your own.
+                        For more information, see <a href="Converters.topic">the converters documentation</a>.
+                    </p>
+                </td>
+            </tr>
+        </table>
+
         <p>
             For more information on the converter system (and the available argument types),
             see <a href="Converters.topic">the dedicated documentation</a>.
