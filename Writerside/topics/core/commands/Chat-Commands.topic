@@ -195,7 +195,7 @@
                     <td>Description</td>
                 </tr>
 
-                <tr id="standalone-builders-required :header :text:center">
+                <tr id="standalone-builders-required:header:text:center">
                     <td colspan="3">
                         Required Builders
                     </td>
@@ -214,7 +214,7 @@
                     </td>
                 </tr>
 
-                <tr id="standalone-builders-optional :header :text:center">
+                <tr id="standalone-builders-optional:header:text:center">
                     <td colspan="3">
                         Optional Builders
                     </td>
@@ -240,7 +240,7 @@
                     <td>Description</td>
                 </tr>
 
-                <tr id="standalone-properties-required :header :text:center">
+                <tr id="standalone-properties-required:header:text:center">
                     <td colspan="3">
                         Required Properties
                     </td>
@@ -270,7 +270,7 @@
                     </td>
                 </tr>
 
-                <tr id="standalone-properties-optional :header :text:center">
+                <tr id="standalone-properties-optional:header:text:center">
                     <td colspan="3">
                         Optional Properties
                     </td>
@@ -333,7 +333,7 @@
                     </td>
                 </tr>
 
-                <tr id="standalone-properties-translation :header :text:center">
+                <tr id="standalone-properties-translation:header:text:center">
                     <td colspan="3">
                         Translation-related Properties
                     </td>
@@ -525,7 +525,7 @@
                     </td>
                 </tr>
 
-                <tr id="context-functions-translation :header :text:center">
+                <tr id="context-functions-translation:header:text:center">
                     <td colspan="3">
                         Translation Functions
                     </td>
@@ -585,7 +585,7 @@
                 </tr>
 
 
-                <tr id="context-properties-translation :header :text:center">
+                <tr id="context-properties-translation:header:text:center">
                     <td colspan="3">
                         Data Properties
                     </td>
