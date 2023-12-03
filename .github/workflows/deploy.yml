@@ -123,8 +123,10 @@ jobs:
         uses: gha-utilities/sass-build@v0.5.1
 
         with:
-          source: style.scss
-          destination: style.css
+          source: ./style.scss
+          destination: docs/mermaid.css
+          sourceMap: false
+          omitSourceMapUrl: true
 
       - name: Copy files, commit and push
 
@@ -134,13 +136,7 @@ jobs:
           
           cp -r docs/* .
           
-          sudo rm -rf docs algolia Writerside
-          
-          wget https://raw.githubusercontent.com/Kord-Extensions/docs/root/.github/update-css.main.kts
-          
-          kotlin update-css.main.kts
-          
-          sudo rm -f update-css.main.kts style.css style.scss
+          sudo rm -rf docs algolia Writerside style.css style.scss
           
           git add .
           git commit -am "Automatic deployment"
