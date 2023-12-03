@@ -119,6 +119,10 @@ jobs:
           index_name: "KordEx Docs"
           index_file_path: "algolia/index.json"
 
+      - name: Remove existing CSS
+        run: |
+          sudo rm -f docs/mermaid.css
+
       - name: Process SCSS
         uses: gha-utilities/sass-build@v0.5.1
 
@@ -136,7 +140,7 @@ jobs:
           
           cp -r docs/* .
           
-          sudo rm -rf docs algolia Writerside style.css style.scss
+          sudo rm -rf docs algolia Writerside style.scss
           
           git add .
           git commit -am "Automatic deployment"
