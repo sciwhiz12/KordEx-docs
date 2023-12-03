@@ -123,3 +123,6 @@ fabric.properties
 .env
 docs/site
 .linkie-cache/
+
+style.css
+style.css.map

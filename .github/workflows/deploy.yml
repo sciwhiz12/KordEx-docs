@@ -119,6 +119,13 @@ jobs:
           index_name: "KordEx Docs"
           index_file_path: "algolia/index.json"
 
+      - name: Process SCSS
+        uses: gha-utilities/sass-build@v0
+
+        with:
+          source: style.scss
+          destination: style.css
+
       - name: Copy files, commit and push
 
         run: |
@@ -133,7 +140,7 @@ jobs:
           
           kotlin update-css.main.kts
           
-          sudo rm -f update-css.main.kts style.css
+          sudo rm -f update-css.main.kts style.css style.scss
           
           git add .
           git commit -am "Automatic deployment"

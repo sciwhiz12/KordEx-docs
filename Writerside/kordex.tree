@@ -43,8 +43,10 @@
 
         <toc-element topic="Commands.topic">
             <toc-element topic="Chat-Commands.topic"/>
-            <toc-element topic="Context-Commands.topic"/>
-            <toc-element topic="Slash-Commands.topic"/>
+            <toc-element topic="Application-Commands.topic">
+                <toc-element topic="Context-Commands.topic"/>
+                <toc-element topic="Slash-Commands.topic"/>
+            </toc-element>
 
             <toc-element topic="Converters.topic">
                 <toc-element topic="Custom-Converters.topic"/>

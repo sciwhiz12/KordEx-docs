@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Application Commands ✏️" id="Application-Commands">
+
+    <p>
+        Application commands are a special type of command that makes use of Discord's interaction system.
+        Depending on the type, these commands are displayed in the Discord client in one of these ways:
+    </p>
+
+    <list>
+        <li>
+            <a href="Slash-Commands.topic"/>: Above the chat input box when a user types a slash (<code>/</code>)
+            character.
+        </li>
+
+        <li>
+            <a href="Context-Commands.topic" anchor="message-commands"/>: In a menu named "Apps" displayed when a user
+            right-clicks or taps-and-holds on a message.
+        </li>
+
+        <li>
+            <a href="Context-Commands.topic" anchor="user-commands"/>: In a menu named "Apps" displayed when a user
+            right-clicks or taps-and-holds on a username or avatar.
+        </li>
+    </list>
+
+    <p>
+        Before diving into working with these command types, it's important to understand what Discord interactions
+        look like and how they work.
+    </p>
+
+    <tip>
+        <p>
+            Internally, Discord's interactions system is a bit of a mess.
+            While it is technically possible to work with the interactions API directly via some of the objects
+            exposed by Kord Extensions (especially via <a href="Unsafe.topic">the Unsafe Module</a>), the recommended
+            abstractions are provided to lower the risk of unexpected behavior.
+        </p>
+
+        <p>
+            Known instances of unexpected behavior include:
+        </p>
+
+        <list>
+            <li>
+                Responding to an interaction using the wrong response type, after an initial response has been made.
+                Even though the API technically allows you to respond using mixed response types, Discord will
+                often ignore the type you provided if you aren't consistent.
+            </li>
+
+            <li>
+                Responding to an ephemeral interaction after editing the initial response, which may result in a public
+                response in some situations.
+            </li>
+        </list>
+
+        <p>
+            Additionally, as the interactions system is internally implemented using Discord's webhook system, changes
+            that Discord makes to how webhook messages work may also affect your interactions.
+        </p>
+
+        <p>
+            For example, a 2023 change to webhook permissions was made because slash command responses were able to
+            mention <code>@everyone</code> when they otherwise shouldn't be able to.
+            In this instance, Discord normalized webhook permissions to match the user that created the webhook.
+            This fixed the problem with slash commands but limited the emoji that may be sent using a webhook to those
+            from guilds the webhook creator is present on.
+        </p>
+    </tip>
+
+    <chapter title="Application Commands" id="commands">
+
+    </chapter>
+
+    <chapter title="Application Command Contexts" id="contexts">
+
+    </chapter>
+</topic>

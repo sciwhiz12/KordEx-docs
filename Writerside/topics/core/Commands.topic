@@ -7,7 +7,7 @@
 
     <p>
         Kord Extensions provides a rich, type-safe commands framework which is only as complex as you need it to be.
-        At the moment, three basic types of commands are supported:
+        At the moment, these basic types of commands are supported:
     </p>
 
     <list>
@@ -16,13 +16,22 @@
         </li>
 
         <li>
-            <a href="Context-Commands.topic"/>, which are special commands that appear in right-click (or tap-and-hold)
-            menus in the Discord client.
-        </li>
+            <p>
+                <a href="Application-Commands.topic"/>, which are based on Discord's interactions system and show up in
+                the client's UI.
+            </p>
 
-        <li>
-            <a href="Slash-Commands.topic"/>, which are invoked by typing a slash character (<code>/</code>) into the
-            Discord chat input.
+            <list>
+                <li>
+                    <a href="Context-Commands.topic"/>, which are special commands that appear in right-click (or
+                    tap-and-hold) menus in the Discord client.
+                </li>
+
+                <li>
+                    <a href="Slash-Commands.topic"/>, which are invoked by typing a slash character (<code>/</code>)
+                    into the Discord chat input.
+                </li>
+            </list>
         </li>
     </list>
 
@@ -123,6 +132,7 @@
             A modal form is Kord Extensions' way of representing the settings and contents of a
             <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal">
                 Discord modal</a>.
+            <a href="Chat-Commands.topic"/> don't support modals, but all other command types do.
         </p>
 
         <p>

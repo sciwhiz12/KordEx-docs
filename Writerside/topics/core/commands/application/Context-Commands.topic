@@ -6,4 +6,12 @@
        title="Context Commands ✏️" id="Context-Commands">
 
     <p>Start typing here...</p>
+
+    <chapter title="Message Commands" id="message-commands">
+
+    </chapter>
+
+    <chapter title="User Commands" id="user-commands">
+
+    </chapter>
 </topic>

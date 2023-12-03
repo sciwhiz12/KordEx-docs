@@ -18,8 +18,7 @@
 
         <p>
             If your bot is on 75 or more guilds (or you plan to grow it to that point), you should consider using
-            <a href="Slash-Commands.topic"/> and <a href="Context-Commands.topic"/> instead of chat commands as much
-            as possible.
+            <a href="Application-Commands.topic"/> instead of chat commands as much as possible.
         </p>
 
         <p>
@@ -47,8 +46,8 @@
                 the Discord client encourages users to make use of <a href="Slash-Commands.topic"/>
             </format>
             when they attempt to use a chat command.
-            This means that users will expect your bots to support <a href="Slash-Commands.topic"/> and
-            <a href="Context-Commands.topic"/> as a default mode of interaction.
+            This means that users will expect your bots
+            to support <a href="Application-Commands.topic"/> as a default mode of interaction.
         </p>
     </warning>
 
@@ -196,7 +195,13 @@
                     <td>Description</td>
                 </tr>
 
-                <tr id="standalone-builders-required:div:bottom">
+                <tr id="standalone-builders-required :header :text:center">
+                    <td colspan="3">
+                        Required Builders
+                    </td>
+                </tr>
+
+                <tr>
                     <td><code>action</code></td>
                     <td><code>ChatCommandContext&lt;Arguments&gt;</code></td>
 
@@ -206,6 +211,12 @@
                         the command is invoked.
                         Provide the constructor for an <code>Arguments</code> subtype as the first argument to this
                         function if your command takes any arguments.
+                    </td>
+                </tr>
+
+                <tr id="standalone-builders-optional :header :text:center">
+                    <td colspan="3">
+                        Optional Builders
                     </td>
                 </tr>
 
@@ -229,6 +240,12 @@
                     <td>Description</td>
                 </tr>
 
+                <tr id="standalone-properties-required :header :text:center">
+                    <td colspan="3">
+                        Required Properties
+                    </td>
+                </tr>
+
                 <tr>
                     <td><code>description</code></td>
                     <td><code>String</code></td>
@@ -242,7 +259,7 @@
                     </td>
                 </tr>
 
-                <tr id="standalone-properties-required:div:bottom">
+                <tr>
                     <td><code>name</code></td>
                     <td><code>String</code></td>
 
@@ -250,6 +267,12 @@
                         <format style="bold">Required:</format>
                         The command's name, which is used to identify the command internally and for invoking the
                         command on Discord.
+                    </td>
+                </tr>
+
+                <tr id="standalone-properties-optional :header :text:center">
+                    <td colspan="3">
+                        Optional Properties
                     </td>
                 </tr>
 
@@ -297,7 +320,7 @@
                     </td>
                 </tr>
 
-                <tr id="standalone-properties-standard:div:bottom">
+                <tr>
                     <td><code>localeFallback</code></td>
                     <td><code>Boolean</code></td>
 
@@ -307,6 +330,12 @@
                         By setting this property to <code>true</code>, Kord Extensions will attempt to find a
                         command using the bot's default locale when it can't be found under the resolved one.
                         Defaults to <code>false</code>.
+                    </td>
+                </tr>
+
+                <tr id="standalone-properties-translation :header :text:center">
+                    <td colspan="3">
+                        Translation-related Properties
                     </td>
                 </tr>
 
@@ -486,13 +515,19 @@
 
                 <tr id="context-functions-normal:div:bottom">
                     <td><code>sendHelp</code></td>
-                    <td><code> </code></td>
+                    <td> </td>
 
                     <td>
                         Generate and send help information for this command.
                         Returns <code>true</code> when a
                         <a href="Config-Extensions.topic" anchor="help">help extension</a> is loaded and the help
                         message was sent, and <code>false</code> otherwise.
+                    </td>
+                </tr>
+
+                <tr id="context-functions-translation :header :text:center">
+                    <td colspan="3">
+                        Translation Functions
                     </td>
                 </tr>
 
@@ -523,7 +558,7 @@
             </table>
         </chapter>
 
-        <chapter title="Properties" id="context-propterties">
+        <chapter title="Properties" id="context-properties">
             <table style="header-row">
                 <tr>
                     <td>Name</td>
@@ -531,7 +566,7 @@
                     <td>Description</td>
                 </tr>
 
-                <tr id="context-properties-arguments:div:bottom">
+                <tr>
                     <td><code>arguments</code></td>
                     <td><code>T: Arguments</code></td>
 
@@ -546,6 +581,13 @@
                             If you don't specify the aforementioned constructor, this will be an empty
                             <code>Arguments</code> object.
                         </p>
+                    </td>
+                </tr>
+
+
+                <tr id="context-properties-translation :header :text:center">
+                    <td colspan="3">
+                        Data Properties
                     </td>
                 </tr>
 
