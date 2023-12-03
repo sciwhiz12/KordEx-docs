@@ -120,7 +120,7 @@ jobs:
           index_file_path: "algolia/index.json"
 
       - name: Process SCSS
-        uses: gha-utilities/sass-build@v0
+        uses: gha-utilities/sass-build@v0.5.1
 
         with:
           source: style.scss
