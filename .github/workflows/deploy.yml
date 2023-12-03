@@ -119,16 +119,12 @@ jobs:
           index_name: "KordEx Docs"
           index_file_path: "algolia/index.json"
 
-      - name: Remove existing CSS
-        run: |
-          sudo rm -f docs/mermaid.css
-
       - name: Process SCSS
         uses: gha-utilities/sass-build@v0.5.1
 
         with:
           source: ./style.scss
-          destination: docs/mermaid.css
+          destination: ./style.css
           sourceMap: false
           omitSourceMapUrl: true
 
@@ -137,6 +133,8 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions-user@users.noreply.github.com"
+          
+          sudo mv style.css docs/mermaid.css
           
           cp -r docs/* .
           
