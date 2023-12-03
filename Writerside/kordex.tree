@@ -36,11 +36,6 @@
 
         <toc-element topic="Extensions.topic"/>
 
-        <toc-element topic="Events.topic">
-            <toc-element topic="Custom-Events.topic"/>
-            <toc-element topic="Extra-Events.topic"/>
-        </toc-element>
-
         <toc-element topic="Commands.topic">
             <toc-element topic="Chat-Commands.topic"/>
             <toc-element topic="Application-Commands.topic">
@@ -51,6 +46,10 @@
             <toc-element topic="Converters.topic">
                 <toc-element topic="Custom-Converters.topic"/>
             </toc-element>
+        </toc-element>
+        <toc-element topic="Events.topic">
+            <toc-element topic="Custom-Events.topic"/>
+            <toc-element topic="Extra-Events.topic"/>
         </toc-element>
 
         <toc-element topic="Checks.topic"/>

@@ -7,6 +7,7 @@
 
     <section-starting-page>
         <description>Learn about everything Kord Extensions has to offer</description>
+        <title>Core Documentation ✏️</title>
 
         <spotlight>
             <a href="Getting-Started.topic"
@@ -21,15 +22,41 @@
         </spotlight>
 
         <primary>
-            <title>Primary Section</title>
-            <a href="" type="check-list"/>
-			<a href="" type="check-list"/>
+            <title>Main Topics</title>
+
+            <a href="The-Bot.topic"
+               type="account"
+               summary="Your bot's core, the beginning of everything."
+            />
+
+			<a href="Configuration.topic"
+               type="cross-check"
+               summary="Learn about the extensive configuration options, and how to use them."
+            />
+
+            <a href="Extensions.topic"
+               type="container"
+               summary="The units that make up your bots functionality, keeping things powerful and clean."
+            />
+
+            <a href="Commands.topic"
+               type="keyboard"
+               summary="Learn about the commands framework, and implement your bot's primary input method."
+            />
+
+            <a href="Events.topic"
+                 type="start"
+                 summary="Learn how to handle and respond to things that happen on Discord."
+            />
 		</primary>
 
 		<secondary>
-			<title>Secondary Section</title>
-			<a href="" type="check-list"/>
-			<a href="" type="check-list"/>
+            <title>Dig Deeper</title>
+
+            <a href="#"
+               type="thumb-up"
+               summary="This page won't build without a secondary section. We'll add cards here later."
+            />
 		</secondary>
     </section-starting-page>
 </topic>
