@@ -71,11 +71,394 @@
         </p>
     </tip>
 
-    <chapter title="Application Commands" id="commands">
+    <chapter title="Application Command Objects" id="commands">
+        <p>
+            When you register an application command, the builder function will return an object that extends the
+            <code>ApplicationCommand</code> type. This type extends the <code>Command</code> type, providing access
+            to basic data and functionality specific to application commands.
+        </p>
 
+        <p>
+            The intended public API is described below.
+            However, it's possible to extend this type (and the other command types)
+            if you want to implement your own customized command types.
+        </p>
+
+        <p>
+            The <code>ApplicationCommand</code> type takes a generic type parameter based on the
+            <code>InteractionCreateEvent</code> type, which is provided by the classes that extend
+            <code>ApplicationCommand</code>.
+            This generic type parameter will be referred to as <code>E</code> below.
+        </p>
+
+        <p>
+            The following API definitions do not include the APIs provided by any extended supertypes.
+            For more information on the command API, see <a href="Commands.topic" anchor="command-objects" />.
+        </p>
+
+        <chapter title="Builders" id="command-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>check</code></td>
+                    <td><code>CheckWithCache&lt;E&gt;</code></td>
+
+                    <td>
+                        Register a check that must pass for the command's <code>action</code> to be run, which is
+                        defined within the classes that extend <code>ApplicationCommand</code>.
+                        For more information on checks, see <a href="Checks.topic">the dedicated documentation</a>.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Functions" id="command-functions">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Arguments</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>guild</code></td>
+                    <td><code>Snowflake?</code></td>
+
+                    <td>
+                        Specify a specific guild to register this application command to.
+                        Guild-specific commands are only available in a single guild, and will not work in DMs with
+                        the bot.
+                        Provide <code>null</code> to clear the registration guild.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>requirePermission</code></td>
+                    <td><code>vararg Permission</code></td>
+
+                    <td>
+                        Specify one or more permissions that a user must have before they may execute this command by
+                        default.
+                        <format style="bold">Note:</format> This setting is simply a default value that may be
+                        configured in the "Integrations" tab, within the guild's settings in the Discord client.
+                        It is not enforced by the commands framework — use a <a href="Checks.topic">check</a> for that.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="command-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>allowByDefault</code></td>
+                    <td><code>Boolean</code></td>
+
+                    <td>
+                        Whether to allow all members of a guild to execute this command by default.
+                        When set, this property will overwrite any permissions provided by the
+                        <code>requirePermission</code> function
+                        Returns <code>true</code> if no required permissions have been set using
+                        <code>requirePermission</code>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>allowInDms</code></td>
+                    <td><code>Boolean</code></td>
+
+                    <td>
+                        Whether to allow this command to be used in a DM with the bot.
+                        Always returns <code>false</code> if a registration guild has been set via the
+                        <code>guild</code> function, regardless of whether you modify this property's value yourself.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
     </chapter>
 
-    <chapter title="Application Command Contexts" id="contexts">
+    <chapter title="Interaction Context Types" id="interaction-contexts">
+        <p>
+            Discord supports two main types of interaction response — ephemeral and public.
+            Ephemeral responses are only visible to the user that triggered the interaction, whereas public responses
+            are visible to everyone that has access to the current channel.
+        </p>
 
+        <p>
+            Because Discord's interactions can behave strangely if they aren't used how Discord expects them to be,
+            Kord Extensions provides specific context types that help you to avoid unexpected behaviors.
+            These types expect you to work with one of the main interaction types, warning you when you attempt to do
+            something that might not do what you expect.
+        </p>
+
+        <p>
+            These context types inherit the <code>InteractionContext</code> type, and are split by interaction response
+            type:
+        </p>
+
+        <list>
+            <li><code>EphemeralInteractionContext</code> for ephemeral interaction responses.</li>
+            <li><code>PublicInteractionContext</code> for public interaction responses.</li>
+        </list>
+
+        <p>
+            These types provide an identical API surface, allowing you to respond to interactions easily, without
+            accidentally specifying the wrong type of response.
+            The <code>InteractionContext</code> type takes four generic type parameters:
+        </p>
+
+        <list>
+            <li>
+                <code>ResponseBehavior</code> - A subtype of Kord's <code>InteractionResponseBehavior</code> type,
+                corresponding with the current interaction response type.
+            </li>
+
+            <li>
+                <code>ResponseType</code> - A subtype of Kord's <code>MessageInteractionResponse</code> type,
+                corresponding with the current interaction response type.
+            </li>
+
+            <li>
+                <code>FollowupType</code> - A subtype of Kord's <code>FollowupMessage</code> type, corresponding with
+                the current interaction response type.
+            </li>
+
+            <li>
+                <code>OppositeFollowupType</code> - A subtype of Kord's <code>FollowupMessage</code> type corresponding
+                with <format style="bold">the opposite to the current interaction response type</format>.
+            </li>
+        </list>
+
+        <chapter title="Builders" id="interaction-context-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>edit</code></td>
+                    <td><code>InteractionResponseModifyBuilder</code></td>
+
+                    <td>
+                        Edit the first interaction response, regardless of whether (or how many times) this
+                        interaction has been responded to.
+                        May be called before a response has been sent, as the first interaction response is always
+                        a "bot is thinking" message until this function
+                        (or one of the response functions) is called.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>respond</code></td>
+                    <td><code>FollowupMessageCreateBuilder</code></td>
+
+                    <td>
+                        Respond to the interaction with a follow-up matching the current interaction response type.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>respondOpposite</code></td>
+                    <td><code>FollowupMessageCreateBuilder</code></td>
+
+                    <td>
+                        Respond to the interaction with a follow-up
+                        <format style="bold">with the opposite type to the current interaction response type</format>.
+                        While Discord's API allows you to do this,
+                        <format style="bold">it will rarely do what you expect</format>.
+                        This function is provided only for advanced use-cases that need it.
+                    </td>
+                </tr>
+
+                <tr id="interaction-context-builders-paginators:header:text:center">
+                    <td colspan="3">
+                        Paginator Builders
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>editingPaginator</code></td>
+                    <td><code>PaginatorBuilder</code></td>
+
+                    <td>
+                        <p>
+                            Convenience function, allowing you to easily create a button-based
+                            <a href="Paginators.topic">paginator</a>
+                            by editing the first response to this interaction.
+                            The following parameters are supported:
+                        </p>
+
+                        <list>
+                            <li>
+                                <code>defaultGroup = ""</code> - The default paginator group.
+                            </li>
+
+                            <li>
+                                <code>locale = null</code> - The locale to use for this paginator's buttons.
+                                In a command or component context, you'll want to provide the result of
+                                <code>getLocale()</code> here.
+                            </li>
+                        </list>
+
+                        <p>
+                            <format style="bold">Note:</format> This will not send the paginator automatically.
+                            You'll need to call the <code>send</code> function on this function's return value to
+                            send it.
+                        </p>
+
+                        <p>
+                            For more information on paginators (and the paginator builder), see
+                            <a href="Paginators.topic">the dedicated documentation</a>.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>respondingPaginator</code></td>
+                    <td><code>PaginatorBuilder</code></td>
+
+                    <td>
+                        <warning>
+                            <p>
+                                If you're working within an ephemeral interaction context, then it's important to note
+                                that
+                                <format style="bold">this function will always result in a public response</format>.
+                                This is due to a Discord API limitation, wherein Discord has made it impossible to edit
+                                ephemeral interaction follow-ups.
+                            </p>
+
+                            <p>
+                                If you want to use a paginator in your ephemeral interaction responses, you will need
+                                to use <code>editingPaginator</code> instead.
+                            </p>
+                        </warning>
+
+                        <p>
+                            Convenience function, allowing you to easily create a button-based
+                            <a href="Paginators.topic">paginator</a>
+                            in an interaction follow-up message.
+                            The following parameters are supported:
+                        </p>
+
+                        <list>
+                            <li>
+                                <code>defaultGroup = ""</code> - The default paginator group.
+                            </li>
+
+                            <li>
+                                <code>locale = null</code> - The locale to use for this paginator's buttons.
+                                In a command or component context, you'll want to provide the result of
+                                <code>getLocale()</code> here.
+                            </li>
+                        </list>
+
+                        <p>
+                            <format style="bold">Note:</format> This will not send the paginator automatically.
+                            You'll need to call the <code>send</code> function on this function's return value to
+                            send it.
+                        </p>
+
+                        <p>
+                            For more information on paginators (and the paginator builder), see
+                            <a href="Paginators.topic">the dedicated documentation</a>.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="interaction-context-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>interactionResponse</code></td>
+                    <td><code>ResponseBehavior</code></td>
+
+                    <td>
+                        The current interaction response object that this context is working with.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+    </chapter>
+
+    <chapter title="Application Command Context Objects" id="contexts">
+        <p>
+            When an application command is executed, the provided <code>action</code> block is run.
+            This block is a receiver function against a subtype of the <code>ApplicationCommandContext</code> type,
+            which itself is a subtype of the <code>CommandContext</code> type.
+            This type provides an API that allows you to work with the command's execution data, and respond to the
+            user.
+        </p>
+
+        <p>
+            Application command context objects always extend one of the
+            <a anchor="interaction-contexts">interaction context types</a>, unless you're using a command from the
+            <a href="Unsafe.topic">unsafe module</a>.
+        </p>
+
+        <p>
+            The following API definitions do not include the APIs provided by any extended supertypes.
+            For more information on the command API, see <a href="Commands.topic" anchor="context-objects" />.
+        </p>
+
+        <chapter title="Properties" id="context-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>appPermissioppns</code></td>
+                    <td><code>Permissions?</code></td>
+
+                    <td>
+                        The permissions applicable to your bot in the current command execution context, as defined
+                        by the bot's roles and current channel permissions.
+                        Will be <code>null</code> if the command was executed in a DM with the bot.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>genericCommand</code></td>
+                    <td><code>ApplicationCommand&lt;*&gt;</code></td>
+
+                    <td>
+                        Generic command object, representing the command this context belongs to.
+                        A more specific reference will be provided in this type's subtypes.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>genericEvent</code></td>
+                    <td><code>ApplicationCommandInteractionCreateEvent</code></td>
+
+                    <td>
+                        Generic event object, representing the Discord event that triggered the current command
+                        execution.
+                        A more specific reference will be provided in this type's subtypes.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
     </chapter>
 </topic>
