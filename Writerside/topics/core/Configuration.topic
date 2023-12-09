@@ -6,6 +6,8 @@
        title="Configuration" id="Configuration">
 
     <section-starting-page>
+        <title>Configuration</title>
+
         <description>
             Learn how to configure your bot.
         </description>
