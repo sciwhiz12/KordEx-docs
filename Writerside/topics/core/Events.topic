@@ -39,7 +39,7 @@
 
         <li>
             <code>body</code> - the function receiver which binds <code>this</code> tho
-            <code>EventHandler&lt;T&gt;</code>.
+            <code>EventHandler &lt;T&gt;</code>.
         </li>
     </list>
 
@@ -61,7 +61,7 @@
 
                     <td>
                         <a anchor="event-context">
-                            <code>EventContext&lt;T&gt;</code>
+                            <code>EventContext &lt;T&gt;</code>
                         </a>
                     </td>
 
@@ -76,7 +76,7 @@
 
                     <td>
                         <a href="Checks.topic">
-                            <code>CheckContext&lt;T&gt;</code>
+                            <code>CheckContext &lt;T&gt;</code>
                         </a>
                     </td>
 
@@ -247,7 +247,7 @@
 
                     <td>
                         <a href="Checks.topic">
-                            <code>MutableStringKeyedMap&lt;Any&gt;</code>
+                            <code>MutableStringKeyedMap &lt;Any&gt;</code>
                         </a>
                     </td>
 
@@ -259,7 +259,7 @@
 
                 <tr>
                     <td><code>eventHandler</code></td>
-                    <td><code>EventHandler&lt;T&gt;</code></td>
+                    <td><code>EventHandler &lt;T&gt;</code></td>
 
                     <td>
                         The current event handler object.
@@ -311,7 +311,7 @@
     <chapter title="Custom Context" id="custom-context">
         <p>
             Kord Extensions sets the <code>customContext</code> property for all events (Kord or otherwise) to an empty
-            <code>MutableStringKeyedMap&lt;Any&gt;</code>.
+            <code>MutableStringKeyedMap &lt;Any&gt;</code>.
             This allows you to store extra data on your events as part of processing.
         </p>
 
@@ -333,7 +333,7 @@
 
                 <tr>
                     <td><code>E.extraData</code></td>
-                    <td><code>MutableStingKeyedMap&lt;Any&gt;</code></td>
+                    <td><code>MutableStingKeyedMap &lt;Any&gt;</code></td>
 
                     <td>
                         Quick access to the properly-cast <code>customContext</code> property.
@@ -345,9 +345,9 @@
 
         <chapter title="Functions" id="custom-context-functions">
             <p>
-                The following functions are extensions on the <code>StringKeyedMap&lt;*&gt;</code> type.
+                The following functions are extensions on the <code>StringKeyedMap &lt;*&gt;</code> type.
                 This will be represented using <code>S</code> below.
-                Additionally, <code>MutableStringKeyedMap&lt;*&gt;</code> will be represented using <code>M</code>
+                Additionally, <code>MutableStringKeyedMap &lt;*&gt;</code> will be represented using <code>M</code>
                 below.
             </p>
 

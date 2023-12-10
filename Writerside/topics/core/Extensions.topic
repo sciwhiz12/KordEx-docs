@@ -337,7 +337,7 @@
 
                 <tr>
                     <td><code>intents</code></td>
-                    <td><code>MutableSet&lt;Intent&gt;</code></td>
+                    <td><code>MutableSet &lt;Intent&gt;</code></td>
                     <td><code>{ }</code></td>
 
                     <td>

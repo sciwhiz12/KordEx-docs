@@ -13,10 +13,111 @@
     </p>
 
     <p>
-        When registered by a bot, context commands are visible in a menu named <format style="bold">Apps</format>.
+        When registered by your bot, context commands are visible in a menu named <format style="bold">Apps</format>.
         There are two types of context command — message commands and user commands.
         They have identical APIs, aside from the target data supplied to them by Discord.
     </p>
+
+    <chapter title="Extension API" id="extension-api">
+        The following APIs are available on the <code>Extension</code> type, which you can use to define your
+        context commands and modify their behavior.
+
+        <chapter title="Builders" id="extension-api-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Receiver</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr id="extension-api-builders-checks:header:text:center">
+                    <td colspan="3">
+                        Checks
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>messageCommandCheck</code></td>
+                    <td><code>CheckWithCache &lt;MessageCommandInteractionCreateEvent&gt;</code></td>
+
+                    <td>
+                        Register a check that must pass for the <code>action</code>
+                        belonging to all message commands defined within this extension to be run.
+                        For more information on checks, see <a href="Checks.topic">the dedicated documentation</a>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>userCommandCheck</code></td>
+                    <td><code>CheckWithCache &lt;UserCommandInteractionCreateEvent&gt;</code></td>
+
+                    <td>
+                        Register a check that must pass for the <code>action</code>
+                        belonging to all user commands defined within this extension to be run.
+                        For more information on checks, see <a href="Checks.topic">the dedicated documentation</a>.
+                    </td>
+                </tr>
+
+                <tr id="extension-api-builders-commands:header:text:center">
+                    <td colspan="3">
+                        Commands
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>ephemeralMessageCommand</code></td>
+                    <td><code>EphemeralMessageCommand</code></td>
+
+                    <td>
+                        Register an <a anchor="message-commands">ephemeral message command</a>.
+
+                        This builder function optionally takes the constructor of a
+                        <a href="Commands.topic" anchor="modal-forms">modal form class</a> as the first argument,
+                        representing the modal form to display and await input for when the command is executed.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>ephemeralUserCommand</code></td>
+                    <td><code>EphemeralUserCommand</code></td>
+
+                    <td>
+                        Register an <a anchor="message-commands">ephemeral user command</a>.
+
+                        This builder function optionally takes the constructor of a
+                        <a href="Commands.topic" anchor="modal-forms">modal form class</a> as the first argument,
+                        representing the modal form to display and await input for when the command is executed.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>publicMessageCommand</code></td>
+                    <td><code>PublicMessageCommand</code></td>
+
+                    <td>
+                        Register a <a anchor="message-commands">public message command</a>.
+
+                        This builder function optionally takes the constructor of a
+                        <a href="Commands.topic" anchor="modal-forms">modal form class</a> as the first argument,
+                        representing the modal form to display and await input for when the command is executed.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>publicUserCommand</code></td>
+                    <td><code>PublicUserCommand</code></td>
+
+                    <td>
+                        Register a <a anchor="message-commands">public user command</a>.
+
+                        This builder function optionally takes the constructor of a
+                        <a href="Commands.topic" anchor="modal-forms">modal form class</a> as the first argument,s
+                        representing the modal form to display and await input for when the command is executed.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+    </chapter>
 
     <chapter title="Message Commands" id="message-commands">
         <p>

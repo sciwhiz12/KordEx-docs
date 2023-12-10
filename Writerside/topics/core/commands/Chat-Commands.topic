@@ -110,7 +110,7 @@
 
                 action {
                     message.respond(
-                        "User ${arguments.user.mention} has permission to mention everyone."
+                        "Hey, ${arguments.user.mention}! Get pinged!"
                     )
                 }
             }
@@ -133,7 +133,7 @@
 
                 <tr id="extension-builders-checks:div:bottom">
                     <td><code>chatCommandCheck</code></td>
-                    <td><code>CheckWithCache&lt;MessageCreateEvent&gt;</code></td>
+                    <td><code>CheckWithCache &lt;MessageCreateEvent&gt;</code></td>
 
                     <td>
                         Register a check that must pass for the <code>action</code>
@@ -203,14 +203,12 @@
 
                 <tr>
                     <td><code>action</code></td>
-                    <td><code>ChatCommandContext&lt;Arguments&gt;</code></td>
+                    <td><code>ChatCommandContext &lt;Arguments&gt;</code></td>
 
                     <td>
                         <format style="bold">Required:</format>
                         Register the command's action, which will be run when
                         the command is invoked.
-                        Provide the constructor for an <code>Arguments</code> subtype as the first argument to this
-                        function if your command takes any arguments.
                     </td>
                 </tr>
 
@@ -222,7 +220,7 @@
 
                 <tr>
                     <td><code>check</code></td>
-                    <td><code>CheckWithCache&lt;MessageCreateEvent&gt;</code></td>
+                    <td><code>CheckWithCache &lt;MessageCreateEvent&gt;</code></td>
 
                     <td>
                         Register a check that must pass for the command's <code>action</code> to be run.
@@ -278,7 +276,7 @@
 
                 <tr>
                     <td><code>aliases</code></td>
-                    <td><code>Array&lt;String&gt;</code></td>
+                    <td><code>Array &lt;String&gt;</code></td>
 
                     <td>
                         Array of alternative names that may be used to invoke this command.
@@ -421,6 +419,7 @@
                         This builder function mirrors the behavior of the <code>chatCommand</code> builder function
                         defined at <code>Extension</code> level, which you'd normally use to register standalone
                         commands.
+                        Subcommands inherit the checks that are defined in their parent commands.
                     </td>
                 </tr>
 
@@ -432,6 +431,7 @@
                         This builder function allows you to nest grouped commands as deeply as is required.
                         It mirrors the behavior of the <code>chatGroupCommand</code> builder function defined at
                         <code>Extension</code> level.
+                        Subcommands inherit the checks that are defined in their parent commands.
                     </td>
                 </tr>
             </table>
@@ -583,7 +583,6 @@
                         </p>
                     </td>
                 </tr>
-
 
                 <tr id="context-properties-translation:header:text:center">
                     <td colspan="3">

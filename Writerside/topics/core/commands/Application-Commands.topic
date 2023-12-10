@@ -3,7 +3,7 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Application Commands ✏️" id="Application-Commands">
+       title="Application Commands" id="Application-Commands">
 
     <p>
         Application commands are a special type of command that makes use of Discord's interaction system.
@@ -67,7 +67,7 @@
 
                 <tr>
                     <td><code>check</code></td>
-                    <td><code>CheckWithCache&lt;E&gt;</code></td>
+                    <td><code>CheckWithCache &lt;E&gt;</code></td>
 
                     <td>
                         Register a check that must pass for the command's <code>action</code> to be run, which is
@@ -119,6 +119,31 @@
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
+                </tr>
+
+                <tr id="command-properties-required:header:text:center">
+                    <td colspan="3">
+                        Required Properties
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>name</code></td>
+                    <td><code>String</code></td>
+
+                    <td>
+                        <format style="bold">Required:</format> The command's name, which is used to invoke the command
+                        and is displayed on Discord.
+                        Your command's name must follow
+                        <a href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
+                            Discord's naming requirements</a>.
+                    </td>
+                </tr>
+
+                <tr id="command-properties-optional:header:text:center">
+                    <td colspan="3">
+                        Optional Properties
+                    </td>
                 </tr>
 
                 <tr>
@@ -189,7 +214,7 @@
 
                 <tr>
                     <td><code>genericCommand</code></td>
-                    <td><code>ApplicationCommand&lt;*&gt;</code></td>
+                    <td><code>ApplicationCommand &lt;*&gt;</code></td>
 
                     <td>
                         Generic command object, representing the command this context belongs to.

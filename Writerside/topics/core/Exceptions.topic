@@ -92,7 +92,7 @@
 
                 <tr>
                     <td><code>argument</code></td>
-                    <td><code>Argument&lt;*&gt;?</code></td>
+                    <td><code>Argument &lt;*&gt;?</code></td>
 
                     <td>
                         The <code>Argument</code> object representing the argument that failed to parse.
@@ -257,7 +257,7 @@
 
                 <tr>
                     <td><code>builder</code></td>
-                    <td><code>ConverterBuilder&lt;*&gt;</code></td>
+                    <td><code>ConverterBuilder &lt;*&gt;</code></td>
 
                     <td>
                         The converter builder that failed to validate.
@@ -392,7 +392,7 @@
 
                     <tr>
                         <td><code>clazz</code></td>
-                        <td><code>KClass&lt;out Extension&gt;</code></td>
+                        <td><code>KClass &lt;out Extension&gt;</code></td>
 
                         <td>
                             The invalid extension's class.

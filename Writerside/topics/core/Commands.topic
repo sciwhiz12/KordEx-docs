@@ -437,7 +437,7 @@
 
                 <tr>
                     <td><code>cache</code></td>
-                    <td><code>MutableStringKeyedMap&lt;Any&gt;</code></td>
+                    <td><code>MutableStringKeyedMap &lt;Any&gt;</code></td>
 
                     <td>
                         The cache object used for this execution, which may contain data set by the current command's

@@ -249,7 +249,7 @@
 
                 <tr>
                     <td><code>events</code></td>
-                    <td><code>SharedFlow&lt;Any&gt;</code></td>
+                    <td><code>SharedFlow &lt;Any&gt;</code></td>
 
                     <td>
                         Shared flow which combined the events sent by both Kord and Kord Extensions.
@@ -258,7 +258,7 @@
 
                 <tr>
                     <td><code>eventPublisher</code></td>
-                    <td><code>MutableSharedFlow&lt;Any&gt;</code></td>
+                    <td><code>MutableSharedFlow &lt;Any&gt;</code></td>
 
                     <td>
                         Mutable shared flow used for event publishing.
