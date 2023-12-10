@@ -188,7 +188,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr id="setup-function">
                 <td><code>setup</code></td>
                 <td><code>suspend () -> Unit</code></td>
 

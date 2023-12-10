@@ -3,15 +3,104 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
-       title="Context Commands ✏️" id="Context-Commands">
+       title="Context Commands" id="Context-Commands">
 
-    <p>Start typing here...</p>
+    <p>
+        Context commands are a form of <a href="Application-Commands.topic">application command</a>, triggered by
+        users via a right-click/tap-and-hold menu in their Discord client.
+        Unlike other types of command, context commands do not take arguments — instead, they're provided with whatever
+        the user was targeting when they opened the menu.
+    </p>
+
+    <p>
+        When registered by a bot, context commands are visible in a menu named <format style="bold">Apps</format>.
+        There are two types of context command — message commands and user commands.
+        They have identical APIs, aside from the target data supplied to them by Discord.
+    </p>
 
     <chapter title="Message Commands" id="message-commands">
+        <p>
+            Message commands are registered by calling the relevant functions in
+            <a href="Extensions.topic" anchor="setup-function">your extension's <code>setup</code> function</a>:
+        </p>
 
+        <list>
+            <li>
+                <code>ephemeralMessageCommand</code> for message commands that respond ephemerally.
+            </li>
+
+            <li>
+                <code>publicMessageCommand</code> for message commands that respond publicly.
+            </li>
+        </list>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+            publicMessageCommand {
+                name = "My Command"
+
+                action {
+                    val target = targetMessages.first()
+
+                    respond {
+                        content = "Target: ${target.getJumpUrl()}"
+                    }
+                }
+            }
+        </code-block>
+
+        <p>
+            Message commands have an identical API to that which is provided by <a href="Application-Commands.topic"/>,
+            but message command context objects provide a <code>targetMessages</code> property.
+            This property corresponds with the Discord API, which provides a list that contains the message that
+            was being targeted when the command was executed.
+        </p>
+
+        <p>
+            Message commands support modal forms, as described in
+            <a href="Commands.topic" anchor="modal-forms">the commands overview page</a>.
+        </p>
     </chapter>
 
     <chapter title="User Commands" id="user-commands">
+        <p>
+            User commands are registered by calling the relevant functions in
+            <a href="Extensions.topic" anchor="setup-function">your extension's <code>setup</code> function</a>:
+        </p>
 
+        <list>
+            <li>
+                <code>ephemeralUserCommand</code> for user commands that respond ephemerally.
+            </li>
+
+            <li>
+                <code>publicUserCommand</code> for user commands that respond publicly.
+            </li>
+        </list>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+            publicUserCommand {
+                name = "My Command"
+
+                action {
+                    val target = targetUsers.first()
+
+                    respond {
+                        content = "Target: ${target.mention}"
+                    }
+                }
+            }
+        </code-block>
+
+        <p>
+            User commands have an identical API to that which is provided by <a href="Application-Commands.topic"/>,
+            but user command context objects provide a <code>targetUsers</code> property.
+            This property corresponds with the Discord API, which provides a list that contains the Discord user that
+            was being targeted when the command was executed.
+        </p>
+
+        <p>
+            User commands support modal forms, as described in
+            <a href="Commands.topic" anchor="modal-forms">the commands overview page</a>.
+        </p>
     </chapter>
 </topic>

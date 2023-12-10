@@ -115,7 +115,7 @@
                     <p>
                         As some converter types provide a default <code>autocomplete</code> block, you may need to
                         enable this when you're using them, even when you don't provide your own.
-                        For more information, see <a href="Converters.topic">the converters documentation</a>.
+                        For more information, see <a href="Converters.topic">the dedicated documentation</a>.
                     </p>
                 </td>
             </tr>
@@ -132,7 +132,8 @@
             A modal form is Kord Extensions' way of representing the settings and contents of a
             <a href="https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-modal">
                 Discord modal</a>.
-            <a href="Chat-Commands.topic"/> don't support modals, but all other command types do.
+
+            <a href="Chat-Commands.topic">Chat commands</a> don't support modals, but all other command types do.
         </p>
 
         <p>
@@ -250,7 +251,7 @@
                     <td><code>extension</code></td>
                     <td><code>Extension</code></td>
 
-                    <td>The extension this command belongs to.</td>
+                    <td>The extension that this command belongs to.</td>
                 </tr>
 
                 <tr>
@@ -271,13 +272,11 @@
 
                     <td>
                         Whether to use a
-
                         <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.sync/-mutex/">
                             Mutex
-                        </a>
+                        </a> to prevent this command from being run concurrently with itself.
 
-                        to prevent this command from being run concurrently with itself.
-                        Default to <code>false</code>, meaning the command may be run multiple times concurrently.
+                        Defaults to <code>false</code>, meaning the command may be run multiple times concurrently.
                     </td>
                 </tr>
 
@@ -411,9 +410,8 @@
                     <td><code>translate</code></td>
 
                     <td>
-                        There are a number of overloads for this function.
-                        It allows you to translate a given string key based on the resolved locale, or
-                        another given locale.
+                        There are a number of overloads for this function, which allows you to translate a given
+                        string key based on the resolved locale or another given locale.
                         For more information on translations, see
                         <a href="Internationalisation.topic">the dedicated documentation</a>,
                         and examine the functions in your IDE for more information on their parameters.
