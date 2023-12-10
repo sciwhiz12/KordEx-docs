@@ -35,6 +35,7 @@
         </toc-element>
 
         <toc-element topic="Extensions.topic"/>
+        <toc-element topic="Interactions.topic"/>
 
         <toc-element topic="Commands.topic">
             <toc-element topic="Chat-Commands.topic"/>
