@@ -1004,6 +1004,10 @@
                         some use-cases.
                     </p>
 
+                    <p>
+                        This is also available as a coalescing converter.
+                    </p>
+
                     <note>
                         When working with <a href="Chat-Commands.topic"/>, it may be beneficial to use the coalescing
                         version of this converter,
@@ -1171,6 +1175,7 @@
                     <p>
                         Arbitrary enum argument, allowing for the specification of enum value names.
                         By default, enum value names will be matched case-insensitively.
+                        This is also available as a choice converter.
                     </p>
 
                     <p>
@@ -1242,7 +1247,8 @@
 
                 <td>
                     <p>
-                        Long argument, parsing the provided value into an Long.
+                        Long argument, parsing the provided value into a Long.
+                        This is also available as a choice converter, as a converter named <code>number</code>.
                     </p>
 
                     <deflist collapsible="true">
@@ -1268,18 +1274,86 @@
                 </td>
             </tr>
 
-<!--            <tr>-->
-<!--                <td> </td>-->
+            <tr>
+                <td>Regex</td>
 
-<!--                <td>-->
-<!--                    <p>-->
+                <td>
+                    <p>
+                        Regex argument, allowing users to specify a regular expression.
+                    </p>
 
-<!--                    </p>-->
-<!--                </td>-->
-<!--            </tr>-->
+                    <warning>
+                        <p>
+                            Due to the inherent risks associated with making use of regular expressions from untrusted
+                            sources
+                            (such as <a href="https://www.regular-expressions.info/catastrophic.html">
+                            catastrophic backtracking</a>),
+                            it's best to limit access to commands that use this argument type.
+                        </p>
 
+                        <p>
+                            If you still need to handle user-submitted regular expressions, it may be best to write
+                            <a href="Custom-Converters.topic">a custom converter</a> using
+                            <a href="https://github.com/google/re2j">Google's RE2 library</a>.
+                        </p>
+                    </warning>
 
+                    <deflist collapsible="true">
+                        <def title="Converter Properties" id="regex-properties">
+                            <list>
+                                <li>
+                                    <code>options</code> (<code>MutableSet&lt;RegexOption&gt;</code>) — Set of regular
+                                    expression options.
+                                    Options added to this set will be used when creating the <code>Regex</code> object.
+                                </li>
+                            </list>
+                        </def>
+                    </deflist>
+                </td>
+            </tr>
 
+            <tr>
+                <td>String</td>
+
+                <td>
+                    <p>
+                        String argument, providing users' input verbatim.
+                        This is also available as a choice converter or coalescing converter.
+                    </p>
+
+                    <deflist collapsible="true">
+                        <def title="Converter Properties" id="string-properties">
+                            <list>
+                                <li>
+                                    <code>maxLength</code> (<code>Int?</code>) — Maximum length for the input string.
+                                </li>
+
+                                <li>
+                                    <code>minLength</code> (<code>Int?</code>) — Minimum length for the input string.
+                                </li>
+                            </list>
+                        </def>
+                    </deflist>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Supported Locale</td>
+
+                <td>
+                    <p>
+                        Supported locale argument, allowing users to provide one of Kord Extensions' supported locales.
+                        This converter will return a <code>Locale</code> object if the specified locale is one that
+                        Kord Extensions supports.
+                    </p>
+
+                    <p>
+                        If a locale you need isn't supported, please feel free to
+                        <a href="https://hosted.weblate.org/projects/kord-extensions/">
+                            contribute translations for it</a>.
+                    </p>
+                </td>
+            </tr>
 
             <tr id="bundled-converters-entities:header:text:center">
                 <td colspan="3">Discord Entities</td>
@@ -1292,6 +1366,14 @@
                     <p>
                         Discord channel argument, supporting mentions, IDs, and names.
                         Also supports <format style="bold">"this"</format> to refer to the current channel.
+                    </p>
+
+                    <p>
+                        When working with slash commands, the Discord client resolves the channel object instead of the
+                        bot.
+                        This means that the converter will only ever return the channel object provided by the client,
+                        and cannot resolve the special name "this."
+                        It will also ignore the <code>requiredGuild</code> and <code>requireSameGuild</code> properties.
                     </p>
 
                     <deflist collapsible="true">
@@ -1372,6 +1454,13 @@
                         and <format style="bold">"you"</format> to refer to the bot.
                     </p>
 
+                    <p>
+                        When working with slash commands, the Discord client resolves the member object instead of the
+                        bot.
+                        This means that the converter will only ever return the member object provided by the client,
+                        and cannot resolve the special names "me" or "you."
+                    </p>
+
                     <deflist collapsible="true">
                         <def title="Converter Properties" id="guild-properties">
                             <list>
@@ -1399,9 +1488,165 @@
                 </td>
             </tr>
 
+            <tr>
+                <td>Message</td>
 
+                <td>
+                    <p>
+                        Discord message argument, supporting message jump URLs and IDs.
+                        When a message ID is specified, it's assumed to be in the same channel the command was executed
+                        within.
+                    </p>
 
+                    <p>
+                        Messages will be retrieved if they're not already in Kord's cache, which requires the bot to
+                        be able to see the message in question.
+                        When using a URL, the bot cannot resolve messages in DMs.
+                    </p>
 
+                    <deflist collapsible="true">
+                        <def title="Converter Properties" id="message-properties">
+                            <list>
+                                <li>
+                                    <code>requiredGuild</code> (<code>suspend () -> Snowflake</code>) — Limit message
+                                    resolution to a specific guild ID.
+                                    This will additionally require the command to be run on the guild represented by
+                                    that ID.
+                                </li>
+
+                                <li>
+                                    <code>requireGuild</code> (<code>Boolean</code>, default: <code>true</code>) —
+                                    If <code>requiredGuild</code> is specified, limit message resolution to the guild
+                                    returned by that property.
+                                    Otherwise, limit message resolution to the same guild the command was executed
+                                    within.
+                                </li>
+
+                                <li>
+                                    <code>useReply</code> (<code>Boolean</code>, default: <code>true</code>) — For
+                                    <a href="Chat-Commands.topic"/>, whether to use the replied-to message
+                                    (when there is one).
+                                </li>
+                            </list>
+                        </def>
+                    </deflist>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Role</td>
+
+                <td>
+                    <p>
+                        Discord role argument, supporting role mentions, names, and IDs.
+                        Role resolution via commands run in DMs is not supported.
+                    </p>
+
+                    <p>
+                        When working with slash commands, the Discord client resolves the role object instead of the
+                        bot.
+                        This means that the converter will only ever return the role object provided by the client,
+                        and the <code>requiredGuild</code> property will be ignored.
+                    </p>
+
+                    <deflist collapsible="true">
+                        <def title="Converter Properties" id="role-properties">
+                            <list>
+                                <li>
+                                    <code>requiredGuild</code> (<code>suspend () -> Snowflake</code>) — Limit role
+                                    resolution to a specific guild ID.
+                                    When omitted, this will default to the guild the command was executed within.
+                                </li>
+                            </list>
+                        </def>
+                    </deflist>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Snowflake</td>
+
+                <td>
+                    <p>
+                        Discord snowflake argument.
+                        Parses the given value into a <code>Snowflake</code> object.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Tag</td>
+
+                <td>
+                    <p>
+                        Discord forum channel tag argument.
+                        Provides built-in <a anchor="settings-all-autocomplete"/> support for tags based on the
+                        current channel or the <code>channelGetter</code> property.
+                    </p>
+
+                    <deflist collapsible="true">
+                        <def title="Converter Properties" id="tag-properties">
+                            <list>
+                                <li>
+                                    <code>channelGetter</code> (<code>suspend () -> ForumChannel?</code>) — Limit tag
+                                    resolution to the given forum channel.
+                                    This is used for both auto-completion and tag resolution on command execution.
+                                </li>
+                            </list>
+                        </def>
+                    </deflist>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Timestamp</td>
+
+                <td>
+                    <p>
+                        Discord timestamp argument.
+                        Parses a
+                        <a href="https://discord.com/developers/docs/reference#message-formatting">
+                            Discord-formatted timestamp</a> into a <code>FormattedTimestamp</code> object,
+                        which includes the corresponding <code>Instant</code> and <code>TimestampType</code>.
+                    </p>
+
+                    <p>
+                        This converter only supports Discord-formatted timestamps, and is unable to parse any other
+                        form of timestamp.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>User</td>
+
+                <td>
+                    <p>
+                        Discord user argument supporting mentions, IDs, usernames, and tags.
+                        Also supports <format style="bold">"me"</format> to refer to the member running the command,
+                        and <format style="bold">"you"</format> to refer to the bot.
+                    </p>
+
+                    <p>
+                        When working with slash commands, the Discord client resolves the user object instead of the
+                        bot.
+                        This means that the converter will only ever return the user object provided by the client,
+                        and cannot resolve the special names "me" or "you."
+                    </p>
+
+                    <deflist collapsible="true">
+                        <def title="Converter Properties" id="user-properties">
+                            <list>
+                                <li>
+                                    <code>useReply</code> (<code>Boolean</code>, default: <code>true</code>) — For
+                                    <a href="Chat-Commands.topic"/>, whether to use the author of the replied-to
+                                    message (when there is one).
+                                </li>
+                            </list>
+                        </def>
+                    </deflist>
+                </td>
+            </tr>
 
             <tr id="bundled-converters-slash-only:header:text:center">
                 <td colspan="3">Slash Commands Only</td>
