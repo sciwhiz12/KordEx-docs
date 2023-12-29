@@ -129,7 +129,7 @@ jobs:
           omitSourceMapUrl: true
 
       - name: Fix CSS
-        run: kotlin .github/fix-css.main.kts
+        run: sudo kotlin .github/fix-css.main.kts
 
       - name: Copy files, commit and push
 
