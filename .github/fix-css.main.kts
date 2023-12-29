@@ -1,0 +1,90 @@
+@file:DependsOn("com.squareup.okhttp3:okhttp:4.11.0")
+
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.io.File
+import kotlin.io.path.Path
+import kotlin.io.path.writeText
+
+val docRoot = Path("docs/")
+val client = OkHttpClient()
+
+fun get(url: String): String {
+	val request = Request.Builder()
+		.url(url)
+		.build()
+
+	return client.newCall(request).execute().body!!.string()
+}
+
+val files: Array<File> = docRoot.toFile().listFiles { _, name ->
+	name.endsWith(".html")
+}!!
+
+println("Found ${files.size} files")
+
+fun getExistingCssLine(file: File): String {
+	val lineStart = "<link href=\"https://resources.jetbrains.com/writerside/apidoc/"
+	val lineEnd = "rel=\"stylesheet\">"
+
+	val content = file.readText()
+	val start = content.indexOf(lineStart)
+	val end = content.indexOf(lineEnd, startIndex = start) + lineEnd.length
+
+	return content.substring(start, end)
+}
+
+fun getExistingJsLine(file: File): String {
+	val lineStart = "<script src=\"https://resources.jetbrains.com/writerside/apidoc"
+	val lineEnd = "\"></script>"
+
+	val content = file.readText()
+	val start = content.indexOf(lineStart)
+	val end = content.indexOf(lineEnd, startIndex = start) + lineEnd.length
+
+	return content.substring(start, end)
+}
+
+val customCssHtml = """
+	<link href="/app.css" rel="stylesheet">
+	<link href="/custom.css" rel="stylesheet">
+""".trimIndent().trim('\n')
+
+val customJsHtml = """
+	<script src="/app.js" type="application/javascript"></script>
+""".trimIndent()
+
+println("Downloading WriterSide CSS...")
+
+val jbCssLine = getExistingCssLine(files.first())
+val jbCssUrl = jbCssLine.split("\"", limit = 3)[1]
+val jbCss = get(jbCssUrl)
+
+docRoot.resolve("app.css").writeText(jbCss)
+
+println("Downloading WriterSide JS and respective license...")
+
+val jbJsLine = getExistingJsLine(files.first())
+val jbJsUrl = jbJsLine.split("\"", limit = 3)[1]
+
+docRoot.resolve("app.js").writeText(
+	get(jbJsUrl)
+)
+
+docRoot.resolve("app.js.LICENSE.txt").writeText(
+	get("$jbJsUrl.LICENSE.txt")
+)
+
+println("WriterSide CSS/JS downloaded")
+
+files.forEach {
+	println("Updating HTML for file: ${it.name}")
+
+	val content = it.readText()
+		.replace(jbCssLine, customCssHtml)
+		.replace(jbJsLine, customJsHtml)
+
+	it.writeText(content)
+}
+
+println("Done!")

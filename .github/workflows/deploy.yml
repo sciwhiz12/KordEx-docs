@@ -128,18 +128,21 @@ jobs:
           sourceMap: false
           omitSourceMapUrl: true
 
+      - name: Fix CSS
+        run: kotlin .github/fix-css.main.kts
+
       - name: Copy files, commit and push
 
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions-user@users.noreply.github.com"
-          
-          sudo mv style.css docs/mermaid.css
-          
+
+          sudo mv style.css docs/custom.css
+
           cp -r docs/* .
-          
-          sudo rm -rf docs algolia Writerside style.scss
-          
+
+          sudo rm -rf docs algolia Writerside style.scss .github .idea .editorconfig .gitignore README.md
+
           git add .
           git commit -am "Automatic deployment"
           git push --force origin deployment

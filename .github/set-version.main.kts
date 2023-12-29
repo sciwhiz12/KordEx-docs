@@ -7,7 +7,6 @@ import com.google.gson.JsonObject
 import io.github.z4kn4fein.semver.Version
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.w3c.dom.NodeList
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathFactory
