@@ -248,27 +248,27 @@
 
             <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
                 class AutoCompleteArgs : Arguments() {
-                private val optionsMap = mapOf(
-                "One" to "1",
-                "Two" to "2",
-                "Three" to "3",
-                "Four" to "4",
-                "Five" to "5",
-                "Six" to "6",
-                "Seven" to "7",
-                "Eight" to "8",
-                "Nine" to "9",
-                "Ten" to "10",
-                )
+                    private val optionsMap = mapOf(
+                        "One" to "1",
+                        "Two" to "2",
+                        "Three" to "3",
+                        "Four" to "4",
+                        "Five" to "5",
+                        "Six" to "6",
+                        "Seven" to "7",
+                        "Eight" to "8",
+                        "Nine" to "9",
+                        "Ten" to "10",
+                    )
 
-                val arg by string {
-                name = "input"
-                description = "Autocomplete argument"
+                    val arg by string {
+                        name = "input"
+                        description = "Autocomplete argument"
 
-                autoComplete {
-                suggestStringMap(optionsMap)
-                }
-                }
+                        autoComplete {
+                            suggestStringMap(optionsMap)
+                        }
+                    }
                 }
             </code-block>
 
@@ -494,14 +494,14 @@
 
             <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
                 class MutatedArgs : Arguments() {
-                val quoted by string {
-                name = "input"
-                description = "Mutated argument"
+                    val quoted by string {
+                        name = "input"
+                        description = "Mutated argument"
 
-                mutate { value ->
-                "Quoted: \"$value\""
-                }
-                }
+                        mutate { value ->
+                            "Quoted: \"$value\""
+                        }
+                    }
                 }
             </code-block>
         </chapter>
@@ -520,16 +520,16 @@
 
             <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
                 class ValidatedArgs : Arguments() {
-                val odd by int {
-                name = "input"
-                description = "Validated argument"
+                    val odd by int {
+                        name = "input"
+                        description = "Validated argument"
 
-                validate {
-                failIf("Odd numbers only, please!") {
-                value % 2 == 0
-                }
-                }
-                }
+                        validate {
+                            failIf("Odd numbers only, please!") {
+                                value % 2 == 0
+                            }
+                        }
+                    }
                 }
             </code-block>
 
