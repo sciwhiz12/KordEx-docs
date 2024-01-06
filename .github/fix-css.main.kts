@@ -45,6 +45,17 @@ fun getExistingJsLine(file: File): String {
 	return content.substring(start, end)
 }
 
+fun getExistingCopyrightLine(file: File): String {
+	val lineStart = "<p class=\"footer__copyright"
+	val lineEnd = "</p>"
+
+	val content = file.readText()
+	val start = content.indexOf(lineStart)
+	val end = content.indexOf(lineEnd, startIndex = start) + lineEnd.length
+
+	return content.substring(start, end)
+}
+
 val customCssHtml = """
 	<link href="/app.css" rel="stylesheet">
 	<link href="/custom.css" rel="stylesheet">
@@ -52,6 +63,15 @@ val customCssHtml = """
 
 val customJsHtml = """
 	<script src="/app.js" type="application/javascript"></script>
+""".trimIndent()
+
+val customCopyrightHtml = """
+	<p class="footer__copyright rs-text-3 rs-text-3_theme_dark" data-test="footer-copyright">
+		License:
+		<a href="https://creativecommons.org/publicdomain/zero/1.0/" data-test="external-link" class="link link--dark">
+			<span class="notranslate">Creative Commons Zero</span>
+		</a>
+	</p>
 """.trimIndent()
 
 println("Downloading WriterSide CSS...")
@@ -77,12 +97,15 @@ docRoot.resolve("app.js.LICENSE.txt").writeText(
 
 println("WriterSide CSS/JS downloaded")
 
+val jbCopyrightLine = getExistingCopyrightLine(files.first())
+
 files.forEach {
 	println("Updating HTML for file: ${it.name}")
 
 	val content = it.readText()
 		.replace(jbCssLine, customCssHtml)
 		.replace(jbJsLine, customJsHtml)
+		.replace(jbCopyrightLine, customCopyrightHtml)
 
 	it.writeText(content)
 }
