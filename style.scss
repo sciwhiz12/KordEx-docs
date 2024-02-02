@@ -65,3 +65,7 @@ tr[id*=":text:center"] {
 		padding-top: 22px;
 	}
 }
+
+li.list__item:not(:first-child) {
+	margin-top: 0.5em;
+}
