@@ -5,5 +5,241 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="Components ✏️" id="Components">
 
-    <p>Start typing here...</p>
+    <show-structure depth="2"/>
+
+    <p>
+        Discord provides a number of
+        <a href="https://discord.com/developers/docs/interactions/message-components">Message Components</a>,
+        allowing for more advanced forms of user interactions.
+        Kord Extensions exposes these via its components system.
+    </p>
+
+    <p>
+        When a user interacts with a component, a corresponding interaction event is fired.
+        There are two ways to handle these events, depending on what you're trying to do and how long-lived your
+        components should be.
+        Both of these approaches will be covered below.
+    </p>
+
+    <list>
+        <li>
+            <format style="bold">Short-lived components that do not persist:</format>
+            The convenience API provided by the <code>components</code> builder and <code>ComponentContainer</code>
+            type.
+        </li>
+
+        <li>
+            <format style="bold">Long-lived components that must work after the bot restarts:</format>
+            Writing an <a href="Events.topic">Event Handler</a> by yourself.
+        </li>
+    </list>
+
+    <chapter title="Understanding Components" id="understanding-components">
+        <p>
+            As Discord states, components are a framework for adding interactive elements to the messages your app or
+            bot sends.
+            There are several different types of components, and they're only available in specific contexts:
+        </p>
+
+        <table style="both">
+            <tr>
+                <td>Type</td>
+                <td>Units</td>
+                <td>Description</td>
+                <td>Messages</td>
+                <td>Modals</td>
+            </tr>
+
+            <tr>
+                <td>Action Row</td>
+                <td>Five</td>
+
+                <td>
+                    Container for other components, up to five rows per context.
+                    Each row has a width of five units.
+                </td>
+
+                <td>✅ Yes</td>
+                <td>✅ Yes</td>
+            </tr>
+
+            <tr>
+                <td>Button</td>
+                <td>One</td>
+                <td>Clickable button.</td>
+                <td>✅ Yes</td>
+                <td>❌ No</td>
+            </tr>
+
+            <tr>
+                <td>Select Menu</td>
+                <td>Five</td>
+
+                <td>
+                    Dropdown menu for selecting zero, one, or multiple items.
+                    Supports multiple data types: channels, mentionables, roles, strings, and users.
+                </td>
+
+                <td>✅ Yes</td>
+                <td>❌ No</td>
+            </tr>
+
+            <tr>
+                <td>Text Input</td>
+                <td>Five</td>
+                <td>Field that a user may use to input one or multiple lines of text.</td>
+                <td>❌ No</td>
+                <td>✅ Yes</td>
+            </tr>
+        </table>
+
+        <chapter title="Action Rows" id="understanding-action-rows">
+            <p>
+                Action rows act as a container for other components, and they must be used anywhere you wish to use a
+                component.
+                You may only have up to five rows of components in any single context.
+            </p>
+
+            <img alt="Graphic depicting an action row. It shows a row with five empty slots."
+                 src="action-row-empty.png"
+            />
+
+            <p>
+                Each component has a width measured in "units."
+                Action rows are five units wide, and thus may contain components up to a total width of five units.
+                If an action row contains multiple components, there should not be any gaps between them.
+            </p>
+
+            <img alt="Graphic depicting an example message with five empty action rows positioned below."
+                 src="action-row-example.png"
+            />
+        </chapter>
+
+        <chapter title="Buttons" id="understanding-buttons">
+            <p>
+                Buttons are clickable/tappable components, which the user may interact with to trigger an action or
+                open a link.
+                They are the only component type with a width of one unit, and thus they are the only type of
+                component that can appear multiple times in a single row.
+            </p>
+
+            <p>
+                Buttons may only be added to messages.
+                They cannot be added to modals.
+            </p>
+
+            <img alt="Graphic depicting an action row with a single button and four empty slots."
+                 src="action-row-button.png"
+            />
+
+            <img alt="Graphic depicting an action row with three buttons and two empty slots."
+                 src="action-row-buttons.png"
+            />
+
+            <p>
+                There are three types of buttons:
+            </p>
+
+            <list>
+                <li>
+                    <format style="bold">Action Buttons:</format>
+                    Buttons which trigger an event when interacted with,
+                    which your bot may react to.
+                </li>
+
+                <li>
+                    <format style="bold">Disabled Buttons:</format>
+                    Buttons which don't do anything when interacted
+                    with.
+                </li>
+
+                <li>
+                    <format style="bold">Link Buttons:</format>
+                    Buttons which open a predefined URL in the user's
+                    browser when interacted with.
+                </li>
+            </list>
+        </chapter>
+
+        <chapter title="Select Menus" id="understanding-select-menus">
+            <p>
+                Select Menus represent dropdown menus, allowing users to select zero, one, or multiple options from a
+                set of 25.
+                Select Menus have a width of five units, meaning they take up an entire row.
+            </p>
+
+            <p>
+                Select Menus may only be added to messages.
+                They cannot be added to modals.
+            </p>
+
+            <img alt="Graphic depicting an action row with a single select menu. The select menu spans all five slots, and there are no empty slots."
+                 src="action-row-select-menu.png"
+            />
+
+            <p>
+                Select menus support several different types of data:
+            </p>
+
+            <list>
+                <li>Channels</li>
+                <li>Mentionables (channels, roles and users)</li>
+                <li>Roles</li>
+                <li>Strings</li>
+                <li>Users</li>
+            </list>
+        </chapter>
+
+        <chapter title="Text Inputs" id="understanding-text-inputs">
+            <p>
+                Text Inputs represent editable text fields, allowing users to input arbitrary data.
+                Text Inputs have a width of five units, meaning they take up an entire row.
+            </p>
+
+            <p>
+                Text Inputs may only be added to modals.
+                They cannot be added to messages.
+            </p>
+
+            <img alt="Graphic depicting an action row with a single text input. The text input spans all five slots, and there are no empty slots."
+                 src="action-row-text.png"
+            />
+
+            <p>
+                Text Inputs support two different form factors:
+            </p>
+
+            <list>
+                <li>Line, for a single line of text.</li>
+                <li>Paragraph, for a larger, multi-line block of text.</li>
+            </list>
+        </chapter>
+    </chapter>
+
+    <chapter title="Components API" id="components-api">
+        <p>
+            Kord Extensions provides a convenient API for shorter-lived components.
+
+        </p>
+
+        <chapter title="Components Builder" id="components-api-builder">
+
+        </chapter>
+
+        <chapter title="Component Types" id="components-api-types">
+
+        </chapter>
+
+        <chapter title="Component Container" id="components-api-container">
+
+        </chapter>
+
+    </chapter>
+
+    <chapter title="Writing an Event Handler" id="event-handler">
+        <p>
+            For longer-lived components, including those that must work after the bot restarts, it may be better to try
+            writing your own <a href="Events.topic">Event Handler</a>.
+        </p>
+    </chapter>
 </topic>
