@@ -216,30 +216,79 @@
         </chapter>
     </chapter>
 
-    <chapter title="Components API" id="components-api">
+    <chapter title="Message Components" id="message-components">
         <p>
-            Kord Extensions provides a convenient API for shorter-lived components.
-
+            Kord Extensions provides a convenient API for shorter-lived message components.
+            This API is built around a core type - the <code>ComponentContainer</code> class.
         </p>
 
-        <chapter title="Components Builder" id="components-api-builder">
-
-        </chapter>
-
-        <chapter title="Component Types" id="components-api-types">
-
-        </chapter>
-
-        <chapter title="Component Container" id="components-api-container">
-
-        </chapter>
-
-    </chapter>
-
-    <chapter title="Writing an Event Handler" id="event-handler">
         <p>
-            For longer-lived components, including those that must work after the bot restarts, it may be better to try
-            writing your own <a href="Events.topic">Event Handler</a>.
+            To get started, use the <code>components</code> builder.
+            This builder is available for use in all message creation and editing builders.
         </p>
+
+        <note>
+            <p>
+                Kord Extensions does not provide an atomic API for modifying your components after they've been sent to
+                Discord.
+                This is mostly due to technical limitations within Kotlin's type system, and it's unlikely that this
+                will change any time soon.
+            </p>
+
+            <p>
+                If you wish to edit components, we suggest keeping a reference to the <code>ComponentContainer</code>
+                returned by the <code>components</code> builder, and any relevant components that you create.
+                The components within any given <code>ComponentContainer</code> may be applied to any message
+                creation/editing builder via the <code>applyComponents</code> extension function.
+            </p>
+        </note>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            channel.createMessage {
+                components {
+                    publicButton {
+                        label = "OK"
+                        style = ButtonStyle.Success
+
+                        action {
+                            respond {
+                                content = "Clicked: **OK**"
+                            }
+                        }
+                    }
+
+                    publicButton {
+                        label = "Cancel"
+                        style = ButtonStyle.Danger
+
+                        action {
+                            respond {
+                                content = "Clicked: **Cancel**"
+                            }
+                        }
+                    }
+                }
+            }
+        </code-block>
+
+        <chapter title="Components Builder" id="message-components-builder">
+
+        </chapter>
+
+        <chapter title="Component Types" id="message-components-types">
+
+        </chapter>
+
+        <chapter title="Component Container" id="message-components-container">
+
+        </chapter>
+
+        <chapter title="Writing an Event Handler" id="message-components-event-handler">
+            <p>
+                For longer-lived message components, including those that must work after the bot restarts, it may be
+                better to try writing your own <a href="Events.topic">Event Handler</a>.
+            </p>
+        </chapter>
+
     </chapter>
 </topic>
