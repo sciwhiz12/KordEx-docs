@@ -316,6 +316,16 @@
                 </tr>
 
                 <tr>
+                    <td><code>ignoreSelf</code></td>
+                    <td><code>Boolean</code></td>
+                    <td><code>true</code></td>
+
+                    <td>
+                        Whether to ignore messages sent by the bot, and thus avoid executing commands invoked by it.
+                    </td>
+                </tr>
+
+                <tr>
                     <td><code>invokeOnMention</code></td>
                     <td><code>Boolean</code></td>
                     <td><code>true</code></td>
