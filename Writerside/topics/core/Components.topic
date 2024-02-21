@@ -8,22 +8,22 @@
     <show-structure depth="2"/>
 
     <p>
-        Discord provides a number of
+        Discord provides several
         <a href="https://discord.com/developers/docs/interactions/message-components">Message Components</a>,
         allowing for more advanced forms of user interactions.
         Kord Extensions exposes these via its components system.
     </p>
 
     <p>
-        When a user interacts with a component, a corresponding interaction event is fired.
-        There are two ways to handle these events, depending on what you're trying to do and how long-lived your
+        When a user interacts with a component, Discord fires a corresponding interaction event.
+        You may handle these events in two ways, depending on what you're trying to do and how long-lived your
         components should be.
-        Both of these approaches will be covered below.
+	    We've covered both approaches below.
     </p>
 
     <list>
         <li>
-            <format style="bold">Short-lived components that do not persist:</format>
+            <format style="bold">Short-lived components that don’t persist:</format>
             The convenience API provided by the <code>components</code> builder and <code>ComponentContainer</code>
             type.
         </li>
@@ -38,7 +38,7 @@
         <p>
             As Discord states, components are a framework for adding interactive elements to the messages your app or
             bot sends.
-            There are several different types of components, and they're only available in specific contexts:
+            Several types of components exist, and they're only available in specific contexts:
         </p>
 
         <table style="both">
@@ -107,7 +107,7 @@
             <p>
                 Each component has a width measured in "units."
                 Action rows are five units wide, and thus may contain components up to a total width of five units.
-                If an action row contains multiple components, there should not be any gaps between them.
+                If an action row contains multiple components, there shouldn’t be any gaps between them.
             </p>
 
             <img alt="Graphic depicting an example message with five empty action rows positioned below."
@@ -119,13 +119,13 @@
             <p>
                 Buttons are clickable/tappable components, which the user may interact with to trigger an action or
                 open a link.
-                They are the only component type with a width of one unit, and thus they are the only type of
+                They’re the only component type with a width of one unit, and thus they’re the only type of
                 component that can appear multiple times in a single row.
             </p>
 
             <p>
-                Buttons may only be added to messages.
-                They cannot be added to modals.
+	            You may only add Buttons to messages.
+	            You can't add them to modals.
             </p>
 
             <img alt="Graphic depicting an action row with a single button and four empty slots."
@@ -137,7 +137,7 @@
             />
 
             <p>
-                There are three types of buttons:
+                Several types of buttons exist:
             </p>
 
             <list>
@@ -169,16 +169,16 @@
             </p>
 
             <p>
-                Select Menus may only be added to messages.
-                They cannot be added to modals.
+	            You may only add Select Menus to messages.
+	            You can't add them to modals.
             </p>
 
-            <img alt="Graphic depicting an action row with a single select menu. The select menu spans all five slots, and there are no empty slots."
+            <img alt="Graphic depicting an action row with a single select menu. The select menu spans all five slots, with no empty slots."
                  src="action-row-select-menu.png"
             />
 
             <p>
-                Select menus support several different types of data:
+                Select menus support several types of data:
             </p>
 
             <list>
@@ -197,11 +197,11 @@
             </p>
 
             <p>
-                Text Inputs may only be added to modals.
-                They cannot be added to messages.
+                You may only add Text Inputs to modals.
+                You can't add them to messages.
             </p>
 
-            <img alt="Graphic depicting an action row with a single text input. The text input spans all five slots, and there are no empty slots."
+            <img alt="Graphic depicting an action row with a single text input. The text input spans all five slots, with no empty slots."
                  src="action-row-text.png"
             />
 
@@ -219,7 +219,7 @@
     <chapter title="Message Components" id="message-components">
         <p>
             Kord Extensions provides a convenient API for shorter-lived message components.
-            This API is built around a core type - the <code>ComponentContainer</code> class.
+            The <code>ComponentContainer</code> class is the core type representing this API.
         </p>
 
         <p>
@@ -229,9 +229,9 @@
 
         <note>
             <p>
-                Kord Extensions does not provide an atomic API for modifying your components after they've been sent to
+                Kord Extensions doesn't provide an atomic API for modifying your components after you've sent them to
                 Discord.
-                This is mostly due to technical limitations within Kotlin's type system, and it's unlikely that this
+                This is mostly due to technical limitations within Kotlin's type system, and it is unlikely this
                 will change any time soon.
             </p>
 
@@ -271,16 +271,79 @@
             }
         </code-block>
 
-        <chapter title="Components Builder" id="message-components-builder">
+        <chapter title="Components DSL" id="message-components-dsl">
+			<p>
+				The <code>components</code> DSL function accepts extra arguments:
+			</p>
 
-        </chapter>
+	        <list>
+		        <li>
+			        <code>timeout</code>, an optional timeout <code>Duration</code>.
+			        This argument allows you to specify how long to wait (since the components were last interacted
+			        with) until the bot should stop waiting for interactions.
+			        Defaults to <code>null</code>, meaning the components will work until the bot restarts.
+		        </li>
+	        </list>
 
-        <chapter title="Component Types" id="message-components-types">
+	        <p>
+		        This function requires a callable block, a receiver on the <code>ComponentContainer</code> type.
+		        You should use this block to define the components to add to the message.
+		        The <code>ComponentContainer</code> will be returned by the function.
+	        </p>
 
-        </chapter>
+	        <p>
+		        The <code>ComponentContainer</code> class is <code>open</code>, and may be extended for advanced
+		        use-cases.
+		        If you need to create your own objects based on this class, you can use the <code>applyComponents</code>
+		        extension function available in all message creation/editing builders to apply its contents.
+	        </p>
 
-        <chapter title="Component Container" id="message-components-container">
+	        <chapter title="Adding Components" id="message-components-adding">
+		        <p>
+			        When adding components to messages directly, you need to define action rows for your components,
+			        and space them out yourself.
+			        The <code>ComponentContainer</code> still allows you to specify the rows your components belong to.
+			        However, for components with undefined rows, it will attempt to automatically pack them as tightly
+			        as possible, in the order they were defined.
+			        This automatic packing happens after your components are defined,
+		        </p>
 
+		        <p>
+			        For example, if you provide a select menu, six buttons and another select menu, then the container
+			        packs your components into rows that look like this:
+		        </p>
+
+		        <list type="decimal">
+			        <li>Select menu</li>
+			        <li>Five buttons</li>
+			        <li>One button</li>
+			        <li>Select menu</li>
+			        <li>Nothing</li>
+		        </list>
+
+		        <p>
+					If needed, you can provide row numbers when you define your components.
+			        When you provide a row number, the container packs the component within the specified row
+			        <format style="bold">immediately</format>.
+			        If you combine this approach by also defining unsorted components (as mentioned above), the
+			        container packs the unsorted components
+			        <format style="bold">alongside those with defined rows</format>, attempting to fill the rows up as
+			        tightly as possible.
+		        </p>
+
+		        <p>
+			        For example, if you provide a select menu on row 2, six unsorted buttons, and another select menu
+			        on row 3, then the container packs your components into rows that look like this:
+		        </p>
+
+		        <list type="decimal">
+			        <li>Five buttons</li>
+			        <li>Select menu</li>
+			        <li>Select menu</li>
+			        <li>One button</li>
+			        <li>Nothing</li>
+		        </list>
+	        </chapter>
         </chapter>
 
         <chapter title="Writing an Event Handler" id="message-components-event-handler">

@@ -69,3 +69,7 @@ tr[id*=":text:center"] {
 li.list__item:not(:first-child) {
 	margin-top: 0.5em;
 }
+
+ol > li.list__item::marker {
+	font-weight: 610;
+}
