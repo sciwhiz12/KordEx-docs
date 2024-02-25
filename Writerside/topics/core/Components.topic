@@ -344,6 +344,244 @@
 			        <li>Nothing</li>
 		        </list>
 	        </chapter>
+
+	        <chapter title="DSL Functions" id="message-components-dsl-functions">
+				<p>
+					The following functions are available for component creation.
+					We've split these by interaction type, just like the
+					<a href="Application-Commands.topic">Application Command</a> DSL functions.
+				</p>
+
+		        <table style="header-row">
+			        <tr>
+				        <td>Name</td>
+				        <td>Component</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>disabledButton</code></td>
+				        <td>Button (Disabled)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>ephemeralButton</code></td>
+				        <td>Button (Interactive)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>linkButton</code></td>
+				        <td>Button (Link)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>publicButton</code></td>
+				        <td>Button (Interactive)</td>
+			        </tr>
+
+			        <tr id="components-dsl-select-menus:div:top">
+				        <td><code>ephemeralChannelSelectMenu</code></td>
+				        <td>Select Menu (Channel)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>ephemeralRoleSelectMenu</code></td>
+				        <td>Select Menu (Role)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>ephemeralStringSelectMenu</code></td>
+				        <td>Select Menu (String)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>ephemeralUserSelectMenu</code></td>
+				        <td>Select Menu (User)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>publicChannelSelectMenu</code></td>
+				        <td>Select Menu (Channel)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>publicRoleSelectMenu</code></td>
+				        <td>Select Menu (Role)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>publicStringSelectMenu</code></td>
+				        <td>Select Menu (String)</td>
+			        </tr>
+
+			        <tr>
+				        <td><code>publicUserSelectMenu</code></td>
+				        <td>Select Menu (User)</td>
+			        </tr>
+		        </table>
+	        </chapter>
+
+	        <chapter title="Component Container API" id="component-container-api">
+				<p>
+					The <code>ComponentContainer</code> type exposes several useful APIs.
+					The <code>components</code> DSL function is a receiver for an object of this type, and it also
+					returns that object.
+				</p>
+
+		        <chapter title="Functions" id="component-container-api-functions">
+					<table style="header-row">
+						<tr>
+							<td>Name</td>
+							<td>Description</td>
+						</tr>
+
+						<tr>
+							<td><code>add</code></td>
+
+							<td>
+								Manually add a component to this container.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>cancel</code></td>
+
+							<td>
+								Cancel the timeout task, and remove all components from this container.
+								This is equivalent to timing out the container early, but it will not run the
+								callback defined via the <code>onTimeout</code> function.
+								<format style="bold">Note:</format> This will not update the components in any related
+								messages — you'll need to edit them to clear their components manually.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>onTimeout</code></td>
+
+							<td>
+								Register the callback to be run when the container times out.
+								<format style="bold">Note:</format> The <code>cancel</code> function won't run this
+								callback.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>remove</code></td>
+
+							<td>
+								Remove the given component from the container, and prevent it from being used.
+								<format style="bold">Note:</format> This will not update the components in any related
+								messages — use the <code>applyToMessage</code> function to do so.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>removeAll</code></td>
+
+							<td>
+								Remove all components from the container, and prevent them from being used.
+								<format style="bold">Note:</format> This will not update the components in any related
+								messages — use the <code>applyToMessage</code> function to do so.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>replace</code></td>
+
+							<td>
+								Replace a component within this container with another.
+								<format style="bold">Note:</format> This will not update the components in any related
+								messages — use the <code>applyToMessage</code> function to do so.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>sort</code></td>
+
+							<td>
+								Pack any unsorted components into rows.
+								<format style="bold">Note:</format> You generally won't need to call this function
+								yourself.
+							</td>
+						</tr>
+					</table>
+
+			        <table style="header-row">
+				        <tr>
+					        <td>Receiver</td>
+					        <td>Name</td>
+					        <td>Description</td>
+				        </tr>
+
+				        <tr>
+					        <td><code>MessageBuilder</code></td>
+					        <td><code>applyToMessage</code></td>
+
+					        <td>
+						        Apply the components within this container to the given message builder.
+					        </td>
+				        </tr>
+			        </table>
+		        </chapter>
+
+		        <chapter title="Properties" id="component-container-api-properties">
+					<table style="header-row">
+						<tr>
+							<td>Name</td>
+							<td>Type</td>
+							<td>Description</td>
+						</tr>
+
+						<tr>
+							<td><code>rows</code></td>
+							<td><code>Array&lt;MutableList&lt;Component&gt;&gt;</code></td>
+
+							<td>
+								An array representing sorted rows of components.
+								The <code>sort</code> function fills this.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>timeout</code></td>
+							<td><code>Duration?</code></td>
+
+							<td>
+								If defined, the container will remove and unregister its components once it reaches the
+								timeout, unless component interactions have happened.
+								When interactions happen, the timeout resets.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>timeoutCallback</code></td>
+							<td><code>ComponentContainer.() -> Unit</code></td>
+
+							<td>
+								A callback run when the timeout expires.
+								Defined by the <code>onTimeout</code> function.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>timeoutTask</code></td>
+							<td><code>Task?</code></td>
+
+							<td>
+								The scheduled timeout task, if a timeout exists.
+							</td>
+						</tr>
+
+						<tr>
+							<td><code>unsortedComponents</code></td>
+							<td><code>MutableList&lt;Component&gt;</code></td>
+
+							<td>
+								A list containing unsorted components, to be sorted by the <code>sort</code> function.
+							</td>
+						</tr>
+					</table>
+		        </chapter>
+	        </chapter>
         </chapter>
 
         <chapter title="Writing an Event Handler" id="message-components-event-handler">
@@ -352,6 +590,5 @@
                 better to try writing your own <a href="Events.topic">Event Handler</a>.
             </p>
         </chapter>
-
     </chapter>
 </topic>
