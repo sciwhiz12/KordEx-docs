@@ -276,7 +276,7 @@
                             Mutex
                         </a> to prevent this command from being run concurrently with itself.
 
-                        Defaults to <code>false</code>, meaning the command may be run multiple times concurrently.
+                        Defaults to <code>false</code>, allowing the command to run multiple times concurrently.
                     </td>
                 </tr>
 

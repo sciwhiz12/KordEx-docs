@@ -56,7 +56,8 @@
         <toc-element topic="Checks.topic"/>
         <toc-element topic="Exceptions.topic"/>
         <toc-element topic="Components.topic">
-            <toc-element topic="Modals.topic"/>
+	        <toc-element topic="Message-Components.topic"/>
+	        <toc-element topic="Modals.topic"/>
         </toc-element>
         <toc-element topic="Internationalisation.topic"/>
 
