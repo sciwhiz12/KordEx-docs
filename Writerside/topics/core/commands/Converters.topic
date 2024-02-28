@@ -1426,6 +1426,12 @@
                         If a guild emoji is specified only by name, the first emoji the bot finds from its guilds is
                         used.
                     </p>
+
+	                <warning>
+		                When a guild emoji is specified, Kord Extensions will always fail to find it unless your bot
+		                has the <code>GuildEmojis</code> intent enabled in
+		                <a href="Config-Intents.topic">the intents configuration</a>.
+	                </warning>
                 </td>
             </tr>
 
