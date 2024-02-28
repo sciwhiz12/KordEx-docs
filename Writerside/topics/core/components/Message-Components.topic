@@ -334,7 +334,7 @@
 							<td>
 								If your bot requires any permissions to be able to execute the <code>action</code>, use
 								this function to register those permissions.
-								If the component is interacted with while the bot does not have the specified
+								If the component is interacted with while the bot doesn’t have the specified
 								permissions, an error will be sent to the user, explaining which permissions the bot is
 								missing.
 							</td>
@@ -932,10 +932,193 @@
 		</chapter>
 	</chapter>
 
-	<chapter title="Handling Components Manually" id="handling-components-manually">
+	<chapter title="Handling Components Manually" id="manual">
 		<p>
 			For longer-lived message components, including those that must work after the bot restarts, it may be
 			better to create your components manually, and write your own <a href="Events.topic">Event Handlers</a>.
 		</p>
+
+		<chapter title="Defining Components" id="manual-components">
+			<p>
+				You can define components using Kord's built-in APIs in any message creation/editing builder.
+				You'll need to define the action rows first, and then place components within them.
+			</p>
+
+			<note>
+				<p>
+					If your extension creates multiple long-lived components, you should think about the IDs you use
+					for them.
+				</p>
+
+				<p>
+					Since you can parse the component ID when you receive an interaction event, it is a good idea to
+					use a system of prefixed IDs containing additional contextual information.
+					However, it is important to remember that your component IDs mustn’t clash with the components
+					defined in other extensions.
+				</p>
+
+				<p>
+					Component IDs may be up to 100 characters long.
+				</p>
+			</note>
+
+			<code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+				actionRow {
+					interactionButton(ButtonStyle.Success, "roles/add") {
+						label = "Add"
+					}
+
+					interactionButton(ButtonStyle.Danger, "roles/remove") {
+						label = "Remove"
+					}
+				}
+			</code-block>
+
+			<p>
+				You may use the following functions to define components:
+			</p>
+
+			<table style="header-row">
+				<tr>
+					<td>Name</td>
+					<td>Description</td>
+				</tr>
+
+				<tr>
+					<td><code>channelSelect</code></td>
+
+					<td>
+						Create a channel select menu.
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>interactionButton</code></td>
+
+					<td>
+						<p>
+							Create an interaction button.
+							You may create a disabled button by setting <code>disabled</code> to <code>true</code> in
+							the builder.
+						</p>
+
+						<warning>
+							Providing a style of <code>Link</code> will result in an error.
+							For link buttons, use <code>linkButton</code> instead.
+						</warning>
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>linkButton</code></td>
+
+					<td>
+						Create a link button.
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>mentionableSelect</code></td>
+
+					<td>
+						Create a select menu for all mentionable entity types.
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>roleSelect</code></td>
+
+					<td>
+						Create a role select menu.
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>stringSelect</code></td>
+
+					<td>
+						Create a string select menu.
+					</td>
+				</tr>
+
+				<tr>
+					<td><code>userSelect</code></td>
+
+					<td>
+						Create a user select menu.
+					</td>
+				</tr>
+			</table>
+
+			<p>
+				For more information, see
+				<a href="https://dokka.kord.dev/rest/dev.kord.rest.builder.component/-action-row-builder/index.html">
+					the Kord docs</a>.
+			</p>
+		</chapter>
+
+		<chapter title="Defining Event Handlers" id="manual-event-handlers">
+			<p>
+				Once you've created your components, you'll need to create some event handlers.
+				Kord provides several event types that are suitable for this:
+			</p>
+
+			<list>
+				<li>
+					<code>ComponentInteractionCreateEvent</code>, fired when a user interacts with any of this bot's
+					components.
+				</li>
+
+				<li>
+					<code>ButtonInteractionCreateEvent</code>, fired when a user interacts with any of this bot's
+					buttons.
+				</li>
+
+				<li>
+					<code>SelectMenuInteractionCreateEvent</code>, fired when a user interacts with any of this bot's
+					select menus.
+				</li>
+			</list>
+
+			<p>
+				These events also come in global and guild variants.
+			</p>
+
+			<code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+				val matchRegex = "role/\\w+".toRegex()
+
+				event&lt;GuildButtonInteractionCreateEvent&gt; {
+					check {
+						failIf(!matchRegex.matches(event.interaction.componentId))
+					}
+
+					action {
+						val action = matchRegex
+							.matchEntire(event.interaction.componentId)!!
+							.groupValues[1]
+
+						when (action) {
+							"add" -> {
+								// Add the role
+							}
+
+							"remove" -> {
+								// Remove the role
+							}
+
+							else -> event.interaction.respondEphemeral {
+								content = "Unknown action: $action"
+							}
+						}
+					}
+				}
+			</code-block>
+
+			<p>
+				For more information, see
+				<a href="https://dokka.kord.dev/core/dev.kord.core.event.interaction/-component-interaction-create-event/index.html">
+					the Kord docs</a>.
+			</p>
+		</chapter>
 	</chapter>
 </topic>
