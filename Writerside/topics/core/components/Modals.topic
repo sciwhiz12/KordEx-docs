@@ -5,5 +5,241 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="Modals ✏️" id="Modals">
 
-    <p>Start typing here...</p>
+    <p>
+        The term "Modal" refers to a pop-up window within the Discord client.
+        Modals contain a title and a number of <a href="Components.topic" />.
+    </p>
+
+    <p>
+        Modals support a specific set of components.
+    </p>
+
+    <table style="both">
+        <tr>
+            <td>Type</td>
+            <td>Input</td>
+            <td>Has ID</td>
+        </tr>
+
+        <tr>
+            <td>Action Row</td>
+            <td> </td>
+            <td>❌ No</td>
+        </tr>
+
+        <tr>
+            <td>Text Input (Line)</td>
+            <td>Single Line</td>
+            <td>✅ Yes</td>
+        </tr>
+
+        <tr>
+            <td>Text Input (Paragraph)</td>
+            <td>Multiple Lines</td>
+            <td>✅ Yes</td>
+        </tr>
+    </table>
+
+    <chapter title="Limitations" id="limitations">
+        <p>
+            There are a number of limitations to keep in mind when working with Discord modals.
+        </p>
+
+        <list>
+            <li>
+                Discord
+                <format style="bold">won't tell the bot when a user closes a Modal without submitting it.</format>
+                The only way around this is to use a timeout, and assume that the Modal won't be submitted once it
+                expires.
+            </li>
+
+            <li>
+                As Modals use interactions,
+                <format style="bold">they must be submitted within 15 minutes.</format>
+                The interaction will fail if the user takes too long to submit a Modal.
+            </li>
+
+            <li>
+                Modals have <format style="bold">a very limited number of compatible components.</format>
+                They used to support Select Menus, but this support was suddenly removed without explanation.
+            </li>
+
+            <li>
+                Modals <format style="bold">may only be sent as the first response to an interaction.</format>
+                This means they must be created and sent within 5 seconds, and they cannot be sent once the interaction
+                has been deferred, edited, or responded to.
+            </li>
+        </list>
+    </chapter>
+
+    <chapter title="Modal Forms" id="modal-forms">
+        <p>
+            Kord Extensions represents Modals using the <code>ModalForm</code> type.
+            This type provides a container for a Modal's components, settings, and data.
+            Similarly to <a href="Commands.topic" anchor="arguments-classes">command arguments classes</a>, you'll
+            need to extend <code>ModalForm</code> when creating your Modals.
+        </p>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+            class MyModal : ModalForm() {
+                override var title: String = "Test Modal"
+
+                val line = lineText {
+                    label = "Line Text"
+                    placeholder = "A single line of text"
+                }
+
+                val block = paragraphText {
+                    label = "Paragraph Text"
+                    placeholder = "A block of text which may span multiple lines"
+                }
+            }
+        </code-block>
+
+        <p>
+            The <code>ModalForm</code> type exposes a number of APIs.
+        </p>
+
+        <chapter title="Builders" id="modal-form-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>lineText</code></td>
+                    <td>Create a text input component which supports a single line of text.</td>
+                </tr>
+
+                <tr>
+                    <td><code>paragraphText</code></td>
+                    <td>Create a text input component which supports multiple lines of text.</td>
+                </tr>
+
+                <tr>
+                    <td><code>sendAndAwait</code></td>
+
+                    <td>
+                        <p>
+                            Convenience function to send the Modal to the current interaction, wait for its completion,
+                            and call the provided <code>callback</code> block.
+                        </p>
+
+                        <p>
+                            The callback block will receive a <code>ModalSubmitInteraction</code> as its first
+                            parameter if the Modal was submitted on time, or <code>null</code> otherwise.
+                        </p>
+
+                        <p>
+                            Several overrides are provided, which will fill the function's parameters using the given
+                            <a href="Events.topic" anchor="event-context">event</a> or
+                            <a href="Commands.topic" anchor="context-objects">command</a> context object.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Functions" id="modal-form-functions">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>sendAndDeferEphemeral</code></td>
+
+                    <td>
+                        Calls <code>sendAndAwait</code>, returning a deferred ephemeral interaction response if the
+                        Modal was submitted on time, or <code>null</code> otherwise.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>sendAndDeferPublic</code></td>
+
+                    <td>
+                        Calls <code>sendAndAwait</code>, returning a deferred public interaction response if the
+                        Modal was submitted on time, or <code>null</code> otherwise.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="modal-form-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>bundle</code></td>
+                    <td><code>String?</code></td>
+
+                    <td>
+                        Override this to provide a <a href="Internationalisation.topic">translation bundle</a>
+                        to use to translate this Modal's title, and its components' labels and placeholders.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>id</code></td>
+                    <td><code>String</code></td>
+
+                    <td>
+                        Modal ID,
+                        used to associate the <code>ModalForm</code> with the corresponding interaction events.
+                        This is a randomly generated UUID by default.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>timeout</code></td>
+                    <td><code>Duration</code></td>
+
+                    <td>
+                        How long to wait before assuming that the Modal was closed by the user.
+                        Defaults to 15 minutes.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>title</code></td>
+                    <td><code>String</code></td>
+
+                    <td>
+                        <format style="bold">Required:</format> Override this to set the Modal's title, which will be
+                        shown in the Discord client.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+    </chapter>
+
+    <chapter title="Implementation Strategies" id="strategies">
+        <p>
+            There are several ways to support Modals in your bots.
+            We've detailed the major approaches below.
+        </p>
+
+        <chapter title="Automatic" id="strategy-automatic">
+
+        </chapter>
+
+        <chapter title="Semi-Automatic" id="strategy-semi-automatic">
+
+        </chapter>
+
+        <chapter title="Manual" id="strategy-manual">
+
+        </chapter>
+
+        <chapter title="Without Forms" id="strategy-without-forms">
+
+        </chapter>
+    </chapter>
 </topic>
