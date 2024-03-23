@@ -46,8 +46,8 @@
                 <td>Type</td>
                 <td>Units</td>
                 <td>Description</td>
-                <td>Messages</td>
-                <td>Modals</td>
+                <td><a href="Message-Components.topic">Messages</a></td>
+                <td><a href="Modals.topic"/></td>
             </tr>
 
             <tr>
@@ -124,8 +124,8 @@
             </p>
 
             <p>
-	            You may only add Buttons to messages.
-	            You can't add them to modals.
+	            You may only <a href="Message-Components.topic">add Buttons to messages</a>.
+	            You can't add them to <a href="Modals.topic"/>.
             </p>
 
             <img alt="Graphic depicting an action row with a single button and four empty slots."
@@ -169,8 +169,8 @@
             </p>
 
             <p>
-	            You may only add Select Menus to messages.
-	            You can't add them to modals.
+	            You may only <a href="Message-Components.topic">add Select Menus to messages</a>.
+	            You can't add them to <a href="Modals.topic"/>.
             </p>
 
             <img alt="Graphic depicting an action row with a single select menu. The select menu spans all five slots, with no empty slots."
@@ -197,8 +197,8 @@
             </p>
 
             <p>
-	            You may only add Text Inputs to <a href="Modals.topic">Modals</a>.
-                You can't add them to messages.
+                You may only <a href="Modals.topic">add Text Inputs to Modals</a>.
+                You can't add them to <a href="Message-Components.topic">messages</a>.
             </p>
 
             <img alt="Graphic depicting an action row with a single text input. The text input spans all five slots, with no empty slots."
@@ -210,8 +210,8 @@
             </p>
 
             <list>
-                <li>Line, for a single line of text.</li>
-                <li>Paragraph, for a larger, multi-line block of text.</li>
+                <li><format style="bold">Line:</format> for a single line of text.</li>
+                <li><format style="bold">Paragraph:</format> for a larger, multi-line block of text.</li>
             </list>
         </chapter>
     </chapter>
