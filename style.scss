@@ -56,7 +56,7 @@ ol > li.list__item::marker {
 a.hover-title {
 	position: relative;
 
-	&:hover {
+	&:hover:after {
 		background: #303033;
 		border: solid 1px #ddd;
 		color: #FFF;
