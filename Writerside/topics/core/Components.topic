@@ -14,26 +14,6 @@
         Kord Extensions exposes these via its components system.
     </p>
 
-    <p>
-        When a user interacts with a component, Discord fires a corresponding interaction event.
-        You may handle these events in two ways, depending on what you're trying to do and how long-lived your
-        components should be.
-	    We've covered both approaches below.
-    </p>
-
-    <list>
-        <li>
-            <format style="bold">Short-lived components that don’t persist:</format>
-            The convenience API provided by the <code>components</code> builder and <code>ComponentContainer</code>
-            type.
-        </li>
-
-        <li>
-            <format style="bold">Long-lived components that must work after the bot restarts:</format>
-            Writing an <a href="Events.topic">Event Handler</a> by yourself.
-        </li>
-    </list>
-
     <chapter title="Understanding Components" id="understanding-components">
         <p>
             As Discord states, components are a framework for adding interactive elements to the messages your app or
