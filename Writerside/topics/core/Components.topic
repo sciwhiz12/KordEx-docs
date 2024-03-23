@@ -35,7 +35,8 @@
                 <td>Five</td>
 
                 <td>
-                    Container for other components, up to five rows per message or modal.
+                    Container for other components, up to five rows per <a href="Message-Components.topic">message</a>
+                    or <a href="Modals.topic">Modal</a>.
                     Each row has a width of five units.
                 </td>
 
