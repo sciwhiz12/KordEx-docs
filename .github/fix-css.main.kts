@@ -6,6 +6,14 @@ import java.io.File
 import kotlin.io.path.Path
 import kotlin.io.path.writeText
 
+val replacements: Map<String, String> = mapOf(
+	// Globe emoji 🌐
+	"\uD83C\uDF10" to "<a title=\"May be a translation key.\" href=\"/internationalisation.html\">\uD83C\uDF10</a>",
+
+	// Tag emoji 🏷️
+	"\uD83C\uDFF7\uFE0F" to "<a title=\"Translation bundle.\" href=\"/internationalisation.html\">\uD83C\uDF10</a>",
+)
+
 val docRoot = Path("docs/")
 val client = OkHttpClient()
 
@@ -102,10 +110,14 @@ println("WriterSide CSS/JS downloaded")
 files.forEach {
 	println("Updating HTML for file: ${it.name}")
 
-	val content = it.readText()
+	var content = it.readText()
 		.replace(jbCssLine, customCssHtml)
 		.replace(jbJsLine, customJsHtml)
 //		.replace(jbCopyrightLine, customCopyrightHtml)
+
+	replacements.forEach { (string, replacement) ->
+		content = content.replace(string, replacement)
+	}
 
 	it.writeText(content)
 }

@@ -179,18 +179,22 @@
 
         <chapter title="Common Settings" id="settings-all">
             <chapter title="Properties" id="settings-all-properties">
-                <table style="header-row">
+                <table style="both">
                     <tr>
+                        <td> </td>
                         <td>Name</td>
                         <td>Type</td>
                         <td>Description</td>
                     </tr>
 
                     <tr id="settings-all-properties-required:header:text:center">
-                        <td colspan="3">Required Properties</td>
+                        <td colspan="4">
+                            Required Properties
+                        </td>
                     </tr>
 
                     <tr>
+                        <td>🌐</td>
                         <td><code>description</code></td>
                         <td><code>String</code></td>
 
@@ -201,6 +205,7 @@
                     </tr>
 
                     <tr>
+                        <td>🌐</td>
                         <td><code>name</code></td>
                         <td><code>String</code></td>
 
@@ -635,14 +640,16 @@
             </chapter>
 
             <chapter title="Properties" id="settings-all-validator-properties">
-                <table style="header-row">
+                <table style="both">
                     <tr>
+                        <td> </td>
                         <td>Name</td>
                         <td>Type</td>
                         <td>Description</td>
                     </tr>
 
                     <tr>
+                        <td> </td>
                         <td><code>context</code></td>
                         <td><code>CommandContext</code></td>
 
@@ -652,6 +659,7 @@
                     </tr>
 
                     <tr>
+                        <td>🏷️</td>
                         <td><code>defaultBundle</code></td>
                         <td><code>String?</code></td>
 
@@ -670,6 +678,7 @@
                     </tr>
 
                     <tr>
+                        <td>🌐</td>
                         <td><code>errorResponseKey</code></td>
                         <td><code>String</code></td>
 
@@ -692,6 +701,7 @@
                     </tr>
 
                     <tr>
+                        <td> </td>
                         <td><code>message</code></td>
                         <td><code>String?</code></td>
 
@@ -709,6 +719,7 @@
                     </tr>
 
                     <tr>
+                        <td> </td>
                         <td><code>passed</code></td>
                         <td><code>Boolean</code></td>
 
@@ -720,6 +731,7 @@
                     </tr>
 
                     <tr>
+                        <td> </td>
                         <td><code>value</code></td>
                         <td><code>T</code></td>
 
@@ -748,7 +760,7 @@
 
                         <td>
                             Add a choice.
-                            This function takes a human-readable <code>key</code> argument, which will be shown to
+                            This function takes a human-readable 🌐 <code>key</code> argument, which will be shown to
                             the user on Discord.
                             When the command is submitted, the corresponding <code>value</code> will be provided as the
                             value for your argument.
@@ -766,7 +778,7 @@
                             </p>
 
                             <p>
-                                This map's string keys must be a human-readable representation of their corresponding
+                                This map's 🌐 string keys must be a human-readable representation of their corresponding
                                 values, as they'll be shown to the user on Discord.
                             </p>
 
@@ -1188,14 +1200,14 @@
                         <def title="Converter Properties" id="enum-properties">
                             <list>
                                 <li>
-                                    <format style="bold">Required</format>: <code>typeName</code>
+                                    <format style="bold">Required</format>: 🌐 <code>typeName</code>
                                     (<code>String</code>) — Human-readable short name for whatever the given enum
                                     represents.
                                     Should be no more than two or three words.
                                 </li>
 
                                 <li>
-                                    <code>bundle</code> (<code>String?</code>) — Optional
+                                    🏷️ <code>bundle</code> (<code>String?</code>) — Optional
                                     <a href="Internationalisation.topic">translation bundle</a> to use to translate
                                     this converter's strings, including the <code>typeName</code> property.
                                 </li>

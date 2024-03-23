@@ -216,14 +216,16 @@
 				Your converter must override some properties defined by the base converter types:
 			</p>
 
-			<table>
+			<table style="both">
 				<tr>
+					<td> </td>
 					<td>Name</td>
 					<td>Type</td>
 					<td>Description</td>
 				</tr>
 
 				<tr>
+					<td>🌐</td>
 					<td><code>signatureTypeString</code></td>
 					<td><code>String</code></td>
 
@@ -239,14 +241,16 @@
 				Additionally, you may override the following properties as required:
 			</p>
 
-			<table>
+			<table style="both">
 				<tr>
+					<td> </td>
 					<td>Name</td>
 					<td>Type</td>
 					<td>Description</td>
 				</tr>
 
 				<tr>
+					<td>🏷️</td>
 					<td><code>bundle</code></td>
 					<td><code>String?</code></td>
 
@@ -259,6 +263,7 @@
 				</tr>
 
 				<tr>
+					<td>🌐</td>
 					<td><code>errorTypeString</code></td>
 					<td><code>String?</code></td>
 
@@ -271,6 +276,7 @@
 				</tr>
 
 				<tr>
+					<td> </td>
 					<td><code>showTypeInSignature</code></td>
 					<td><code>Boolean</code></td>
 

@@ -156,12 +156,14 @@
         <chapter title="Properties" id="context-properties">
             <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>cache</code></td>
                     <td><code>MutableStringKeyedMap&lt;Any&gt;</code></td>
 
@@ -181,6 +183,7 @@
                 </tr>
 
                 <tr>
+                    <td>🏷️</td>
                     <td><code>defaultBundle</code></td>
                     <td><code>String?</code></td>
 
@@ -190,6 +193,7 @@
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>errorResponseKey</code></td>
                     <td><code>String</code></td>
 
@@ -202,6 +206,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>event</code></td>
                     <td><code>T: Event</code></td>
 
@@ -211,6 +216,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>locale</code></td>
                     <td><code>Locale</code></td>
 
@@ -222,6 +228,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>message</code></td>
                     <td><code>String?</code></td>
 
@@ -232,7 +239,7 @@
                 </tr>
 
                 <tr>
-
+                    <td> </td>
                     <td><code>passed</code></td>
                     <td><code>Boolean</code></td>
 

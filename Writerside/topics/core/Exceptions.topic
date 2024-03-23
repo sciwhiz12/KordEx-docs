@@ -5,6 +5,8 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="Exceptions" id="Exceptions">
 
+    <show-structure depth="2"/>
+
     <p>
         Kord Extensions provides a number of extra exception types.
         These are useful for understanding precisely what went wrong in specific situations, but there are some
@@ -37,14 +39,16 @@
                 This exception supports the following extra properties:
             </p>
 
-            <table style="header-row">
+            <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>reason</code></td>
                     <td><code>String</code></td>
 
@@ -54,6 +58,7 @@
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>translationKey</code></td>
                     <td><code>String?</code></td>
 
@@ -109,7 +114,7 @@
                 </tr>
 
                 <tr>
-                    <td><code>bundle</code></td>
+                    <td>🏷️ <code>bundle</code></td>
                     <td><code>String?</code></td>
 
                     <td>

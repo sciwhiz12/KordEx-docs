@@ -226,20 +226,22 @@
         </chapter>
 
         <chapter title="Properties" id="standalone-properties">
-            <table style="header-row">
+            <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr id="standalone-properties-required:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Required Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>description</code></td>
                     <td><code>String</code></td>
 
@@ -251,12 +253,13 @@
                 </tr>
 
                 <tr id="standalone-properties-other:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Other Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>parentCommand</code></td>
                     <td><code>SlashCommand?</code></td>
 
@@ -266,6 +269,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>parentGroup</code></td>
                     <td><code>SlashGroup?</code></td>
 
@@ -340,20 +344,22 @@
         </chapter>
 
         <chapter title="Properties" id="command-group-properties">
-            <table style="header-row">
+            <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr id="command-group-properties-required:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Required Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>description</code></td>
                     <td><code>String</code></td>
 
@@ -374,12 +380,13 @@
                 </tr>
 
                 <tr id="command-group-properties-other:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Other Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>parentCommand</code></td>
                     <td><code>SlashCommand?</code></td>
 

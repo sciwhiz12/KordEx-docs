@@ -32,27 +32,6 @@ tr[id*=":text:center"] {
 }
 
 .toc li {
-	&[data-toc-scroll="Welcome"] a::before {
-		content: "🏠";
-		position: absolute;
-		left: 5px;
-		padding-top: 7px;
-		font-size: 1.3em;
-	}
-
-	&[data-toc-scroll*=":link"] a::after {
-		content: "";
-		margin-left: 0;
-	}
-
-	&[data-toc-scroll*=":link"] a::before {
-		content: "🔗";
-		position: absolute;
-		left: 5px;
-		padding-top: 7px;
-		font-size: 1.3em;
-	}
-
 	&[data-toc-scroll*=":div:bottom"] {
 		border-bottom: 1px solid var(--wh-color-border-default) !important;
 		margin-bottom: 22px;

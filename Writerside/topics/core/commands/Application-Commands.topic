@@ -114,20 +114,22 @@
         </chapter>
 
         <chapter title="Properties" id="command-properties">
-            <table style="header-row">
+            <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr id="command-properties-required:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Required Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>name</code></td>
                     <td><code>String</code></td>
 
@@ -141,12 +143,13 @@
                 </tr>
 
                 <tr id="command-properties-optional:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Optional Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>allowByDefault</code></td>
                     <td><code>Boolean</code></td>
 
@@ -160,6 +163,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>allowInDms</code></td>
                     <td><code>Boolean</code></td>
 

@@ -231,20 +231,22 @@
         </chapter>
 
         <chapter title="Properties" id="standalone-properties">
-            <table style="header-row">
+            <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr id="standalone-properties-required:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Required Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>description</code></td>
                     <td><code>String</code></td>
 
@@ -258,6 +260,7 @@
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>name</code></td>
                     <td><code>String</code></td>
 
@@ -269,12 +272,13 @@
                 </tr>
 
                 <tr id="standalone-properties-optional:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Optional Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>aliases</code></td>
                     <td><code>Array &lt;String&gt;</code></td>
 
@@ -286,6 +290,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>allowKeywordArguments</code></td>
                     <td><code>Boolean</code></td>
 
@@ -297,6 +302,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>enabled</code></td>
                     <td><code>Boolean</code></td>
 
@@ -308,6 +314,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>hidden</code></td>
                     <td><code>Boolean</code></td>
 
@@ -319,6 +326,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>localeFallback</code></td>
                     <td><code>Boolean</code></td>
 
@@ -332,12 +340,13 @@
                 </tr>
 
                 <tr id="standalone-properties-translation:header:text:center">
-                    <td colspan="3">
+                    <td colspan="4">
                         Translation-Related Properties
                     </td>
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>aliasKey</code></td>
                     <td><code>String?</code></td>
 
@@ -349,6 +358,7 @@
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>signature</code></td>
                     <td><code>String?</code></td>
 
@@ -535,7 +545,7 @@
                     <td><code>Message.respondTranslated</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic"><code>key</code></a>,
+                        <a href="Internationalisation.topic">🌐 <code>key</code></a>,
                         <a href="Internationalisation.topic"><code>replacements</code></a>,
                         <code>useReply = true</code>
                     </td>

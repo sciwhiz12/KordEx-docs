@@ -231,14 +231,16 @@
                 Mutable properties may be set in the builder function used to register your command.
             </p>
 
-            <table style="header-row">
+            <table style="both">
                 <tr>
+                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
+                    <td>🏷️</td>
                     <td><code>bundle</code></td>
                     <td><code>String?</code></td>
                     <td>
@@ -248,6 +250,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>extension</code></td>
                     <td><code>Extension</code></td>
 
@@ -255,6 +258,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>kord</code></td>
 
                     <td>
@@ -267,6 +271,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>locking</code></td>
                     <td><code>Boolean</code></td>
 
@@ -281,6 +286,7 @@
                 </tr>
 
                 <tr>
+                    <td>🌐</td>
                     <td><code>name</code></td>
                     <td><code>String</code></td>
 
@@ -291,6 +297,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>sentry</code></td>
                     <td>
                         <a href="Sentry.topic">
@@ -302,6 +309,7 @@
                 </tr>
 
                 <tr>
+                    <td> </td>
                     <td><code>translationsProvider</code></td>
 
                     <td>
@@ -429,7 +437,7 @@
                 </tr>
 
                 <tr>
-                    <td><code>bundle</code></td>
+                    <td>🏷️ <code>bundle</code></td>
                     <td><code>String?</code></td>
 
                     <td>The command's translation bundle, falling back to the extension's if not defined.</td>

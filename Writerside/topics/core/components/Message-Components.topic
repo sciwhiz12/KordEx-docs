@@ -283,7 +283,7 @@
 						</tr>
 
 						<tr>
-							<td><code>bundle</code></td>
+							<td>🏷️ <code>bundle</code></td>
 							<td><code>String?</code></td>
 
 							<td>
@@ -738,8 +738,8 @@
 
 								<td>
 									Add an option to the list of potential options for this menu.
-									This is optinally a builder function, used to configure the option's
-									description, emoji and default selection state.
+									This is optionally a builder function, used to configure the option's
+									description, emoji, and default selection state.
 								</td>
 							</tr>
 						</table>
