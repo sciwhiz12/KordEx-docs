@@ -61,8 +61,6 @@ a.hover-title {
 		border: solid 1px #ddd;
 		color: #FFF;
 
-		content: attr(title);
-
 		padding: 5px 12px;
 		position: absolute;
 
@@ -71,4 +69,13 @@ a.hover-title {
 
 		transform: translateX(-50%);
 	}
+
+	&.translation-key:hover:after {
+		content: "May be a translation key."
+	}
+
+	&.translation-bundle:hover:after {
+		content: "Translation bundle."
+	}
 }
+
