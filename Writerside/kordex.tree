@@ -7,7 +7,7 @@
                   start-page="Welcome.topic">
 
     <toc-element topic="Welcome.topic"/>
-	<toc-element toc-title="Dokka API Docs" href="https://dokka.kordex.dev"/>
+	<toc-element id="dokka :div:top :link" toc-title="Dokka API Docs" href="https://dokka.kordex.dev"/>
 
     <toc-element topic="About.topic">
         <toc-element topic="Framework-Comparison.topic"/>
