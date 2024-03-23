@@ -8,10 +8,10 @@ import kotlin.io.path.writeText
 
 val replacements: Map<String, String> = mapOf(
 	// Globe emoji 🌐
-	"\uD83C\uDF10" to "<a class=\"hover-title translation-key\" href=\"/internationalisation.html\">\uD83C\uDF10</a>",
+	"\uD83C\uDF10" to "<a class=\"hover-title translation-key\" data-tooltip=\"May be a translation key.\" href=\"/internationalisation.html\">\uD83C\uDF10</a>",
 
 	// Tag emoji 🏷️
-	"\uD83C\uDFF7\uFE0F" to "<a class=\"hover-title translation-bundle\" href=\"/internationalisation.html\">\uD83C\uDFF7\uFE0F</a>",
+	"\uD83C\uDFF7\uFE0F" to "<a class=\"hover-title translation-bundle\" data-tooltip=\"Translation bundle.\" href=\"/internationalisation.html\">\uD83C\uDFF7\uFE0F</a>",
 )
 
 val docRoot = Path("docs/")
