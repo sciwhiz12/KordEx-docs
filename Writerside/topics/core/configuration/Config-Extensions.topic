@@ -358,6 +358,17 @@
                         Whether to ping users in response to their <code>feedback</code> chat command invocations.
                     </td>
                 </tr>
+
+                <tr>
+                    <td><code>sampleRate</code></td>
+                    <td><code>Double</code></td>
+                    <td><code>1.0</code></td>
+
+                    <td>
+                        How many submitted events to send to Sentry, as a percentage.
+                        <code>1.0</code> means all events, <code>0.1</code> means 10% of the events, and so on.
+                    </td>
+                </tr>
             </table>
 
             <p>
