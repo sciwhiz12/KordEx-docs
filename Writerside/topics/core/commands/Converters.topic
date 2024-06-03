@@ -96,11 +96,12 @@
 
             <tr>
                 <td>Choice</td>
-                <td><a href="Slash-Commands.topic" /> only</td>
+                <td>All</td>
 
                 <td>
-                    A converter type that represents a single slash command argument that is limited to a predefined
-                    set of specific choices.
+                    A converter type that represents a single argument that is limited to a predefined set of specific
+                    choices.
+                    When used with <a href="Slash-Commands.topic" />, user input will be limited to the given choices.
                 </td>
             </tr>
         </table>
@@ -761,7 +762,7 @@
                         <td>
                             Add a choice.
                             This function takes a human-readable 🌐 <code>key</code> argument, which will be shown to
-                            the user on Discord.
+                            the user on Discord when using <a href="Slash-Commands.topic" />.
                             When the command is submitted, the corresponding <code>value</code> will be provided as the
                             value for your argument.
                         </td>
