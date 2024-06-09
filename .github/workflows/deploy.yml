@@ -35,7 +35,7 @@ jobs:
           instance: ${{ env.INSTANCE }}
           artifact: ${{ env.ARTIFACT }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
 
         with:
           name: docs
@@ -46,7 +46,7 @@ jobs:
 
           retention-days: 7
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
 
         with:
           name: algolia-indexes
@@ -87,7 +87,7 @@ jobs:
         run: |
           git checkout --orphan deployment
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
 
         with:
           name: docs
