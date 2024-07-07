@@ -79,10 +79,7 @@
                     kord-extensions = "%version%"
 
                     [libraries]
-                    kord-extensions = {
-                        module = "com.kotlindiscord.kord.extensions:kord-extensions",
-                        version.ref = "kord-extensions"
-                    }
+                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kord-extensions" }
                 </code-block>
 
                 <p>
