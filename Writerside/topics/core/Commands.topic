@@ -65,10 +65,10 @@
 
         <code-block lang="kotlin" collapsible="true" collapsed-title="Example Arguments subclass">
             inner class MyArguments : Arguments() {
-            val target by user {
-            name = "target"
-            description = "Target user"
-            }
+                val target by user {
+                    name = "target"
+                    description = "Target user"
+                }
             }
         </code-block>
 
