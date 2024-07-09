@@ -62,6 +62,11 @@
                 <a href="https://github.com/Kord-Extensions/template"
                    type="tools"
                    summary="Get started quickly by using our template to create your bot.">Template Project</a>
+
+                <a href="https://github.com/HyacinthBots/doc-generator"
+                   type="library"
+                   summary="Automatically generate documentation for your bot's commands.">Hyacinth
+                    docs generator</a>
             </cards>
 
             <cards narrow="true">

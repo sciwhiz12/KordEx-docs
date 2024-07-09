@@ -143,7 +143,13 @@
 			<tr>
 				<td><format style="bold">Bot Docs Generator</format></td>
 				<td>✅ Markdown tables for commands</td>
-				<td>🟡 Planned</td>
+				<td>
+					🟡
+					<a href="https://github.com/HyacinthBots/doc-generator">
+						Third-party Markdown command doc generator
+					</a>,
+					first-party planned later
+				</td>
 			</tr>
 
 			<tr>
