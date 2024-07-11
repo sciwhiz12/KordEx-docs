@@ -202,6 +202,33 @@
                     &lt;/dependencies&gt;
                 </code-block>
             </tab>
+
+            <tab group-key="sbt" title="SBT">
+                <warning>
+                    <p>
+                        Kord Extensions is developed using Gradle, and none of the developers are familiar with SBT.
+                    </p>
+                    <p>
+                        While Gradle is highly recommended, if you do decide to use SBT, we'd appreciate feedback
+                        on the below instructions —
+                        especially if corrections or more detail is required.
+                    </p>
+                </warning>
+                <p>
+                    Add the following to your <code>build.sbt</code>.
+                    For more information, see
+                    <a href="https://github.com/pfn/kotlin-plugin">the Kotlin SBT plugin</a>.
+                </p>
+                <br/>
+
+                <code-block lang="scala">
+					resolvers += Resolver.sonatypeOssRepos("snapshots")
+
+					libraryDependencies ++= Seq(
+						"com.kotlindiscord.kord.extensions" % "kord-extensions" % "%version%"
+					)
+                </code-block>
+            </tab>
         </tabs>
     </chapter>
 </topic>
