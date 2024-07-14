@@ -247,6 +247,18 @@
 
                         <tr>
                             <td> </td>
+                            <td><code>translateInitialValue</code></td>
+                            <td><code>Boolean</code></td>
+
+                            <td>
+                                Whether to attempt to translate the <code>initialValue</code> when the Modal is sent
+                                to Discord.
+                                Defaults to <code>false</code>.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td> </td>
                             <td><code>value</code></td>
                             <td><code>String?</code></td>
 
