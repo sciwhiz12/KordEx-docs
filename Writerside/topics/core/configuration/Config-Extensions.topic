@@ -274,7 +274,7 @@
 
                         <p>
                             Data type transformers are run before Kord Extensions adds the data defined in the
-                            <code>SentryCapture</code> object's properties are added to the relevant Sentry object.
+                            <code>SentryCapture</code> object's properties is added to the relevant Sentry object.
                         </p>
                     </td>
                 </tr>
