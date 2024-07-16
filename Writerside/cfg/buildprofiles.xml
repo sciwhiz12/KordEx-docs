@@ -2,27 +2,31 @@
 <buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-    <variables>
-		<algolia-api-key>77906f3f11b79df631efbdc8d382ffc5</algolia-api-key>
-		<algolia-id>00TQKB9RBW</algolia-id>
-		<algolia-index>KordEx Docs</algolia-index>
-
-		<browser-edits-url>https://github.com/Kord-Extensions/docs/tree/root/</browser-edits-url>
-		<color-preset>contrast</color-preset>
-		<download-page>https://github.com/Kord-Extensions/kord-extensions</download-page>
-		<download-title>GitHub</download-title>
-		<header-logo>logo.svg</header-logo>
-		<enable-browser-edits>true</enable-browser-edits>
-		<noindex-content>false</noindex-content>
-		<primary-color>blueberry</primary-color>
-		<showDownloadButton>true</showDownloadButton>
-	</variables>
-
     <build-profile instance="kordex">
-        <variables>
+		<variables>
+			<algolia-api-key>77906f3f11b79df631efbdc8d382ffc5</algolia-api-key>
+			<algolia-id>00TQKB9RBW</algolia-id>
+			<algolia-index>KordEx Docs</algolia-index>
+
+			<color-preset>contrast</color-preset>
+			<custom-css>custom.css</custom-css>
+			<custom-favicons>logo.png</custom-favicons>
+
+			<link-color>#5865F2</link-color>
+			<primary-color>#5865F2</primary-color>
+
+			<browser-edits-url>https://github.com/Kord-Extensions/docs/tree/root/</browser-edits-url>
+			<download-page>https://github.com/Kord-Extensions/kord-extensions</download-page>
+			<download-title>GitHub</download-title>
+			<header-logo>logo.png</header-logo>
+			<enable-browser-edits>true</enable-browser-edits>
 			<noindex-content>false</noindex-content>
+			<offline-docs>true</offline-docs>
+			<showDownloadButton>true</showDownloadButton>
 		</variables>
     </build-profile>
+
+	<sitemap priority="0.5" change-frequency="weekly" />
 
 	<footer>
 		<copyright>⚖️ CC0</copyright>

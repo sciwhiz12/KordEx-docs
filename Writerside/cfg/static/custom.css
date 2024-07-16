@@ -52,31 +52,3 @@ li.list__item:not(:first-child) {
 ol > li.list__item::marker {
 	font-weight: 610;
 }
-
-/*
-a.hover-title {
-	position: relative;
-
-	&:hover:after {
-		background: #303033;
-		border: solid 1px #ddd;
-		color: #FFF;
-
-		padding: 5px 12px;
-		position: absolute;
-
-		top: 100%;
-		left: 50%;
-
-		transform: translateX(-50%);
-	}
-
-	&.translation-key:hover:after {
-		content: "May be a translation key."
-	}
-
-	&.translation-bundle:hover:after {
-		content: "Translation bundle."
-	}
-}
-*/
