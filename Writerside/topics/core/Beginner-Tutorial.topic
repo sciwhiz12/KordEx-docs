@@ -176,7 +176,6 @@
                     slf4j = "2.0.9"
 
                     [libraries]
-                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kord-extensions" }
                     kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
 
                     slf4j = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
@@ -196,35 +195,20 @@
 
                 <code-block lang="kotlin">
                     plugins {
-                        application
-
                         // Update this if you change the Kotlin version in libs.versions.toml
                         kotlin("jvm") version "KOTLIN_VERSION"
-                    }
 
-                    repositories {
-                        google()
-                        mavenCentral()
-
-                        maven {
-                            name = "Sonatype Snapshots (Legacy)"
-                            url = uri("https://oss.sonatype.org/content/repositories/snapshots")
-                        }
-
-                        maven {
-                            name = "Sonatype Snapshots"
-                            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-                        }
+                        // The KordEx plugin
+                        id("dev.kordex.gradle.kordex") version "%plugin-version%"
                     }
 
                     dependencies {
                         implementation(libs.kotlin.stdlib)
-                        implementation(libs.kord.extensions)
                         implementation(libs.slf4j)
                     }
 
-                    application {
-                        mainClass.set("com.example.bot.AppKt")
+                    kordEx {
+                        mainClass = "com.example.bot.AppKt"
                     }
                 </code-block>
             </li>
@@ -328,7 +312,7 @@
         </list>
 
         <p switcher-key="Other">
-            Once Gradle has finished building your project, you should see <code>BUILD SUCCESS</code>in the output
+            Once Gradle has finished building your project, you should see <code>BUILD SUCCESS</code> in the output.
         </p>
 
         <p>
@@ -393,20 +377,27 @@
             you created via the <a href="https://discord.com/developers">Discord Developer Portal</a>.
         </p>
 
+        <warning>
+            If you're using Git or another version-control system, remember not to push the <path>.env</path> file to
+            an online repository.
+            To avoid this, you may wish to set up a <a href="https://git-scm.com/docs/gitignore">gitignore</a>, or use
+            whatever similar system your version-control system provides.
+        </warning>
+
         <code-block lang="plain text">
             TOKEN=DISCORD_TOKEN
         </code-block>
 
         <p>
             At this point, you should have the simplest possible bot. You can start it by running the <code>run</code>
-            Gradle task, but at this point it won't do very much.
+            Gradle task, but it won't do very much yet.
             In the next section, let's add some functionality to your bot.
         </p>
     </chapter>
 
     <chapter title="Adding Some Functionality" id="adding-some-functionality">
         <p>
-            Using a concept called "Extensions," let's create a basic command.
+            Using "Extensions," let's create a basic command.
             This command is an updated version of the classic <code>!slap</code> command that was a common feature
             present in IRC bots a long time ago.
         </p>

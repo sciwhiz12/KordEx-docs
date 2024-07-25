@@ -15,6 +15,7 @@ import kotlin.io.path.Path
 val client = OkHttpClient()
 val gson = Gson()
 
+val PLUGIN_URL = "https://plugins.gradle.org/m2/dev/kordex/gradle/plugins/kordex/maven-metadata.xml"
 val RELEASES_URL = "https://repo1.maven.org/maven2/com/kotlindiscord/kord/extensions/kord-extensions/maven-metadata.xml"
 val SNAPSHOTS_URL = "https://s01.oss.sonatype.org/service/local/repositories/snapshots/content/" +
 	"com/kotlindiscord/kord/extensions/kord-extensions" +
@@ -59,6 +60,7 @@ val latestSnapshot = Version.parse(getLatest(SNAPSHOTS_URL))
 val latestRelease = Version.parse(getLatest(RELEASES_URL))
 
 val latest = maxOf(latestSnapshot, latestRelease)
+val latestPlugin = Version.parse(getLatest(PLUGIN_URL))
 
 println("Latest snapshot version: $latestSnapshot")
 println("Latest release version: $latestRelease")
@@ -96,6 +98,7 @@ val fileContents = file.readText()
 file.writeText(
 	fileContents.replace("{VERSION}", latest.toString())
 		.replace("{JAVA_VERSION}", javaVersion)
+		.replace("{PLUGIN_VERSION}", latestPlugin.toString())
 )
 
 println("Done!")

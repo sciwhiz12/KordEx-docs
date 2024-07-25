@@ -7,14 +7,16 @@
                   start-page="Welcome.topic">
 
     <toc-element topic="Welcome.topic"/>
-	<toc-element id="dokka :link :div:bottom" toc-title="Dokka API Docs" href="https://dokka.kordex.dev"/>
+    <toc-element id="dokka :link :div:bottom" toc-title="Dokka API Docs" href="https://dokka.kordex.dev"/>
 
     <toc-element topic="About.topic">
         <toc-element topic="Framework-Comparison.topic"/>
     </toc-element>
 
     <toc-element topic="Core-Documentation.topic">
-        <toc-element topic="Getting-Started.topic"/>
+        <toc-element topic="Getting-Started.topic">
+            <toc-element topic="Manual-Setup.topic"/>
+        </toc-element>
         <toc-element topic="Beginner-Tutorial.topic"/>
         <toc-element topic="The-Bot.topic"/>
         <toc-element topic="Configuration.topic" id="banana">
@@ -80,6 +82,9 @@
         <toc-element topic="Mappings.topic"/>
         <toc-element topic="Phishing.topic"/>
         <toc-element topic="PluralKit.topic"/>
+    </toc-element>
+    <toc-element topic="Gradle-Plugins.topic">
+        <toc-element topic="KordEx-Plugin.topic"/>
     </toc-element>
 
     <toc-element topic="Utility-Modules.topic">

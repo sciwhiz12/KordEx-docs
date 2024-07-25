@@ -8,25 +8,18 @@
 
     <tldr>
         <p>
-            <format style="bold">Latest Version:</format>
-            %version%
+            <format style="bold">Plugin ID:</format>
+            <code>dev.kordex.gradle.kordex</code>
         </p>
+
+        <p>
+            <format style="bold">Plugin Version:</format>
+            %plugin-version%
+        </p>
+
         <p>
             <format style="bold">Minimum JDK:</format>
             %java-version%
-        </p>
-
-        <p>
-            <format style="bold">Repo:</format>
-            Maven Central or
-            <a href="https://s01.oss.sonatype.org/content/repositories/snapshots">
-                Sonatype Snapshots (s01)
-            </a>
-        </p>
-
-        <p>
-            <format style="bold">Coordinate:</format>
-            <code>com.kotlindiscord.kord.extensions:kord-extensions</code>
         </p>
     </tldr>
 
@@ -61,174 +54,52 @@
         </p>
 
         <p>
-            Alternatively, you can clone or download the repository and push it up to a repository host with your
-            tool of choice.
+            Alternatively, you can clone or download the repository and push it up to any repository host with your
+            tooling of choice.
         </p>
     </chapter>
 
     <chapter title="For Existing Projects" id="existing-projects">
-        <tabs group="build-system">
-            <tab group-key="gradle-kotlin" title="Gradle (Kotlin)">
-                <p>
-                    First, add a dependency to your <code>gradle/libs.versions.toml</code>.
-                </p>
-                <br/>
+        <warning>
+            <p>
+                We recommend you use <a href="KordEx-Plugin.topic">the KordEx Gradle plugin</a>,
+                as briefly covered below.
+                However, we only support using this plugin in Kotlin Gradle build scripts.
+            </p>
 
-                <code-block lang="ini">
-                    [versions]
-                    kord-extensions = "%version%"
+            <p>
+                If you don't want to use the plugin, you're using Groovy build scripts, or you're using a different
+                build tool,
+                please see <a href="Manual-Setup.topic">this page</a>
+                to learn how to manually set up your project.
+            </p>
+        </warning>
 
-                    [libraries]
-                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kord-extensions" }
-                </code-block>
+        <p>
+            First, add the KordEx Gradle plugin to your <code>build.gradle.kts</code>.
+        </p>
 
-                <p>
-                    Then, update your <code>build.gradle.kts</code>.
-                </p>
-                <br/>
+        <code-block lang="kotlin">
+            plugins {
+                id("dev.kordex.gradle.kordex") version "%plugin-version%"
+            }
+        </code-block>
 
-                <code-block lang="kotlin">
-                    repositories {
-                        // ...
+        <p>
+            Then, configure it as needed.
+            At minimum, you should specify your bot's main class, via the <code>mainClass</code> property.
+        </p>
+        <br/>
 
-                        mavenCentral()
+        <code-block lang="kotlin">
+            kordEx {
+                mainClass = "my.package.here.FileWithMainFunctionKt"
+            }
+        </code-block>
 
-                        maven {
-                            name = "Sonatype Snapshots (Legacy)"
-                            url = uri("https://oss.sonatype.org/content/repositories/snapshots")
-                        }
-
-                        maven {
-                            name = "Sonatype Snapshots"
-                            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-                        }
-                    }
-
-                    dependencies {
-                        // ...
-
-                        implementation(libs.kord.extensions)
-                    }
-                </code-block>
-            </tab>
-
-            <tab group-key="gradle-groovy" title="Gradle (Groovy)">
-                <p>
-                    First, add a dependency to your <code>gradle/libs.versions.toml</code>.
-                </p>
-                <br/>
-
-                <code-block lang="ini">
-                    [versions]
-                    kord-extensions = "%version%"
-
-                    [libraries]
-                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kord-extensions" }
-                </code-block>
-
-                <p>
-                    Then, update your <code>build.gradle</code>.
-                </p>
-                <br/>
-
-                <code-block lang="groovy">
-                    repositories {
-                        // ...
-
-                        mavenCentral()
-
-                        maven {
-                            name "Sonatype Snapshots (Legacy)"
-                            url "https://oss.sonatype.org/content/repositories/snapshots"
-                        }
-
-                        maven {
-                            name "Sonatype Snapshots"
-                            url "https://s01.oss.sonatype.org/content/repositories/snapshots"
-                        }
-                    }
-
-                    dependencies {
-                        // ...
-
-                        implementation(libs.kord.extensions)
-                    }
-                </code-block>
-            </tab>
-
-            <tab group-key="maven" title="Maven">
-                <warning>
-                    <p>
-                        Kord Extensions is developed using Gradle, and none of the developers are familiar with Maven.
-                    </p>
-                    <p>
-                        While Gradle is highly recommended, if you do decide to use Maven, we'd appreciate feedback
-                        on the below instructions —
-                        especially if corrections or more detail is required.
-                    </p>
-                </warning>
-                <p>
-                    Add the following to your <code>pom.xml</code>.
-                    For more information, see
-                    <a href="https://kotlinlang.org/docs/maven.html">the official Maven guide for Kotlin</a>.
-                </p>
-                <br/>
-
-                <code-block lang="xml">
-                    &lt;repositories&gt;
-                        &lt;!-- ... --&gt;
-
-                        &lt;repository&gt;
-                            &lt;id&gt;sonatype-snapshots-legacy&lt;/id&gt;
-                            &lt;name&gt;Sonatype Snapshots (Legacy)&lt;/name&gt;
-                            &lt;url&gt;https://oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;
-                        &lt;/repository&gt;
-
-                        &lt;repository&gt;
-                            &lt;id&gt;sonatype-snapshots&lt;/id&gt;
-                            &lt;name&gt;Sonatype Snapshots&lt;/name&gt;
-                            &lt;url&gt;https://s01.oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;
-                            &lt;/repository&gt;
-                    &lt;/repositories&gt;
-
-                    &lt;dependencies&gt;
-                        &lt;!-- ... --&gt;
-
-                        &lt;dependency&gt;
-                            &lt;groupId&gt;com.kotlindiscord.kord.extensions&lt;/groupId&gt;
-                            &lt;artifactId&gt;kord-extensions&lt;/artifactId&gt;
-                            &lt;version&gt;%version%&lt;/version&gt;
-                        &lt;/dependency&gt;
-                    &lt;/dependencies&gt;
-                </code-block>
-            </tab>
-
-            <tab group-key="sbt" title="SBT">
-                <warning>
-                    <p>
-                        Kord Extensions is developed using Gradle, and none of the developers are familiar with SBT.
-                    </p>
-                    <p>
-                        While Gradle is highly recommended, if you do decide to use SBT, we'd appreciate feedback
-                        on the below instructions —
-                        especially if corrections or more detail is required.
-                    </p>
-                </warning>
-                <p>
-                    Add the following to your <code>build.sbt</code>.
-                    For more information, see
-                    <a href="https://github.com/pfn/kotlin-plugin">the Kotlin SBT plugin</a>.
-                </p>
-                <br/>
-
-                <code-block lang="scala">
-					resolvers += Resolver.sonatypeOssRepos("snapshots")
-
-					libraryDependencies ++= Seq(
-						"com.kotlindiscord.kord.extensions" % "kord-extensions" % "%version%"
-					)
-                </code-block>
-            </tab>
-        </tabs>
+        <p>
+            For more information on the Gradle plugin, what it does and how to configure it, please see
+            <a href="KordEx-Plugin.topic">the KordEx plugin documentation</a>.
+        </p>
     </chapter>
 </topic>
