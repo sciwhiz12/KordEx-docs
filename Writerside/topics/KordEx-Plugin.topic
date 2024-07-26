@@ -198,6 +198,9 @@
                     <td>
                         <p>
                             Specify a specific Kord Extensions version if you need to.
+                            Alternatively,
+                            supply <code>"latest"</code> and the plugin will try to find the latest version of Kord
+                            Extensions.
                         </p>
 
                         <p>
@@ -241,6 +244,8 @@
                     <td>
                         <p>
                             Specify a specific Kord version if you need to.
+                            Alternatively,
+                            supply <code>"latest"</code> and the plugin will try to find the latest version of Kord.
                         </p>
 
                         <p>
