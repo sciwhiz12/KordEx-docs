@@ -149,6 +149,10 @@
             Otherwise, all settings must be provided within the <code>kordEx { }</code> builder.
         </p>
 
+        <p>
+            All settings are defined using Gradle <code>Property</code> objects.
+        </p>
+
         <chapter title="Basic Settings" id="settings-basic">
             <table style="both">
                 <tr>
@@ -193,7 +197,7 @@
 
                 <tr>
                     <td><code>kordExVersion</code></td>
-                    <td><code>null</code></td>
+                    <td><code>latest</code></td>
 
                     <td>
                         <p>
@@ -218,7 +222,7 @@
 
                 <tr>
                     <td><code>mainClass</code></td>
-                    <td><code>null</code></td>
+                    <td> </td>
 
                     <td>
                         Your bot's main class, which will usually refer to a top-level <code>main</code> function.
@@ -239,7 +243,7 @@
 
                 <tr>
                     <td><code>kordVersion</code></td>
-                    <td><code>null</code></td>
+                    <td><code> </code></td>
 
                     <td>
                         <p>
