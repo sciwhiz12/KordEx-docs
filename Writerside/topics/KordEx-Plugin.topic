@@ -21,7 +21,7 @@
 
     <p>
         The KordEx Gradle plugin is a Gradle plugin designed to make it easier to correctly configure Gradle projects
-        containing Kord Extensions bots.
+        containing Kord Extensions bots and plugins.
         This plugin is the recommended way to configure your project, but
         <a href="Manual-Setup.topic">you can also set things up manually</a> if you're not using a Kotlin Gradle build
         script, or otherwise can't (or don't wish to) use the plugin.
@@ -77,11 +77,6 @@
 
                 <list type="bullet">
                     <li>
-                        The <code>application</code> plugin and <code>jar</code> task — When the KordEx plugin is
-                        provided with the <code>mainClass</code> setting.
-                    </li>
-
-                    <li>
                         The Kotlin plugin — Setting the required Kotlin compiler arguments and setting the same JVM
                         target used by Kord Extensions.
                     </li>
@@ -94,27 +89,66 @@
             </li>
 
             <li>
-                Easy configuration of Kord Extensions' default data collection settings.
+                Validation checks, including checking whether you're using the correct version of the Kotlin plugin for
+                the version of Kord Extensions you're working with.
+                You can disable this if needed.
             </li>
 
             <li>
-                <p>
-                    Generation of the <code>kordex.properties</code> resource file, which is automatically added to your
-                    bot's resources.
-                    This file contains:
-                </p>
+                <p><b>When configured for bot development:</b></p>
 
                 <list type="bullet">
-                    <li>Your configured data collection settings.</li>
-                    <li>The version of Kord and Kord Extensions you're using.</li>
-                    <li>A list of first-party Kord Extensions modules you're using.</li>
+                    <li>
+                        Automatic configuration of the <code>application</code> plugin and <code>jar</code> task.
+                    </li>
+
+                    <li>
+                        Easy configuration of Kord Extensions' default data collection settings.
+                    </li>
+
+                    <li>
+                        <p>
+                            Generation of the <code>kordex.properties</code> resource file, which is automatically added to your
+                            bot's resources.
+                            This file contains:
+                        </p>
+
+                        <list type="bullet">
+                            <li>Your configured data collection settings.</li>
+                            <li>The version of Kord and Kord Extensions you're using.</li>
+                            <li>A list of first-party Kord Extensions modules you're using.</li>
+                        </list>
+                    </li>
                 </list>
             </li>
 
             <li>
-                Validation checks, including checking whether you're using the correct version of the Kotlin plugin for
-                the version of Kord Extensions you're working with.
-                You can disable this if needed.
+                <p><b>When configured for plugin development:</b></p>
+
+                <list type="bullet">
+                    <li>
+                        Automatic configuration of the <code>distribution</code> plugin.
+                    </li>
+
+                    <li>
+                        Generation of the <code>plugin.properties</code> resource file, which is automatically added to
+                        your plugin's distribution.
+                        This file contains plugin metadata based on your configuration.
+                    </li>
+
+                    <li>
+                        <p>
+                            Automatic plugin packaging via the <code>distZip</code> task, including:
+                        </p>
+
+                        <list type="bullet">
+                            <li>Your plugin's classes, placed within the <code>classes</code> directory.</li>
+                            <li>Your plugin's resources, also placed within the <code>classes</code> directory.</li>
+                            <li>Your plugin's runtime dependencies, placed within the <code>lib</code> directory.</li>
+                            <li>Your plugin's metadata, in the <code>plugin.properties</code> file.</li>
+                        </list>
+                    </li>
+                </list>
             </li>
         </list>
     </chapter>
@@ -131,7 +165,7 @@
         </code-block>
 
         <p>
-            Then, configure it as explained in the next section.
+            Then, configure it as explained in the next sections.
         </p>
         <br/>
 
@@ -144,9 +178,8 @@
 
     <chapter title="Configuration" id="settings">
         <p>
-            If you're happy with the default settings, then the KordEx plugin can be used without any custom
-            configuration.
-            Otherwise, all settings must be provided within the <code>kordEx { }</code> builder.
+            All settings must be provided within the <code>kordEx { }</code> builder.
+            If you don't configure it for either bot or plugin development, then the plugin won't do anything.
         </p>
 
         <p>
@@ -190,7 +223,28 @@
 
                         <p>
                             If you wish to use a different Kotlin version (and you know what you're doing), setting
-                            this property to <code>true</code> will make this a warning message instead.
+                            this property to <code>true</code> will make this a warning instead.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>kordVersion</code></td>
+                    <td> </td>
+
+                    <td>
+                        <p>
+                            Specify a specific Kord version if you need to.
+                            Alternatively,
+                            supply <code>"latest"</code> and the plugin will try to find the latest version of Kord.
+                        </p>
+
+                        <p>
+                            By default, the Kord version used to build the selected version of Kord Extensions is used.
+                        </p>
+
+                        <p>
+                            You'll want to specify a version yourself if you need to use your own fork of Kord.
                         </p>
                     </td>
                 </tr>
@@ -219,6 +273,84 @@
                         </p>
                     </td>
                 </tr>
+            </table>
+
+            <chapter title="Modules" id="settings-modules">
+                <p>
+                    Many first-party Kord Extensions modules exist that provide extra development tools and various
+                    user-facing bot functions.
+                </p>
+
+                <p>
+                    The repository layout is currently
+                    <a href="https://kordex.dev/blog/2024-07-23/kordex-2#module-flattening">a bit messy</a>,
+                    but it'll be cleaned up for the upcoming 2.0.0 release of Kord Extensions.
+                </p>
+
+                <p>
+                    In the meantime, check the above link for information on how to find our first-party modules.
+                    Modules are named according to their containing folder —
+                    for example, the PluralKit module is located in <code>extra-modules/extra-pluralkit</code>,
+                    so the module name is <code>extra-pluralkit</code>.
+                </p>
+
+                <table style="both">
+                    <tr>
+                        <td>Function</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>module</code></td>
+
+                        <td>
+                            <p>
+                                Add a first-party Kord Extensions module by name.
+                                The KordEx plugin will also automatically add any extra dependencies and repositories
+                                that the specified module requires.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </chapter>
+        </chapter>
+
+        <chapter title="Bot Development" id="settings-bot">
+            <secondary-label ref="gradle-1.1.0"/>
+
+            <p>
+                To configure your project for bot development, use the <code>bot { }</code> builder in the
+                <code>kordEx { }</code> builder.
+                For example:
+            </p>
+
+            <p>
+                Bots should be built by running the <code>build</code> task.
+            </p>
+
+            <code-block lang="kotlin" collapsed-title="Example" collapsible="true">
+                kordEx {
+                    bot {
+                        // https://kordex.dev/blog/2024-07-23/kordex-2#levels
+                        dataCollection(DataCollection.Standard)
+
+                        mainClass = "my.package.MyMainClass"
+                    }
+                }
+            </code-block>
+
+            <table style="both">
+                <tr>
+                    <td>Property</td>
+                    <td>Default</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr id="settings-bot-required:header:text:center">
+                    <td colspan="3">
+                        Required Properties
+                    </td>
+                </tr>
 
                 <tr>
                     <td><code>mainClass</code></td>
@@ -230,35 +362,10 @@
                         and add the main class reference to your bot's JAR manifest, making the built JAR executable.
                     </td>
                 </tr>
-            </table>
-        </chapter>
 
-        <chapter title="Kord Settings" id="settings-kord">
-            <table style="both">
-                <tr>
-                    <td>Property</td>
-                    <td>Default</td>
-                    <td>Description</td>
-                </tr>
-
-                <tr>
-                    <td><code>kordVersion</code></td>
-                    <td><code> </code></td>
-
-                    <td>
-                        <p>
-                            Specify a specific Kord version if you need to.
-                            Alternatively,
-                            supply <code>"latest"</code> and the plugin will try to find the latest version of Kord.
-                        </p>
-
-                        <p>
-                            By default, the Kord version used to build the selected version of Kord Extensions is used.
-                        </p>
-
-                        <p>
-                            You'll want to specify a version yourself if you need to use your own fork of Kord.
-                        </p>
+                <tr id="settings-bot-optional:header:text:center">
+                    <td colspan="3">
+                        Optional Properties
                     </td>
                 </tr>
 
@@ -284,84 +391,213 @@
                     </td>
                 </tr>
             </table>
+
+            <chapter title="Data Collection" id="data-collection">
+                <tip>
+                    <p>
+                        Data collection hasn't yet been implemented, but you can configure it ahead of time, and your
+                        setting will be respected when it is ready.
+                    </p>
+
+                    <p>
+                        In-depth documentation will be written once a data collection implementation is closer to being
+                        released.
+                    </p>
+
+                    <p>
+                        For more information on what data will be collected in the future, please see
+                        <a href="https://kordex.dev/blog/2024-07-23/kordex-2#data-collection">this blog post</a>.
+                    </p>
+                </tip>
+
+                <p>
+                    The default data collection level is <format style="bold">Standard</format>.
+                </p>
+
+                <table style="both">
+                    <tr>
+                        <td>Function</td>
+                        <td>Description</td>
+                    </tr>
+
+                    <tr>
+                        <td><code>dataCollection</code></td>
+
+                        <td>
+                            <p>
+                                Set your bot's default data collection level to the given argument.
+                            </p>
+
+                            <p>
+                                <format style="bold">Note:</format> Users may override this at runtime using an
+                                environmental variable.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </chapter>
         </chapter>
 
-        <chapter title="Data Collection" id="data-collection">
-            <tip>
-                <p>
-                    Data collection hasn't yet been implemented, but you can configure it ahead of time, and your
-                    setting will be respected when it is ready.
-                </p>
-
-                <p>
-                    In-depth documentation will be written once a data collection implementation is closer to being
-                    released.
-                </p>
-
-                <p>
-                    For more information on what data will be collected in the future, please see
-                    <a href="https://kordex.dev/blog/2024-07-23/kordex-2#data-collection">this blog post</a>.
-                </p>
-            </tip>
+        <chapter title="Plugin Development" id="settings-plugin">
+            <secondary-label ref="gradle-1.1.0" />
 
             <p>
-                The default data collection level is <format style="bold">Standard</format>.
+                To configure your project for plugin development, use the <code>plugin { }</code> builder in the
+                <code>kordEx { }</code> builder.
+                For example:
+            </p>
+
+            <code-block lang="kotlin" collapsed-title="Example" collapsible="true">
+                kordEx {
+                    plugin {
+                        id = "my-plugin-id"
+                        pluginClass = "my.package.MyPluginClass"
+                        version = "1.0.0"
+                    }
+                }
+            </code-block>
+
+            <p>
+                Plugins should be built by running the <code>distZip</code> task.
             </p>
 
             <table style="both">
                 <tr>
-                    <td>Function</td>
+                    <td>Property</td>
                     <td>Description</td>
                 </tr>
 
+                <tr id="settings-plugin-required:header:text:center">
+                    <td colspan="2">
+                        Required Properties
+                    </td>
+                </tr>
+
                 <tr>
-                    <td><code>dataCollection</code></td>
+                    <td><code>id</code></td>
 
                     <td>
                         <p>
-                            Set your bot's default data collection level to the given argument.
-                        </p>
-
-                        <p>
-                            <format style="bold">Note:</format> Users may override this at runtime using an
-                            environmental variable.
+                            A unique ID that identifies your plugin.
+                            This should be a short string, written using <code>lower-kebab-case</code>.
                         </p>
                     </td>
                 </tr>
-            </table>
-        </chapter>
 
-        <chapter title="Modules" id="settings-modules">
-            <p>
-                Many first-party Kord Extensions modules exist that provide extra development tools and various
-                user-facing bot functions.
-            </p>
-
-            <p>
-                The repository layout is currently
-                <a href="https://kordex.dev/blog/2024-07-23/kordex-2#module-flattening">a bit messy</a>,
-                but it'll be cleaned up for the upcoming 2.0.0 release of Kord Extensions.
-            </p>
-
-            <p>
-                In the meantime, check the above link for information on how to find our first-party modules.
-                Modules are named according to their containing folder — for example, the PluralKit module is located
-                in <code>extra-modules/extra-pluralkit</code>, so the module name is <code>extra-pluralkit</code>.
-            </p>
-
-            <table style="both">
                 <tr>
-                    <td>Function</td>
-                    <td>Description</td>
+                    <td><code>pluginClass</code></td>
+
+                    <td>
+                        <p>
+                            A reference to your plugin's main class, which must extend <code>KordExPlugin</code>.
+                            This must include both the package and class name — for example,
+                            <code>my.package.here.ClassNameHere</code>
+                        </p>
+                    </td>
                 </tr>
 
                 <tr>
-                    <td><code>module</code></td>
+                    <td><code>version</code></td>
 
                     <td>
-                        Add a first-party Kord Extensions module by name.
-                        The KordEx plugin will also automatically add any extra dependencies and repositories that the
-                        specified module requires.
+                        <p>
+                            Your plugin's version number, which must be
+                            <a href="https://semver.org/">a valid semantic version number</a>.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr id="settings-plugin-optional:header:text:center">
+                    <td colspan="2">
+                        Optional Properties
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>author</code></td>
+
+                    <td>
+                        <p>
+                            Whoever is responsible for this plugin.
+                            This can be a single person, a comma-separated list of people, an email address,
+                            an organization, or anything else you feel is appropriate.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>description</code></td>
+
+                    <td>
+                        <p>
+                            A block of text that explains what your plugin is, what it does, and provides any other
+                            relevant information.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>license</code></td>
+
+                    <td>
+                        <p>
+                            The license your plugin is distributed under.
+                            This does not have to be an open-source license.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr id="settings-plugin-functions:header:text:center">
+                    <td colspan="2">
+                        Optional Functions
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>dependency</code></td>
+
+                    <td>
+                        <p>
+                            Call this function to add a dependency on another plugin.
+                            This function expects the following arguments:
+                        </p>
+
+                        <list type="bullet">
+                            <li><code>id</code> — the ID of the plugin you wish to depend on.</li>
+
+                            <li>
+                                <code>versionSpecifier</code> (Optional) — A
+                                <a href="https://github.com/zafarkhaja/jsemver#range-expressions">JSemver range expression</a>
+                                describing which versions of the specified plugin are compatible with your plugin.
+                            </li>
+
+                            <li>
+                                <p>
+                                    <code>optional</code> (Default: <code>false</code>) — Whether this is an optional
+                                    dependency.
+                                </p>
+
+                                <p>
+                                    Optional dependencies are useful when your plugin optionally integrates with others,
+                                    ensuring that the other plugin is a compatible version before your plugin is
+                                    loaded.
+                                </p>
+                            </li>
+                        </list>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>kordExVersion</code></td>
+
+                    <td>
+                        <p>
+                            Call this function to specify which versions of Kord Extensions your plugin is compatible
+                            with.
+                            You must provide a
+                            <a href="https://github.com/zafarkhaja/jsemver#range-expressions">JSemver range expression</a>
+                            as the first argument to this function.
+                        </p>
                     </td>
                 </tr>
             </table>
