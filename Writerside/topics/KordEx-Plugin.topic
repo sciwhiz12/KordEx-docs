@@ -186,6 +186,16 @@
             All settings are defined using Gradle <code>Property</code> objects.
         </p>
 
+        <warning>
+            <p>
+                You may only configure a Gradle project for either bot or plugin development, not both.
+                If you need to build both in the same project, you should
+                <a href="https://docs.gradle.org/current/userguide/intro_multi_project_builds.html">
+                    separate them using Gradle subprojects
+                </a>.
+            </p>
+        </warning>
+
         <chapter title="Basic Settings" id="settings-basic">
             <table style="both">
                 <tr>
