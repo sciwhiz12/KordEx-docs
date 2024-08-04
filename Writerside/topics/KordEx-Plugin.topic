@@ -72,7 +72,7 @@
 
             <li>
                 <p>
-                    Configuration of several standard Gradle plugins:
+                    Configuration of several Gradle plugins:
                 </p>
 
                 <list type="bullet">
@@ -84,6 +84,10 @@
                     <li>
                         The Java plugin — Setting the same Java source/target compatibility settings used by Kord
                         Extensions.
+                    </li>
+
+                    <li>
+                        If the KSP plugin is applied, automatically adding the Kord Extensions annotation processor.
                     </li>
                 </list>
             </li>
@@ -165,7 +169,7 @@
         </code-block>
 
         <p>
-            Then, configure it as explained in the next sections.
+            Then, if needed, configure it as explained below.
         </p>
         <br/>
 
@@ -197,6 +201,11 @@
         </warning>
 
         <chapter title="Basic Settings" id="settings-basic">
+            <p>
+                The following settings apply to both the bot and plugin modes,
+                but they'll also be used when neither mode is specified.
+            </p>
+
             <table style="both">
                 <tr>
                     <td>Property</td>
@@ -222,6 +231,23 @@
                 </tr>
 
                 <tr>
+                    <td><code>configurations</code></td>
+                    <td> </td>
+
+                    <td>
+                        <p>
+                            A list of dependency configurations to use for the automatically added dependencies,
+                            overriding the default configuration used.
+                        </p>
+
+                        <p>
+                            The default configuration is <code>implementation</code>, or <code>compileOnly</code> in
+                            plugin mode.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
                     <td><code>ignoreIncompatibleKotlinVersion</code></td>
                     <td><code>false</code></td>
 
@@ -234,6 +260,27 @@
                         <p>
                             If you wish to use a different Kotlin version (and you know what you're doing), setting
                             this property to <code>true</code> will make this a warning instead.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>jvmTarget</code></td>
+                    <td> </td>
+
+                    <td>
+                        <p>
+                            An integer, representing the JVM version your project should target.
+                        </p>
+
+                        <p>
+                            By default, this will be set to the minimum JVM version required by Kord Extensions, but
+                            you may need to change this setting if one of your dependencies requires a newer JVM
+                            version.
+                        </p>
+
+                        <p>
+                            The minimum JDK version required by Kord Extensions is version %java-version%.
                         </p>
                     </td>
                 </tr>
