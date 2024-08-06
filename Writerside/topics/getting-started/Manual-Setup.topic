@@ -52,6 +52,34 @@
     </list>
 
     <chapter title="Build System" id="build-scripts">
+        <tip>
+            <p>
+                If you're using Gradle, please note that it will automatically pull in the following dependencies,
+                as they're also used by Kord Extensions.
+                In most situations, it is best to remove these dependencies from your build script and let Gradle
+                handle it, to avoid depending on an incompatible version.
+            </p>
+
+            <list type="bullet">
+                <li>The Kord Extensions <code>annotations</code> and <code>token-parser</code> modules</li>
+
+                <li><a href="https://unicode-org.github.io/icu/userguide/icu4j/">ICU4J</a></li>
+                <li><a href="https://github.com/felldo/JEmoji">JEmoji</a></li>
+                <li><a href="https://insert-koin.io/">Koin</a> (Core and Logging)</li>
+                <li><a href="https://kord.dev">Kord</a></li>
+                <li><a href="https://github.com/oshai/kotlin-logging">Kotlin Logging</a></li>
+
+                <li>
+                    <a href="https://kotlinlang.org/docs/serialization.html">kotlinx.serialization</a>; you'll still
+                    need to configure the Gradle plugin yourself if you're using this.
+                </li>
+
+                <li><a href="https://pf4j.org/">PF4J</a></li>
+                <li><a href="https://docs.sentry.io/platforms/java/">Sentry for Java</a></li>
+                <li><a href="https://github.com/Peanuuutz/tomlkt">tomlkt</a></li>
+            </list>
+        </tip>
+
         <tabs group="build-system">
             <tab id="gradle-kotlin" group-key="gradle-kotlin" title="Gradle (Kotlin)">
                 <p>

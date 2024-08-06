@@ -87,15 +87,51 @@
 
         <p>
             Then, configure it as needed.
-            At minimum, you should specify your bot's main class, via the <code>mainClass</code> property.
+            At minimum, you should specify your bot's main class, via the <code>mainClass</code> property in the
+            <code>bot</code> builder.
         </p>
-        <br/>
 
         <code-block lang="kotlin">
             kordEx {
-                mainClass = "my.package.here.FileWithMainFunctionKt"
+                bot {
+                    mainClass = "my.package.here.FileWithMainFunctionKt"
+                }
             }
         </code-block>
+
+        <tip>
+            <p>
+                Please note that Gradle will automatically pull in the following dependencies, as they're also used by
+                Kord Extensions.
+                In most situations, it is best to remove these dependencies from your build script and let Gradle
+                handle it, to avoid depending on an incompatible version.
+            </p>
+
+            <list type="bullet">
+                <li>The Kord Extensions <code>annotations</code> and <code>token-parser</code> modules</li>
+
+                <li><a href="https://unicode-org.github.io/icu/userguide/icu4j/">ICU4J</a></li>
+                <li><a href="https://github.com/felldo/JEmoji">JEmoji</a></li>
+                <li><a href="https://insert-koin.io/">Koin</a> (Core and Logging)</li>
+
+                <li>
+                    <a href="https://kord.dev">Kord</a>;
+                    <a href="KordEx-Plugin.topic" anchor="settings-bot-optional:header:text:center">see here</a> for
+                    ways to configure a different version.
+                </li>
+
+                <li><a href="https://github.com/oshai/kotlin-logging">Kotlin Logging</a></li>
+
+                <li>
+                    <a href="https://kotlinlang.org/docs/serialization.html">kotlinx.serialization</a>; you'll still
+                    need to configure the Gradle plugin yourself if you're using this.
+                </li>
+
+                <li><a href="https://pf4j.org/">PF4J</a></li>
+                <li><a href="https://docs.sentry.io/platforms/java/">Sentry for Java</a></li>
+                <li><a href="https://github.com/Peanuuutz/tomlkt">tomlkt</a></li>
+            </list>
+        </tip>
 
         <p>
             For more information on the Gradle plugin, what it does and how to configure it, please see
