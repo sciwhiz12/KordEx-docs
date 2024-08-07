@@ -89,11 +89,14 @@
             Then, configure it as needed.
             At minimum, you should specify your bot's main class, via the <code>mainClass</code> property in the
             <code>bot</code> builder.
+            You may also wish to configure the <a href="Data-Collection.topic" /> level.
         </p>
 
         <code-block lang="kotlin">
             kordEx {
                 bot {
+                    dataCollection(DataCollection.Standard)
+
                     mainClass = "my.package.here.FileWithMainFunctionKt"
                 }
             }

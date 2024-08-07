@@ -25,6 +25,10 @@
         <primary>
             <title>Standard Options</title>
 
+            <a href="Config-Basic.topic"
+               type="learn"
+               summary="Basic bot configuration options." />
+
             <a href="Config-Commands.topic"
                type="start"
                summary="Configure the application and chat command frameworks." />

@@ -19,7 +19,9 @@
         </toc-element>
         <toc-element topic="Beginner-Tutorial.topic"/>
         <toc-element topic="The-Bot.topic"/>
+        <toc-element topic="Data-Collection.topic"/>
         <toc-element topic="Configuration.topic" id="banana">
+            <toc-element topic="Config-Basic.topic"/>
             <toc-element topic="Config-Cache.topic"/>
             <toc-element topic="Config-Components.topic"/>
             <toc-element topic="Config-Commands.topic"/>

@@ -288,9 +288,9 @@
                 <td><code>settings.dataCollection</code></td>
                 <td>
                     <p>
-                        Configure Kord Extensions' default data collection mode.
-                        Must be one of: <code>none</code>, <code>minimal</code>, <code>standard</code>, or
-                        <code>extra</code>.
+                        Configure Kord Extensions' default <a href="Data-Collection.topic" /> level.
+                        Must be one of: <code>extra</code>, <code>standard</code>, <code>minimal</code>, or
+                        <code>none</code>.
                     </p>
 
                     <p>
@@ -298,10 +298,9 @@
                     </p>
 
                     <p>
-                        For more information on how Kord Extensions does data collection, please see
-                        <a href="KordEx-Plugin.topic" anchor="data-collection">
-                            the corresponding section in the KordEx Gradle plugin documentation
-                        </a>.
+                        For more information on how Kord Extensions does data collection, what's collected, and how
+                        to configure it, please see
+                        <a href="Data-Collection.topic">the dedicated documentation</a>.
                     </p>
                 </td>
             </tr>

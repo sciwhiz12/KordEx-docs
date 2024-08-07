@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Data Collection" id="Data-Collection">
+
+    <show-structure depth="2" />
+
+    <primary-label ref="v2" />
+
+    <tip>
+        Kord Extensions version 2 hasn't been released yet.
+        This page was written early to ensure everyone remains informed on this feature.
+    </tip>
+
+    <warning>
+        <p>
+            If you intend your bot to be run by other people,
+            <format style="bold">you are responsible for informing them about the data collection system!</format>
+        </p>
+
+        <p>
+            The easiest way to do this is to link to this page, but the way you handle this is up to you.
+        </p>
+    </warning>
+
+    <p>
+        As of version 2, Kord Extensions includes a data collection feature.
+        Every 30 minutes, this feature collects some statistical data from your bots, submitting it to
+        <a href="https://github.com/Kord-Extensions/data-collector">an open-source server</a> run and controlled by the
+        Kord Extensions team.
+    </p>
+
+    <p>
+        This feature is intended to provide the developers with guidance on where to focus their efforts as well
+        as interesting statistical information that will be made available to everyone.
+    </p>
+
+    <chapter title="General Info" id="general">
+        <p>
+            Data collected is stored on a server located in Germany, owned by
+            <a href="https://www.hetzner.com/">Hetzner</a>.
+            This data is encrypted at rest (along with all backups) and is secured through containerization, network
+            isolation, and other standard security practices.
+        </p>
+
+        <p>
+            All data submissions are assigned a UUID, which is stored by your Kord Extensions bot in a
+            properties file.
+            While we believe the data collected is not considered personal information under the GDPR, we provide
+            several mechanisms that allow you to use this UUID for data retrieval and removal:
+        </p>
+
+        <list type="bullet">
+            <li>
+                <p>
+                    By changing your data collection level to None (as explained below), your Kord Extensions bot
+                    will stop collecting data and will use the UUID to delete any stored data from the data collection
+                    server.
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    The UUID may be used to directly access the data collection API:
+                </p>
+
+                <list type="bullet">
+                    <li>
+                        HTTP GET: <code>https://data.kordex.dev/data/:uuid</code> - retrieve the stored data for the
+                        given UUID.
+                    </li>
+
+                    <li>
+                        HTTP DELETE: <code>https://data.kordex.dev/data/:uuid</code> - delete the stored data for the
+                        given UUID.
+                    </li>
+                </list>
+
+                <p>
+                    We may decide to create a simple UI for this later.
+                </p>
+            </li>
+
+            <li>
+                If all else fails or you have any questions, contact us <a href="%kordex-discord%">via Discord</a>, or
+                email our GDPR officer at <code>gdpr</code> <format style="bold">(at)</format>
+                <code>kordex.dev</code>.
+            </li>
+        </list>
+
+        <p>
+            The default data collection level (assuming nothing has been configured) is Standard.
+        </p>
+    </chapter>
+
+    <chapter title="Collection Levels" id="levels">
+        <p>
+            Kord Extensions provides the following data collection levels.
+        </p>
+
+        <chapter title="None" id="levels-none">
+            <p>
+                Setting this level will disable data collection.
+            </p>
+
+            <p>
+                If you had a different level set previously, Kord Extensions will delete your data from the
+                data collection server.
+            </p>
+        </chapter>
+
+        <chapter title="Minimal" id="levels-minimal">
+            <p>
+                This level collects the following data in all cases:
+            </p>
+
+            <list type="bullet">
+                <li>The date of submission and the last updated date.</li>
+                <li>Whether your bot is running in development mode.</li>
+                <li>The version of Kord Extensions your bot uses.</li>
+            </list>
+
+            <p>
+                This level also collects the following data if the bot was built using
+                <a href="KordEx-Plugin.topic">the KordEx Gradle plugin</a>:
+            </p>
+
+            <list type="bullet">
+                <li>The version of Kord your bot uses.</li>
+                <li>A list of first-party modules the bot is using.</li>
+            </list>
+        </chapter>
+
+        <chapter title="Standard" id="levels-standard">
+            <p>
+                This level collects the data collected by the Minimal level, as well as the following:
+            </p>
+
+            <list type="bullet">
+                <li>The Discord ID and the name of your bot.</li>
+                <li>The number of extensions and plugins your bot has loaded.</li>
+                <li>The number of guilds your bot can see.</li>
+                <li>A list of intents enabled by your bot.</li>
+
+                <li>
+                    <p>
+                        Data relating to your bot's runtime environment:
+                    </p>
+
+                    <list type="bullet">
+                        <li>Current JVM and Kotlin versions.</li>
+                    </list>
+                </li>
+            </list>
+        </chapter>
+
+        <chapter title="Extra" id="levels-extra">
+            <p>
+                This level collects the data collected by the Minimal and Standard levels, as well as the following:
+            </p>
+
+            <list type="bullet">
+                <li>
+                    A list of event types your bot is currently handling.
+                </li>
+
+                <li>
+                    The names of the extensions and plugins your bot has loaded.
+                </li>
+
+                <li>
+                    <p>
+                        Bot ownership information:
+                    </p>
+
+                    <list type="bullet">
+                        <li>
+                            <format style="bold">If the bot is owned by a team:</format> The ID and name of that team.
+                        </li>
+
+                        <li>
+                            <format style="bold">If the bot is owned by a single person:</format> No ownership data
+                            is collected.
+                        </li>
+                    </list>
+                </li>
+
+                <li>
+                    <p>
+                        Data relating to your bot's runtime environment:
+                    </p>
+
+                    <list type="bullet">
+                        <li>Total available memory.</li>
+                        <li>Physical CPU count, thread count, and processor speed.</li>
+                    </list>
+                </li>
+            </list>
+        </chapter>
+    </chapter>
+
+    <chapter title="Configuration" id="config">
+        <chapter title="Storage" id="config-storage">
+            <p>
+                Your bot needs to store some information relating to data collection for it to function
+                properly:
+            </p>
+
+            <list type="bullet">
+                <li>The latest data collection level used.</li>
+                <li>A UUID representing the bot's data on the data collection server.</li>
+            </list>
+
+            <p>
+                By default, this data is stored in <code>data/data-collection.properties</code> in the current working
+                directory.
+            </p>
+
+            <warning>
+                <p>
+                    <format style="bold">It's important to make sure you don't delete this file,</format> as doing so
+                    will prevent Kord Extensions from removing your data from the data collection server, as it won't
+                    have the UUID for it.
+                </p>
+
+                <p>
+                    If you lose the UUID, you'll also be unable to manually access or remove your bot's data, so be
+                    careful with it!
+                </p>
+            </warning>
+
+            <p>
+                If you need to change the location of the <code>data-collection.properties</code> file, you can do so
+                as follows, with earlier options taking priority:
+            </p>
+
+            <list type="bullet">
+                <li>
+                    Set the <code>dataCollectionState</code> system property to the full path for the properties file.
+                </li>
+
+                <li>
+                    Set the <code>DATA_COLLECTION_STATE</code> environmental variable to the full path for the
+                    properties file.
+                </li>
+            </list>
+        </chapter>
+
+        <chapter title="Level" id="config-level">
+            <p>
+                There are several ways to configure your bot's data collection level.
+                They're listed below in order, with earlier options overridden by later ones:
+            </p>
+
+            <list type="bullet">
+                <li>
+                    The preferred approach: Set it via
+                    <a href="KordEx-Plugin.topic" anchor="data-collection">the KordEx Gradle plugin</a>,
+                    which generates a <code>kordex.properties</code> resource file for you.
+                </li>
+
+                <li>
+                    Manually set the <code>settings.dataCollection</code> property in a <code>kordex.properties</code>
+                    file placed within your bot's resources.
+                </li>
+
+                <li>
+                    Set the <code>DATA_COLLECTION</code> environmental variable to <code>extra</code>,
+                    <code>standard</code>, <code>miimal</code>, or <code>none</code>.
+                </li>
+
+                <li>
+                    Set the <code>dataCollection</code> system property to <code>extra</code>,
+                    <code>standard</code>, <code>miimal</code>, or <code>none</code>.
+                </li>
+
+                <li>
+                    Set the <code>dataCollectionMode</code> property in your bot's builder, as explained in
+                    <a href="Configuration.topic">the configuration section</a>.
+                </li>
+            </list>
+        </chapter>
+    </chapter>
+</topic>

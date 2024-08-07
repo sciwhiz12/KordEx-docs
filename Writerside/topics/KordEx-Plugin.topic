@@ -5,6 +5,8 @@
        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
        title="KordEx Plugin" id="KordEx-Plugin">
 
+    <show-structure depth="2" />
+
     <title>KordEx Plugin</title>
 
     <tldr>
@@ -483,20 +485,16 @@
             </table>
 
             <chapter title="Data Collection" id="data-collection">
+                <primary-label ref="v2" />
                 <tip>
                     <p>
-                        Data collection hasn't yet been implemented, but you can configure it ahead of time, and your
-                        setting will be respected when it is ready.
+                        The data collection system hasn't yet been released, but you can configure it ahead of time,
+                        and your setting will be respected when it is ready.
                     </p>
 
                     <p>
-                        In-depth documentation will be written once a data collection implementation is closer to being
-                        released.
-                    </p>
-
-                    <p>
-                        For more information on what data will be collected in the future, please see
-                        <a href="https://kordex.dev/blog/2024-07-23/kordex-2#data-collection">this blog post</a>.
+                        For in-depth information on the data collection system, please see
+                        <a href="Data-Collection.topic">the dedicated documentation</a>.
                     </p>
                 </tip>
 
@@ -515,12 +513,14 @@
 
                         <td>
                             <p>
-                                Set your bot's default data collection level to the given argument.
+                                Set your bot's default <a href="Data-Collection.topic" /> level to the given argument.
                             </p>
 
                             <p>
-                                <format style="bold">Note:</format> Users may override this at runtime using an
-                                environmental variable.
+                                <format style="bold">Note:</format> Users may override this at runtime using a
+                                system property or an environmental variable.
+                                It may also be manually configured in code,
+                                <a href="Config-Basic.topic" anchor="v2">as explained here</a>.
                             </p>
                         </td>
                     </tr>
