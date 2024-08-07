@@ -126,7 +126,7 @@
             <list type="bullet">
                 <li>The date of submission and the last updated date.</li>
                 <li>Whether your bot is running in development mode.</li>
-                <li>The version of Kord Extensions your bot uses.</li>
+                <li>The versions of Kord and Kord Extensions your bot uses.</li>
             </list>
 
             <p>
@@ -135,7 +135,6 @@
             </p>
 
             <list type="bullet">
-                <li>The version of Kord your bot uses.</li>
                 <li>A list of first-party modules the bot is using.</li>
             </list>
         </chapter>
