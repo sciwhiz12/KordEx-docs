@@ -46,6 +46,13 @@
         </p>
 
         <p>
+            The data collected is not sold or shared with any third-parties, and direct access is limited to
+            <a href="https://github.com/gdude2002">the Kord Extensions lead maintainer</a>.
+            However, graphs and summaries based on that data, without bot/team information, are made available to
+            the public.
+        </p>
+
+        <p>
             All data submissions are assigned a UUID, which is stored by your Kord Extensions bot in a
             properties file.
             While we believe the data collected is not considered personal information under the GDPR, we provide
