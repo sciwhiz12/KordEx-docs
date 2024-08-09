@@ -25,6 +25,10 @@
         <primary>
             <title>Standard Options</title>
 
+            <a href="Config-About.topic"
+               type="documents"
+               summary="Configure information about your bot, to be displayed on Discord." />
+
             <a href="Config-Basic.topic"
                type="learn"
                summary="Basic bot configuration options." />

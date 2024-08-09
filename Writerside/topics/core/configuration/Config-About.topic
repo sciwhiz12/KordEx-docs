@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="About" id="Config-About">
+
+    <primary-label ref="v2" />
+
+    <include from="Snippets.topic" element-id="config-note"/>
+
+    <p>
+        The <code>about</code> builder allows you to configure your bot's <code>about</code> command.
+    </p>
+
+    <warning>
+        <p>
+            The <code>about</code> command mentions Kord Extensions in an embed footer, including its license and a
+            link to <a href="https://kordex.dev">the website</a>.
+        </p>
+
+        <p>
+            Because of how Kord Extensions is licensed, this ensures that your bot contains the required notice and way
+            to get the Kord Extensions source code, and you must not work around this, even though it's likely
+            possible.
+        </p>
+
+        <p>
+            If this is a big problem for you or your company, please get in touch via
+            <a href="%kordex-discord%">the Discord server</a>, and we'll try to figure out an alternative license for
+            you.
+        </p>
+    </warning>
+
+    <p>
+        By default, your Kord Extensions will generate a basic <code>about</code> chat and slash command containing
+        the information provided in the <code>about</code> builder, or some default information if none is provided.
+        As documented below, this information will be moved into a <code>general</code> subcommand if you decide to add
+        extra sections in this builder.
+    </p>
+
+    <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+        ExtensibleBot(TOKEN) {
+            // ...
+
+            about {
+                name = "My Bot"
+                description = "about.bot.description"
+                translationBundle = "my-bundle"
+            }
+        }
+    </code-block>
+
+    <chapter title="Builders" id="about-builders">
+        <table style="header-row">
+            <tr>
+                <td>Builder</td>
+                <td>Receiver</td>
+                <td>Description</td>
+            </tr>
+
+            <tr>
+                <td><code>button</code></td>
+                <td><code>Button</code></td>
+
+                <td>
+                    <p>
+                        Add a button to be displayed under your bot's general information embed.
+                        Buttons must have a <code>name</code> and <code>url</code> set, and you may optionally add an
+                        <code>emoji</code>.
+                    </p>
+
+                    <p>
+                        The <code>name</code> property may be translated using the <code>translationBundle</code> you
+                        provide to the <code>about</code> builder.
+                    </p>
+
+                    <p>
+                        You may add up to five (5) buttons, and they'll be alphabetically sorted before being sent.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>section</code></td>
+                <td><code>Section</code></td>
+
+                <td>
+                    <p>
+                        Add a subcommand to the about command with your own custom content, moving your bot's general
+                        information to a subcommand named <code>general</code>.
+                    </p>
+
+                    <p>
+                        Sections must have a <code>name</code> and <code>description</code>, which will be translated
+                        using the <code>bundle</code> property
+                        (which defaults to the <code>translationBundle</code> you provide to the <code>about</code>
+                        builder), and will be used to create the subcommands.
+                    </p>
+
+                    <p>
+                        Sections must also have a <code>message</code> builder, provided by calling the corresponding
+                        builder function.
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </chapter>
+
+    <chapter title="Functions" id="about-functions">
+        <table style="header-row">
+            <tr>
+                <td>Function</td>
+                <td>Description</td>
+            </tr>
+
+            <tr>
+                <td><code>docsButton</code></td>
+
+                <td>
+                    Convenience function adding a pre-configured button that links to your bot's documentation via the
+                    provided URL.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>donationButton</code></td>
+
+                <td>
+                    Convenience function adding a pre-configured button that links to your bot's donation page via the
+                    provided URL.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>inviteButton</code></td>
+
+                <td>
+                    Convenience function adding a pre-configured button that links to your bot's Discord invitation
+                    link via the provided URL.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>sourceButton</code></td>
+
+                <td>
+                    Convenience function adding a pre-configured button that links to your bot's source code via the
+                    provided URL.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>websiteButton</code></td>
+
+                <td>
+                    Convenience function adding a pre-configured button that links to your bot's website via the
+                    provided URL.
+                </td>
+            </tr>
+        </table>
+    </chapter>
+
+    <chapter title="Properties" id="about-properties">
+        <table style="header-row">
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Description</td>
+            </tr>
+
+            <tr>
+                <td><code>color</code></td>
+                <td><code>Color</code></td>
+
+                <td>
+                    A color, applied to the general information embed.
+                    Defaults to <code>DISCORD_BLURPLE</code>.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>description</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    A description that explains what your bot is and does and provides other general information.
+                    This must fit in an embed description but should be 100 characters shorter than the maximum
+                    allowed.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>logoUrl</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    A direct link to your bot's logo, which will be displayed in the corner of the general information
+                    embed.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>name</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    Your bot's name, which will be shown in the general information embed's title.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>translationBundle</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    Your bot's translation bundle, used to translate the <code>name</code> and
+                    <code>description</code> properties.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>url</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    A link to a website, to be linked at the bottom of the general information embed.
+                    This link should provide the user with more information about the bot.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>version</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    Your bot's version number, displayed in the general information embed's title.
+                </td>
+            </tr>
+        </table>
+    </chapter>
+</topic>
