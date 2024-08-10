@@ -45,6 +45,7 @@
 
         <code-block lang="kotlin">
             import dev.kordex.gradle.plugins.docker.file.*
+            import dev.kordex.gradle.plugins.docker.file.commands.*
 
             docker {
                 // Settings go here.
