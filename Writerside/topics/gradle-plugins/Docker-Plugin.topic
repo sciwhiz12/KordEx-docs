@@ -7,6 +7,8 @@
 
     <show-structure depth="3" />
 
+    <primary-label ref="gradle-1.2.0" />
+
     <title>Docker Plugin</title>
 
     <tldr>
