@@ -87,8 +87,8 @@
         <toc-element topic="PluralKit.topic"/>
     </toc-element>
     <toc-element topic="Gradle-Plugins.topic">
-        <toc-element topic="KordEx-Plugin.topic"/>
         <toc-element topic="Docker-Plugin.topic"/>
+        <toc-element topic="KordEx-Plugin.topic"/>
     </toc-element>
 
     <toc-element topic="Utility-Modules.topic">
