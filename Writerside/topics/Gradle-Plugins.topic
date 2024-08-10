@@ -12,6 +12,11 @@
 
     <list type="bullet">
         <li>
+            <a href="Docker-Plugin.topic" /> — A Gradle plugin that provides a type-safe DSL for generating
+            Dockerfiles.
+        </li>
+
+        <li>
             <a href="KordEx-Plugin.topic" /> — A much easier way to set up your project.
             This is the recommended way to configure Gradle when working with Kord Extensions.
         </li>

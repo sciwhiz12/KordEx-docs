@@ -376,7 +376,7 @@
         </chapter>
 
         <chapter title="Bot Development" id="settings-bot">
-            <secondary-label ref="gradle-1.1.0"/>
+            <primary-label ref="gradle-1.1.0"/>
 
             <p>
                 To configure your project for bot development, use the <code>bot { }</code> builder in the
@@ -497,7 +497,7 @@
         </chapter>
 
         <chapter title="Plugin Development" id="settings-plugin">
-            <secondary-label ref="gradle-1.1.0" />
+            <primary-label ref="gradle-1.1.0" />
 
             <p>
                 To configure your project for plugin development, use the <code>plugin { }</code> builder in the
