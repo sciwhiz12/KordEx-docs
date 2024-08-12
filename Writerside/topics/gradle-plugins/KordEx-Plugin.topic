@@ -217,6 +217,23 @@
                 </tr>
 
                 <tr>
+                    <td><code>addDependencies</code></td>
+                    <td><code>true</code></td>
+
+                    <td>
+                        <p>
+                            <format style="bold">New in v1.2.1:</format>
+                            Whether to automatically add the required dependencies for a standard Kord Extensions setup.
+                        </p>
+
+                        <p>
+                            If you need to create a "common" module depended on by bots, you may wish to set this
+                            property to <code>false</code> in your bot modules to avoid duplicate dependencies.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
                     <td><code>addRepositories</code></td>
                     <td><code>true</code></td>
 
