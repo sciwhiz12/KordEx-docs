@@ -23,7 +23,7 @@
 
         <p>
             <format style="bold">Coordinate:</format>
-            <code>com.kotlindiscord.kord.extensions:kord-extensions</code>
+            <code>dev.kordex:kord-extensions</code>
         </p>
     </tldr>
 
@@ -66,7 +66,7 @@
                     kord-extensions = "%version%"
 
                     [libraries]
-                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kord-extensions" }
+                    kord-extensions = { module = "dev.kordex:kord-extensions", version.ref = "kord-extensions" }
                 </code-block>
 
                 <p>
@@ -115,7 +115,7 @@
                     kord-extensions = "%version%"
 
                     [libraries]
-                    kord-extensions = { module = "com.kotlindiscord.kord.extensions:kord-extensions", version.ref = "kord-extensions" }
+                    kord-extensions = { module = "dev.kordex:kord-extensions", version.ref = "kord-extensions" }
                 </code-block>
 
                 <p>
@@ -200,7 +200,7 @@
                     &lt;!-- ... --&gt;
 
                     &lt;dependency&gt;
-                        &lt;groupId&gt;com.kotlindiscord.kord.extensions&lt;/groupId&gt;
+                        &lt;groupId&gt;dev.kordex&lt;/groupId&gt;
                         &lt;artifactId&gt;kord-extensions&lt;/artifactId&gt;
                         &lt;version&gt;%version%&lt;/version&gt;
                     &lt;/dependency&gt;
@@ -234,7 +234,7 @@
                     resolvers += Resolver.sonatypeOssRepos("snapshots")
 
                     libraryDependencies ++= Seq(
-                        "com.kotlindiscord.kord.extensions" % "kord-extensions" % "%version%"
+                        "dev.kordex" % "kord-extensions" % "%version%"
                     )
                 </code-block>
             </tab>

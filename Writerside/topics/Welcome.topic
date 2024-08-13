@@ -42,6 +42,9 @@
             <a href="Functional-Modules.topic" type="mixed"
                summary="First-party modules, which provide user-facing functionality for your bots."/>
 
+            <a href="Gradle-Plugins.topic" type="tools"
+               summary="Gradle plugins, enhancing your project and making your life easier."/>
+
             <a href="Utility-Modules.topic" type="library"
                summary="Extra utility modules, which provide specific development tools and libraries."/>
         </secondary>
@@ -50,14 +53,17 @@
             <cards narrow="true">
                 <title>Relevant links</title>
 
+                <a href="https://kordex.dev"
+                   type="world"
+                   summary="Learn more about Kord Extensions, and find projects using it.">Official Website</a>
+
                 <a href="%kordex-discord%"
                    type="account"
                    summary="Chat about Kord Extensions, get help or share your projects.">Official Discord Server</a>
 
                 <a href="https://github.com/Kord-Extensions/"
                    type="open-source"
-                   summary="Read the source code, report problems or contribute via Pull Request.">GitHub
-                    Organisation</a>
+                   summary="Read the source code, report problems or contribute via Pull Request.">GitHub Organization</a>
 
                 <a href="https://github.com/Kord-Extensions/template"
                    type="tools"

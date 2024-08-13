@@ -11,6 +11,7 @@
 
     <toc-element topic="About.topic">
         <toc-element topic="Framework-Comparison.topic"/>
+        <toc-element topic="Licensing.topic"/>
     </toc-element>
 
     <toc-element topic="Core-Documentation.topic">

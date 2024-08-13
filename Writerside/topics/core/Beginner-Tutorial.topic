@@ -332,8 +332,8 @@
         </p>
 
         <code-block lang="kotlin">
-            import com.kotlindiscord.kord.extensions.ExtensibleBot
-            import com.kotlindiscord.kord.extensions.utils.env
+            import dev.kordex.core.ExtensibleBot
+            import dev.kordex.core.utils.env
 
             private val TOKEN = env("TOKEN")  // Get the bot's token from environment variables or a .env file
         </code-block>
@@ -357,8 +357,8 @@
         <code-block collapsible="true" lang="kotlin">
             package com.example.bot
 
-            import com.kotlindiscord.kord.extensions.ExtensibleBot
-            import com.kotlindiscord.kord.extensions.utils.env
+            import dev.kordex.core.ExtensibleBot
+            import dev.kordex.core.utils.env
 
             private val TOKEN = env("TOKEN")  // Get the bot's token from environment variables or a .env file
 

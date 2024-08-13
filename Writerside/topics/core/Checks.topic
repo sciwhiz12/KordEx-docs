@@ -1482,7 +1482,7 @@
 
 	    <p>
 		    If you need more examples, feel free to
-		    <a href="https://github.com/Kord-Extensions/kord-extensions/tree/root/kord-extensions/src/main/kotlin/com/kotlindiscord/kord/extensions/checks">
+		    <a href="https://github.com/Kord-Extensions/kord-extensions/tree/root/kord-extensions/src/main/kotlin/dev/kordex/core/checks">
 			    take a look at the bundled checks.</a>
 	    </p>
     </chapter>

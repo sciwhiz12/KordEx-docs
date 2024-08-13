@@ -16,25 +16,30 @@ val client = OkHttpClient()
 val gson = Gson()
 
 val PLUGIN_URL = "https://plugins.gradle.org/m2/dev/kordex/gradle/plugins/kordex/maven-metadata.xml"
-val RELEASES_URL = "https://repo1.maven.org/maven2/com/kotlindiscord/kord/extensions/kord-extensions/maven-metadata.xml"
-val SNAPSHOTS_URL = "https://s01.oss.sonatype.org/service/local/repositories/snapshots/content/" +
-	"com/kotlindiscord/kord/extensions/kord-extensions" +
-	"/maven-metadata.xml"
+val RELEASES_URL = "https://releases-repo.kordex.dev/dev/kordex/kord-extensions/maven-metadata.xml"
+val SNAPSHOTS_URL = "https://snapshots-repo.kordex.dev/dev/kordex/kord-extensions/maven-metadata.xml"
 
 val FILE_PATH = Path("Writerside/v.list")
 
 println("Finding the latest version...")
 
-fun get(url: String): String {
+fun get(url: String): String? {
 	val request = Request.Builder()
 		.url(url)
 		.build()
 
-	return client.newCall(request).execute().body!!.string()
+	val response = client.newCall(request).execute()
+
+	if (response.code == 200) {
+		return response.body!!.string()
+	} else {
+		return null
+	}
 }
 
-fun getLatest(url: String): String {
+fun getLatest(url: String): String? {
 	val content = get(url)
+		?: return null
 
 	val document = DocumentBuilderFactory.newInstance().newDocumentBuilder()
 		.parse(content.byteInputStream())
@@ -56,11 +61,23 @@ fun getJavaFromModule(url: String): String {
 		.get("org.gradle.jvm.version").asString
 }
 
-val latestSnapshot = Version.parse(getLatest(SNAPSHOTS_URL))
-val latestRelease = Version.parse(getLatest(RELEASES_URL))
+val latestSnapshot = getLatest(SNAPSHOTS_URL)?.let { Version.parse(it) }
+val latestRelease = getLatest(RELEASES_URL)?.let { Version.parse(it) }
 
-val latest = maxOf(latestSnapshot, latestRelease)
-val latestPlugin = Version.parse(getLatest(PLUGIN_URL))
+if (latestSnapshot == null && latestRelease == null) {
+	println("Unable to find latest snapshot or release version - are either published?")
+	System.exit(-1)
+}
+
+val latest = if (latestSnapshot == null) {
+	latestRelease!!
+} else if (latestRelease == null) {
+	latestSnapshot!!
+} else {
+	maxOf(latestSnapshot!!, latestRelease!!)
+}
+
+val latestPlugin = getLatest(PLUGIN_URL)?.let { Version.parse(it) }
 
 println("Latest snapshot version: $latestSnapshot")
 println("Latest release version: $latestRelease")
@@ -70,12 +87,11 @@ println("Finding current java version...")
 var javaVersion: String
 
 if ("-SNAPSHOT" in latest.toString()) {
-	val baseUrl = "https://s01.oss.sonatype.org/service/local/repositories/snapshots/content/com/" +
-		"kotlindiscord/kord/extensions/kord-extensions/$latest"
+	val baseUrl = "https://snapshots-repo.kordex.dev/dev/kordex/kord-extensions/$latest"
 
 	val metadataXml = get("$baseUrl/maven-metadata.xml")
 	val metadataDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder()
-		.parse(metadataXml.byteInputStream())
+		.parse(metadataXml!!.byteInputStream())
 
 	val latestBuild = XPathFactory.newInstance().newXPath()
 		.compile("//snapshotVersions/snapshotVersion[1]/value")
@@ -84,13 +100,16 @@ if ("-SNAPSHOT" in latest.toString()) {
 	javaVersion = getJavaFromModule("$baseUrl/kord-extensions-$latestBuild.module")
 } else {
 	javaVersion = getJavaFromModule(
-		"https://repo1.maven.org/maven2/com/kotlindiscord/kord/extensions/kord-extensions" +
-			"/$latest/kord-extensions-$latest.module"
+		"https://releases-repo.kordex.dev/dev/kordex/kord-extensions/$latest/kord-extensions-$latest.module"
 	)
 }
 
+println("Updating Gradle plugins version in Writerside/v.list to $latestPlugin")
 println("Updating KordEx version in Writerside/v.list to $latest")
 println("Updating Java version in Writerside/v.list to $javaVersion")
+
+// Uncommented during local testing
+// System.exit(0)
 
 val file = FILE_PATH.toFile()
 val fileContents = file.readText()

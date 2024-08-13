@@ -6,4 +6,9 @@
         <accepts>page.html</accepts>
     </rule>
     -->
-<rule></rule><rule></rule><rule></rule></rules>
+<rule></rule><rule></rule><rule></rule>
+    <rule id="7f18792">
+        <description>Created after removal of "Version 2" from Kord Extensions</description>
+        <accepts>Version-2.html</accepts>
+    </rule>
+</rules>

@@ -9,7 +9,7 @@
 
 	<note>
 		This section will use
-		<a href="https://github.com/Kord-Extensions/kord-extensions/blob/root/kord-extensions/src/main/kotlin/com/kotlindiscord/kord/extensions/commands/converters/impl/SnowflakeConverter.kt">
+		<a href="https://github.com/Kord-Extensions/kord-extensions/blob/root/kord-extensions/src/main/kotlin/dev/kordex/core/commands/converters/impl/SnowflakeConverter.kt">
 			the bundled Snowflake converter</a> as an example below.
 	</note>
 
@@ -46,7 +46,7 @@
 					}
 
 					kord-extensions-processor = {
-						module = "com.kotlindiscord.kord.extensions:annotation-processor",
+						module = "dev.kordex:annotation-processor",
 						version.ref = "kord-extensions"
 					}
 				</code-block>
@@ -110,7 +110,7 @@
 					}
 
 					kord-extensions-processor = {
-						module = "com.kotlindiscord.kord.extensions:annotation-processor",
+						module = "dev.kordex:annotation-processor",
 						version.ref = "kord-extensions"
 					}
 				</code-block>
@@ -736,7 +736,7 @@
 			processor, you can look at them for more examples.
 
 			They can be found
-			<a href="https://github.com/Kord-Extensions/kord-extensions/tree/root/kord-extensions/src/main/kotlin/com/kotlindiscord/kord/extensions/commands/converters/impl">
+			<a href="https://github.com/Kord-Extensions/kord-extensions/tree/root/kord-extensions/src/main/kotlin/dev/kordex/core/commands/converters/impl">
 				on GitHub</a>.
 		</p>
 	</chapter>
