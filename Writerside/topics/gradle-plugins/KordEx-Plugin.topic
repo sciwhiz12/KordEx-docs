@@ -108,6 +108,38 @@
                         Automatic configuration of the <code>application</code> plugin and <code>jar</code> task.
                     </li>
 
+                    <li id="dev-task">
+                        <p>
+                            <format style="bold">New in v1.3.1:</format>
+                            Creation of the <code>dev</code> task, used to run your bot in development mode.
+                        </p>
+
+                        <p>
+                            This task will recursively parse <code>.env</code> files in your project directories,
+                            adding them to your in-development bot's runtime environment variables:
+                        </p>
+
+                        <list type="bullet">
+                            <li>First, it parses the <code>.env</code> file in your project's root directory.</li>
+
+                            <li>
+                                Then, if your bot is in a subproject/submodule, it'll parse <code>.env</code> files
+                                found while traversing the directory tree down to it, and overriding any previously set
+                                variables.
+                            </li>
+
+                            <li>
+                                Finally, it'll parse the <code>.env</code> file in your bot's module, as previously
+                                described.
+                            </li>
+
+                            <li>
+                                This may be configured by setting <code>processDotEnv</code>
+                                <a anchor="process-dot-env">as explained below</a>.
+                            </li>
+                        </list>
+                    </li>
+
                     <li>
                         Easy configuration of Kord Extensions' default data collection settings.
                     </li>
@@ -313,7 +345,8 @@
                         <p>
                             Specify a specific Kord version if you need to.
                             Alternatively,
-                            supply <code>"latest"</code> and the plugin will try to find the latest version of Kord.
+                            supply <code>"latest"</code> and the plugin will try to find
+                            <format style="bold">the latest non-feature-branch version</format> of Kord.
                         </p>
 
                         <p>
@@ -443,6 +476,20 @@
                 <tr id="settings-bot-optional:header:text:center">
                     <td colspan="3">
                         Optional Properties
+                    </td>
+                </tr>
+
+                <tr id="process-dot-env">
+                    <td><code>processDotEnv</code></td>
+                    <td><code>true</code></td>
+
+                    <td>
+                        <format style="bold">New in v1.3.1:</format>
+
+                        <p>
+                            Whether to recursively parse <code>.env</code> files when setting up the <code>dev</code>
+                            task, <a anchor="dev-task">as explained here</a>.
+                        </p>
                     </td>
                 </tr>
 
