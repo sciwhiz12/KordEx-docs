@@ -518,12 +518,8 @@
 
             <chapter title="Data Collection" id="data-collection">
                 <primary-label ref="v2" />
-                <tip>
-                    <p>
-                        The data collection system hasn't yet been released, but you can configure it ahead of time,
-                        and your setting will be respected when it is ready.
-                    </p>
 
+                <tip>
                     <p>
                         For in-depth information on the data collection system, please see
                         <a href="Data-Collection.topic">the dedicated documentation</a>.

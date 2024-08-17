@@ -43,10 +43,6 @@
     <chapter title="Upcoming in v2" id="v2">
         <primary-label ref="v2" />
 
-        <p>
-            The options below were added in Kord Extensions version 2, which hasn't yet been released.
-        </p>
-
         <chapter title="Properties" id="v2-properties">
             <table style="header-row">
                 <tr>
