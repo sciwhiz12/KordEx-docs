@@ -53,8 +53,7 @@
         </p>
 
         <p>
-            All data submissions are assigned a UUID, which is stored by your Kord Extensions bot in a
-            properties file.
+            All data submissions are assigned a UUID, which is stored by your Kord Extensions bot via a storage unit.
             While we believe the data collected is not considered personal information under the GDPR, we provide
             several mechanisms that allow you to use this UUID for data retrieval and removal:
         </p>
@@ -220,38 +219,12 @@
             </list>
 
             <p>
-                By default, this data is stored in <code>data/data-collection.properties</code> in the current working
-                directory.
+                This data is stored through a storage unit, via the data adapter system.
+                By default, this means data will be stored in <code>./data/</code>, but you can change that by
+                supplying another data adapter, such as
+                <a href="https://github.com/Kord-Extensions/kord-extensions/tree/root/modules/data/data-mongodb"
+                >the official MongoDB data adapter</a>.
             </p>
-
-            <warning>
-                <p>
-                    <format style="bold">It's important to make sure you don't delete this file,</format> as doing so
-                    will prevent Kord Extensions from removing your data from the data collection server, as it won't
-                    have the UUID for it.
-                </p>
-
-                <p>
-                    If you lose the UUID, you'll also be unable to manually access or remove your bot's data, so be
-                    careful with it!
-                </p>
-            </warning>
-
-            <p>
-                If you need to change the location of the <code>data-collection.properties</code> file, you can do so
-                as follows, with earlier options taking priority:
-            </p>
-
-            <list type="bullet">
-                <li>
-                    Set the <code>dataCollectionState</code> system property to the full path for the properties file.
-                </li>
-
-                <li>
-                    Set the <code>DATA_COLLECTION_STATE</code> environmental variable to the full path for the
-                    properties file.
-                </li>
-            </list>
         </chapter>
 
         <chapter title="Level" id="config-level">
