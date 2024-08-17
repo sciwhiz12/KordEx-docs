@@ -148,6 +148,8 @@
                 <li>The number of extensions and plugins your bot has loaded.</li>
                 <li>The number of guilds your bot can see.</li>
                 <li>A list of intents enabled by your bot.</li>
+                <li>Number of top-level chat commands registered.</li>
+                <li>Number global application commands registered, split into message, slash and user commands.</li>
 
                 <li>
                     <p>
