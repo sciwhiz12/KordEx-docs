@@ -220,6 +220,28 @@
 
     <chapter title="Configuration" id="config">
         <chapter title="Storage" id="config-storage">
+            <tip>
+                <p>
+                    If you're working in a containerized environment, or you otherwise absolutely cannot store the
+                    required state, you can still participate:
+                </p>
+
+                <list type="decimal">
+                    <li>
+                        Generate a version 4 UUID, either directly using Java/Kotlin or via
+                        <a href="https://fusionauth.io/dev-tools/uuid-generator">a website like this one</a>.
+                    </li>
+
+                    <li>
+                        Set the <code>dataCollectionUUID</code> system property or the
+                        <code>DATA_COLLECTION_UUID</code> environmental variable to the UUID at runtime.
+                    </li>
+                </list>
+
+                <p>
+                    <format style="bold">Please ensure that each instance of your bot has a unique UUID!</format>
+                </p>
+            </tip>
             <p>
                 Your bot needs to store some information relating to data collection for it to function
                 properly:

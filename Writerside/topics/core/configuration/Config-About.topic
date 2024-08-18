@@ -82,6 +82,17 @@
             </tr>
 
             <tr>
+                <td><code>Field</code></td>
+                <td><code>Field</code></td>
+
+                <td>
+                    <p>
+                        Add a field to be displayed in your bot's general information embed.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
                 <td><code>section</code></td>
                 <td><code>Section</code></td>
 
@@ -101,6 +112,11 @@
                     <p>
                         Sections must also have a <code>message</code> builder, provided by calling the corresponding
                         builder function.
+                    </p>
+
+                    <p>
+                        You may set the <code>ephemeral</code> property to decide whether the bot should respond
+                        ephemerally or not.
                     </p>
                 </td>
             </tr>
@@ -187,6 +203,16 @@
                     A description that explains what your bot is and does and provides other general information.
                     This must fit in an embed description but should be 100 characters shorter than the maximum
                     allowed.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>ephemeral</code></td>
+                <td><code>String</code></td>
+
+                <td>
+                    Whether to respond ephemerally when the about command is run.
+                    Defaults to <code>true</code>.
                 </td>
             </tr>
 
