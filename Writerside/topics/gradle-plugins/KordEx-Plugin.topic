@@ -548,7 +548,7 @@
                                 <format style="bold">Note:</format> Users may override this at runtime using a
                                 system property or an environmental variable.
                                 It may also be manually configured in code,
-                                <a href="Config-Basic.topic" anchor="v2">as explained here</a>.
+                                <a href="Config-Basic.topic" anchor="v2-properties">as explained here</a>.
                             </p>
                         </td>
                     </tr>

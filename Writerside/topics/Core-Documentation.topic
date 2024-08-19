@@ -53,9 +53,9 @@
 		<secondary>
             <title>Dig Deeper</title>
 
-            <a href="#"
-               type="thumb-up"
-               summary="This page won't build without a secondary section. We'll add cards here later."
+            <a href="Gradle-Plugins.topic"
+               type="integration"
+               summary="Learn about our Gradle plugins, and how they can make development easier."
             />
 		</secondary>
     </section-starting-page>
