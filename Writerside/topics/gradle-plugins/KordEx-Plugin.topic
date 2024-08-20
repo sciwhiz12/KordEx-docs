@@ -21,11 +21,6 @@
         </p>
     </tldr>
 
-    <warning>
-        If you need to use the KSP plugin, please avoid using the KordEx plugin for now, as we've found a problematic
-        interaction that we need to find a workaround for.
-    </warning>
-
     <p>
         The KordEx Gradle plugin is a Gradle plugin designed to make it easier to correctly configure Gradle projects
         containing Kord Extensions bots and plugins.
