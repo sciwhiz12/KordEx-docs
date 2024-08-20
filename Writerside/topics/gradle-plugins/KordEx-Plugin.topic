@@ -21,6 +21,11 @@
         </p>
     </tldr>
 
+    <warning>
+        If you need to use the KSP plugin, please avoid using the KordEx plugin for now, as we've found a problematic
+        interaction that we need to find a workaround for.
+    </warning>
+
     <p>
         The KordEx Gradle plugin is a Gradle plugin designed to make it easier to correctly configure Gradle projects
         containing Kord Extensions bots and plugins.
@@ -146,8 +151,8 @@
 
                     <li>
                         <p>
-                            Generation of the <code>kordex.properties</code> resource file, which is automatically added to your
-                            bot's resources.
+                            Generation of the <code>kordex.properties</code> resource file, which is automatically
+                            added to your bot's resources.
                             This file contains:
                         </p>
 
@@ -156,6 +161,11 @@
                             <li>The version of Kord and Kord Extensions you're using.</li>
                             <li>A list of first-party Kord Extensions modules you're using.</li>
                         </list>
+
+                        <p>
+                            You should not provide this yourself, as missing some data will break parts of
+                            Kord Extensions.
+                        </p>
                     </li>
                 </list>
             </li>

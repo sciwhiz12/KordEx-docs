@@ -270,13 +270,7 @@
             <list type="bullet">
                 <li>
                     The preferred approach: Set it via
-                    <a href="KordEx-Plugin.topic" anchor="data-collection">the KordEx Gradle plugin</a>,
-                    which generates a <code>kordex.properties</code> resource file for you.
-                </li>
-
-                <li>
-                    Manually set the <code>settings.dataCollection</code> property in a <code>kordex.properties</code>
-                    file placed within your bot's resources.
+                    <a href="KordEx-Plugin.topic" anchor="data-collection">the KordEx Gradle plugin</a>.
                 </li>
 
                 <li>
