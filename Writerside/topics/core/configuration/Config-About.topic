@@ -111,7 +111,7 @@
         </p>
 
         <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
-            section("name") {
+            section("name", "description") {
                 bundle = "my-translation-bundle"
                 description = "section description"
 
