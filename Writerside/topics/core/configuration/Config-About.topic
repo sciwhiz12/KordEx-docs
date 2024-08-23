@@ -225,11 +225,23 @@
         </list>
 
         <p>
-            Copyright items may be added by calling the <code>copyright</code> function with a name, SPDX license
-            identifier, item type (Framework, Library, Plugin/Module, or Tool), and optionally a URL.
+            Copyright items may be added by calling the <code>copyright</code> function with a name,
+            <a href="https://spdx.org/licenses/">SPDX license identifier</a>,
+            item type (Framework, Library, Plugin/Module, or Tool), and optionally a URL.
         </p>
 
-        <tip>
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+            about {
+                copyright(
+                    "Time4J",
+                    "LGPL-2.1",
+                    CopyrightType.Library,
+                    "http://time4j.net/"
+                )
+            }
+        </code-block>
+
+        <chapter title="Modules" id="copyright-modules">
             <p>
                 If you're writing a module, library, or meta-framework, feel free to include whatever information you
                 feel is relevant by default.
@@ -265,6 +277,6 @@
                     }
                 }
             </code-block>
-        </tip>
+        </chapter>
     </chapter>
 </topic>
