@@ -15,8 +15,8 @@
 
     <warning>
         <p>
-            The <code>about</code> command mentions Kord Extensions in an embed footer, including its license and a
-            link to <a href="https://kordex.dev">the website</a>.
+            The <code>about</code> command includes a mandatory copyright section, mentioning Kord Extensions and
+            the libraries it uses.
         </p>
 
         <p>
@@ -33,236 +33,238 @@
     </warning>
 
     <p>
-        By default, your Kord Extensions will generate a basic <code>about</code> chat and slash command containing
-        the information provided in the <code>about</code> builder, or some default information if none is provided.
-        As documented below, this information will be moved into a <code>general</code> subcommand if you decide to add
-        extra sections in this builder.
+        By default, Kord Extensions will create an <code>about</code> chat and slash command, with a
+        <code>copyright</code> subcommand.
+        You can configure this command using the <code>about { }</code> builder, adding your own sections and copyright
+        notices as appropriate.
     </p>
 
     <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
-        ExtensibleBot(TOKEN) {
-            // ...
+        about {
+            ephemeral = false
 
-            about {
-                name = "My Bot"
-                description = "about.bot.description"
-                translationBundle = "my-bundle"
+            general {
+                message { locale ->
+                    content = "General message content goes here!"
+                }
+            }
+
+            section("another") {
+                description = "Command description goes here!"
+
+                message { locale ->
+                    content = "More content here!"
+
+                    embed {
+                        description = "Maybe even an embed?"
+                    }
+                }
             }
         }
     </code-block>
 
-    <chapter title="Builders" id="about-builders">
+    <chapter title="Configuration" id="configuration">
+        <p>
+            The <code>about { }</code> builder provides the following properties.
+        </p>
+
         <table style="header-row">
             <tr>
-                <td>Builder</td>
-                <td>Receiver</td>
-                <td>Description</td>
-            </tr>
-
-            <tr>
-                <td><code>button</code></td>
-                <td><code>Button</code></td>
-
-                <td>
-                    <p>
-                        Add a button to be displayed under your bot's general information embed.
-                        Buttons must have a <code>name</code> and <code>url</code> set, and you may optionally add an
-                        <code>emoji</code>.
-                    </p>
-
-                    <p>
-                        The <code>name</code> property may be translated using the <code>translationBundle</code> you
-                        provide to the <code>about</code> builder.
-                    </p>
-
-                    <p>
-                        You may add up to five (5) buttons, and they'll be alphabetically sorted before being sent.
-                    </p>
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>Field</code></td>
-                <td><code>Field</code></td>
-
-                <td>
-                    <p>
-                        Add a field to be displayed in your bot's general information embed.
-                    </p>
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>section</code></td>
-                <td><code>Section</code></td>
-
-                <td>
-                    <p>
-                        Add a subcommand to the about command with your own custom content, moving your bot's general
-                        information to a subcommand named <code>general</code>.
-                    </p>
-
-                    <p>
-                        Sections must have a <code>name</code> and <code>description</code>, which will be translated
-                        using the <code>bundle</code> property
-                        (which defaults to the <code>translationBundle</code> you provide to the <code>about</code>
-                        builder), and will be used to create the subcommands.
-                    </p>
-
-                    <p>
-                        Sections must also have a <code>message</code> builder, provided by calling the corresponding
-                        builder function.
-                    </p>
-
-                    <p>
-                        You may set the <code>ephemeral</code> property to decide whether the bot should respond
-                        ephemerally or not.
-                    </p>
-                </td>
-            </tr>
-        </table>
-    </chapter>
-
-    <chapter title="Functions" id="about-functions">
-        <table style="header-row">
-            <tr>
-                <td>Function</td>
-                <td>Description</td>
-            </tr>
-
-            <tr>
-                <td><code>docsButton</code></td>
-
-                <td>
-                    Convenience function adding a pre-configured button that links to your bot's documentation via the
-                    provided URL.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>donationButton</code></td>
-
-                <td>
-                    Convenience function adding a pre-configured button that links to your bot's donation page via the
-                    provided URL.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>inviteButton</code></td>
-
-                <td>
-                    Convenience function adding a pre-configured button that links to your bot's Discord invitation
-                    link via the provided URL.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>sourceButton</code></td>
-
-                <td>
-                    Convenience function adding a pre-configured button that links to your bot's source code via the
-                    provided URL.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>websiteButton</code></td>
-
-                <td>
-                    Convenience function adding a pre-configured button that links to your bot's website via the
-                    provided URL.
-                </td>
-            </tr>
-        </table>
-    </chapter>
-
-    <chapter title="Properties" id="about-properties">
-        <table style="header-row">
-            <tr>
-                <td>Name</td>
+                <td>Property</td>
                 <td>Type</td>
                 <td>Description</td>
             </tr>
 
             <tr>
-                <td><code>color</code></td>
-                <td><code>Color</code></td>
-
-                <td>
-                    A color, applied to the general information embed.
-                    Defaults to <code>DISCORD_BLURPLE</code>.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>description</code></td>
-                <td><code>String</code></td>
-
-                <td>
-                    A description that explains what your bot is and does and provides other general information.
-                    This must fit in an embed description but should be 100 characters shorter than the maximum
-                    allowed.
-                </td>
-            </tr>
-
-            <tr>
                 <td><code>ephemeral</code></td>
-                <td><code>String</code></td>
+                <td><code>Boolean</code></td>
 
                 <td>
-                    Whether to respond ephemerally when the about command is run.
+                    Whether commands (including the copyright command) should respond to slash commands ephemerally.
                     Defaults to <code>true</code>.
                 </td>
             </tr>
 
             <tr>
-                <td><code>logoUrl</code></td>
-                <td><code>String</code></td>
-
-                <td>
-                    A direct link to your bot's logo, which will be displayed in the corner of the general information
-                    embed.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>name</code></td>
-                <td><code>String</code></td>
-
-                <td>
-                    Your bot's name, which will be shown in the general information embed's title.
-                </td>
-            </tr>
-
-            <tr>
                 <td><code>translationBundle</code></td>
-                <td><code>String</code></td>
+                <td><code>String?</code></td>
 
                 <td>
-                    Your bot's translation bundle, used to translate the <code>name</code> and
-                    <code>description</code> properties.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>url</code></td>
-                <td><code>String</code></td>
-
-                <td>
-                    A link to a website, to be linked at the bottom of the general information embed.
-                    This link should provide the user with more information about the bot.
-                </td>
-            </tr>
-
-            <tr>
-                <td><code>version</code></td>
-                <td><code>String</code></td>
-
-                <td>
-                    Your bot's version number, displayed in the general information embed's title.
+                    Translation bundle, used to translate your section names and descriptions by default.
                 </td>
             </tr>
         </table>
+    </chapter>
+
+    <chapter title="Sections" id="sections">
+        <p>
+            While Kord Extensions provides the <code>copyright</code> subcommand by default, you're free to add any
+            other informational commands you wish.
+            These commands are referred to as "sections," and each section is represented by a subcommand on the
+            <code>about</code> command.
+        </p>
+
+        <p>
+            To configure a section, use the <code>section</code> function.
+            This function takes the section name and description as arguments, and provides a builder you can use to
+            configure the section's options and provide a message.
+        </p>
+
+        <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
+            section("name") {
+                bundle = "my-translation-bundle"
+                description = "section description"
+
+                message {
+                    embed {
+                        title = "Embed Title"
+                        description = translate("a.translation.key")
+                    }
+                }
+            }
+        </code-block>
+
+        <p>
+            The <code>about { }</code> builder also provides a <code>general</code> builder, providing a standard
+            "general" section with a translated command name and description.
+        </p>
+
+        <chapter title="Builders" id="section-builders">
+            <table style="header-row">
+                <tr>
+                    <td>Builder</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>message</code></td>
+
+                    <td>
+                        <p>
+                            Call this DSL function to provide a message builder,
+                            used to construct the message returned to the user
+                            when they access the current section.
+                        </p>
+
+                        <p>
+                            This builder is a receiver against the <code>MessageBuilder</code> type, and takes the
+                            current event context's <code>Locale</code> as the first argument.
+                            This <code>Locale</code> object can be used with the provided <code>translate</code>
+                            function,
+                            if you need to use
+                            <a href="Internationalisation.topic">the i18n system</a>.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Properties" id="section-properties">
+            <table style="header-row">
+                <tr>
+                    <td>Property</td>
+                    <td>Type</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>ephemeral</code></td>
+                    <td><code>Boolean</code></td>
+
+                    <td>
+                        Whether this section should respond to slash commands ephemerally.
+                        If not provided, defaults to the setting provided in the <code>about { }</code> builder.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>translationBundle</code></td>
+                    <td><code>String?</code></td>
+
+                    <td>
+                        Translation bundle, used to translate the section name and description.
+                        If not provided, defaults to the setting provided in the <code>about { }</code> builder.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="Functions" id="section-functions">
+            <table style="header-row">
+                <tr>
+                    <td>Function</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr>
+                    <td><code>translate</code></td>
+
+                    <td>
+                        Convenience function providing quick access to
+                        <a href="Internationalisation.topic">the i18n system</a>,
+                        allowing translation using the given translation key and locale.
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+    </chapter>
+
+    <chapter title="Copyright" id="copyright">
+        <p>
+            The contents of the <code>copyright</code> section are generated based on a list of copyright entries,
+            provided via the <code>copyright</code> function.
+        </p>
+
+        <p>
+            Kord Extensions will automatically populate this list with the following data:
+        </p>
+
+        <list type="bullet">
+            <li>The dependencies it uses, along with those used by any first-party modules included with your bot.</li>
+            <li>A list of currently loaded plugins, without versioning information.</li>
+        </list>
+
+        <p>
+            Copyright items may be added by calling the <code>copyright</code> function with a name, SPDX license
+            identifier, item type (Framework, Library, Plugin/Module, or Tool), and optionally a URL.
+        </p>
+
+        <tip>
+            <p>
+                If you're writing a module, library, or meta-framework, feel free to include whatever information you
+                feel is relevant by default.
+            </p>
+
+            <p>
+                A simple way to do this is by creating an extension function, checking a top-level boolean value, and
+                calling this function in a setup function or class initializer.
+                For example:
+            </p>
+
+            <code-block lang="kotlin" collapsible="true" collapsed-title="Example">
+                private var copyrightAdded = false
+
+                internal fun AboutBuilder.addCopyright() {
+                    if (!copyrightAdded) {
+                        copyright(
+                            "Time4J",
+                            "LGPL-2.1",
+                            CopyrightType.Library,
+                            "http://time4j.net/"
+                        )
+                    }
+
+                    copyrightAdded = true
+                }
+
+                // ...
+
+                class MyExtension : Extension() {
+                    override fun setup() {
+                        bot.settings.aboutBuilder.addCopyright()
+                    }
+                }
+            </code-block>
+        </tip>
     </chapter>
 </topic>
