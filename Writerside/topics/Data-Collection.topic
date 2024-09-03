@@ -275,12 +275,12 @@
 
                 <li>
                     Set the <code>DATA_COLLECTION</code> environmental variable to <code>extra</code>,
-                    <code>standard</code>, <code>miimal</code>, or <code>none</code>.
+                    <code>standard</code>, <code>minimal</code>, or <code>none</code>.
                 </li>
 
                 <li>
                     Set the <code>dataCollection</code> system property to <code>extra</code>,
-                    <code>standard</code>, <code>miimal</code>, or <code>none</code>.
+                    <code>standard</code>, <code>minimal</code>, or <code>none</code>.
                 </li>
 
                 <li>
