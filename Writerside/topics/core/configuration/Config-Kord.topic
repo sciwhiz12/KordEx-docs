@@ -76,6 +76,24 @@
             </tr>
 
             <tr>
+                <td><code>eventFilter</code></td>
+                <td><code>Event</code></td>
+                <td> </td>
+
+                <td>
+                    <p>
+                        Register a predicate which filters Kord events from the Kord Extensions events flow, which
+                        may be an optimization in some situations.
+                    </p>
+
+                    <p>
+                        Only one predicate may be registered.
+                        Registering a new predicate will overwrite the previous one.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
                 <td><code>kord</code></td>
 
                 <td>
