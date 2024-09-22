@@ -108,7 +108,7 @@
                         Resolve the contextual locale for the given event, using the resolvers defined in
                         <a href="Config-Internationalization.topic">the bot's configuration</a>.
                         Will default to the configured default bot locale if one can't be resolved.
-                        This may be useful for work related to <a href="Internationalisation.topic"/>.
+                        This may be useful for work related to <a href="Internationalization.topic"/>.
                     </td>
                 </tr>
 
@@ -120,7 +120,7 @@
                         It allows you to translate a given string key based on the event's locale, or
                         another given locale.
                         For more information on translations, see
-                        <a href="Internationalisation.topic">the dedicated documentation</a>,
+                        <a href="Internationalization.topic">the dedicated documentation</a>,
                         and examine the functions in your IDE for more information on their parameters.
                     </td>
                 </tr>
@@ -181,7 +181,7 @@
                     <td><code>translationsProvider</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic">
+                        <a href="Internationalization.topic">
                             <code>TranslationsProvider</code>
                         </a>
                     </td>
@@ -215,7 +215,7 @@
                         Resolve the contextual locale for the current event, using the resolvers defined in
                         <a href="Config-Internationalization.topic">the bot's configuration</a>.
                         Will default to the configured default bot locale if one can't be resolved.
-                        This may be useful for work related to <a href="Internationalisation.topic"/>.
+                        This may be useful for work related to <a href="Internationalization.topic"/>.
                     </td>
                 </tr>
 
@@ -227,7 +227,7 @@
                         It allows you to translate a given string key based on the current event's locale, or
                         another given locale.
                         For more information on translations, see
-                        <a href="Internationalisation.topic">the dedicated documentation</a>,
+                        <a href="Internationalization.topic">the dedicated documentation</a>,
                         and examine the functions in your IDE for more information on their parameters.
                     </td>
                 </tr>
@@ -295,7 +295,7 @@
                     <td><code>translationsProvider</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic">
+                        <a href="Internationalization.topic">
                             <code>TranslationsProvider</code>
                         </a>
                     </td>

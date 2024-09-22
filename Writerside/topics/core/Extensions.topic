@@ -266,7 +266,7 @@
                 <li><a href="Checks.topic" /></li>
                 <li><a href="Commands.topic" /></li>
                 <li><a href="Events.topic" /></li>
-                <li><a href="Internationalisation.topic" /></li>
+                <li><a href="Internationalization.topic" /></li>
                 <li><a href="Utilities.topic" /></li>
             </list>
         </note>
@@ -331,7 +331,7 @@
                     <td>
                         Translation bundle to be used for string translations in this extension by default.
                         For more information,
-                        see <a href="Internationalisation.topic">the dedicated documentation</a>.
+                        see <a href="Internationalization.topic">the dedicated documentation</a>.
                     </td>
                 </tr>
 

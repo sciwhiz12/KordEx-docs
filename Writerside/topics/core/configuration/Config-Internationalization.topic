@@ -64,7 +64,7 @@
                         <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Locale.html">
                             <code>Locale</code>
                         </a> object based on the parameters passed to it.
-                        For more information, see <a href="Internationalisation.topic">the i18n documentation</a>.
+                        For more information, see <a href="Internationalization.topic">the i18n documentation</a>.
                     </p>
 
                     <note>

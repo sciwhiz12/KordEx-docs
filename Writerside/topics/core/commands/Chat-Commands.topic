@@ -351,7 +351,7 @@
                     <td><code>String?</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic">Translation key</a>
+                        <a href="Internationalization.topic">Translation key</a>
                         referencing a comma-separated list of alternative command names.
                         If this property is set, the <code>aliases</code> list is ignored.
                     </td>
@@ -364,7 +364,7 @@
 
                     <td>
                         <p>
-                            <a href="Internationalisation.topic">Translation key</a>
+                            <a href="Internationalization.topic">Translation key</a>
                             referencing the command signature to be shown in help commands.
                             By default, Kord Extensions will generate a signature automatically.
                             This property may be set if you wish to override it.
@@ -545,8 +545,8 @@
                     <td><code>Message.respondTranslated</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic">🌐 <code>key</code></a>,
-                        <a href="Internationalisation.topic"><code>replacements</code></a>,
+                        <a href="Internationalization.topic">🌐 <code>key</code></a>,
+                        <a href="Internationalization.topic"><code>replacements</code></a>,
                         <code>useReply = true</code>
                     </td>
 
@@ -561,7 +561,7 @@
 
                         <p>
                             For more information,
-                            see <a href="Internationalisation.topic">the dedicated documentation</a>.
+                            see <a href="Internationalization.topic">the dedicated documentation</a>.
                         </p>
                     </td>
                 </tr>

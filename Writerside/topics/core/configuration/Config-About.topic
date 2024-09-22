@@ -152,7 +152,7 @@
                             This <code>Locale</code> object can be used with the provided <code>translate</code>
                             function,
                             if you need to use
-                            <a href="Internationalisation.topic">the i18n system</a>.
+                            <a href="Internationalization.topic">the i18n system</a>.
                         </p>
                     </td>
                 </tr>
@@ -201,7 +201,7 @@
 
                     <td>
                         Convenience function providing quick access to
-                        <a href="Internationalisation.topic">the i18n system</a>,
+                        <a href="Internationalization.topic">the i18n system</a>,
                         allowing translation using the given translation key and locale.
                     </td>
                 </tr>

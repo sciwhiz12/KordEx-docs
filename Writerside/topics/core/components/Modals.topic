@@ -345,7 +345,7 @@
                     <td><code>String?</code></td>
 
                     <td>
-                        Override this to provide a <a href="Internationalisation.topic">translation bundle</a>
+                        Override this to provide a <a href="Internationalization.topic">translation bundle</a>
                         to use to translate this Modal's title and its Widgets'
                         labels, initial values, and placeholders.
                     </td>

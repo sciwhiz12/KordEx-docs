@@ -128,7 +128,7 @@
                         There are a number of overloads for this function, which allows you to translate a given
                         string key based on the check's current locale or another given locale.
                         For more information on translations, see
-                        <a href="Internationalisation.topic">the dedicated documentation</a>,
+                        <a href="Internationalization.topic">the dedicated documentation</a>,
                         and examine the functions in your IDE for more information on their parameters.
                     </td>
                 </tr>
@@ -1328,7 +1328,7 @@
 
 				    <td>
 					    Retrieve the corresponding <code>UserBehavior</code> for the given event, or
-					    <code>null</code> when the event doesn't concern a user or the<code>UserBehavior</code> can't
+					    <code>null</code> when the event doesn't concern a user or the <code>UserBehavior</code> can't
 					    be retrieved.
 				    </td>
 			    </tr>

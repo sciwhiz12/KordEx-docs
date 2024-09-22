@@ -313,7 +313,7 @@
                     <td><code>translationsProvider</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic">
+                        <a href="Internationalization.topic">
                             <code>TranslationsProvider</code>
                         </a>
                     </td>
@@ -334,7 +334,7 @@
         <p>
             The <code>CommandContext</code> type extends the
 
-            <a href="Internationalisation.topic">
+            <a href="Internationalization.topic">
                 <code>TranslatableContext</code>
             </a>
 
@@ -421,7 +421,7 @@
                         There are a number of overloads for this function, which allows you to translate a given
                         string key based on the resolved locale or another given locale.
                         For more information on translations, see
-                        <a href="Internationalisation.topic">the dedicated documentation</a>,
+                        <a href="Internationalization.topic">the dedicated documentation</a>,
                         and examine the functions in your IDE for more information on their parameters.
                     </td>
                 </tr>
@@ -506,7 +506,7 @@
                     <td><code>translationsProvider</code></td>
 
                     <td>
-                        <a href="Internationalisation.topic">
+                        <a href="Internationalization.topic">
                             <code>TranslationsProvider</code>
                         </a>
                     </td>

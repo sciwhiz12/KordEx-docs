@@ -612,7 +612,7 @@
                             string key based on the resolved locale from the <code>context</code> property, or
                             another given locale.
                             For more information on translations, see
-                            <a href="Internationalisation.topic">the dedicated documentation</a>,
+                            <a href="Internationalization.topic">the dedicated documentation</a>,
                             and examine the functions in your IDE for more information on their parameters.
                         </td>
                     </tr>
@@ -667,7 +667,7 @@
                         <td>
                             <p>
                                 Translation bundle used by the
-                                <a href="Internationalisation.topic">translations system</a>.
+                                <a href="Internationalization.topic">translations system</a>.
                                 Used to translate the <code>errorResponseKey</code>, and by the
                                 <code>translate</code> functions.
                             </p>
@@ -686,7 +686,7 @@
                         <td>
                             <p>
                                 Translation key used by the
-                                <a href="Internationalisation.topic">translations system</a>
+                                <a href="Internationalization.topic">translations system</a>
                                 to format the error message when validation fails.
                             </p>
 
@@ -1209,7 +1209,7 @@
 
                                 <li>
                                     🏷️ <code>bundle</code> (<code>String?</code>) — Optional
-                                    <a href="Internationalisation.topic">translation bundle</a> to use to translate
+                                    <a href="Internationalization.topic">translation bundle</a> to use to translate
                                     this converter's strings, including the <code>typeName</code> property.
                                 </li>
 

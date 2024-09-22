@@ -65,7 +65,7 @@
                     <td>
                         Translation key used to generate the <code>reason</code> string, if any.
                         Defaults to `null`.
-                        For more information, see <a href="Internationalisation.topic">the dedicated documentation</a>.
+                        For more information, see <a href="Internationalization.topic">the dedicated documentation</a>.
                     </td>
                 </tr>
             </table>
@@ -119,7 +119,7 @@
 
                     <td>
                         The translation bundle used to generate the given <code>reason</code> string, if any.
-                        For more information, see <a href="Internationalisation.topic">the dedicated documentation</a>.
+                        For more information, see <a href="Internationalization.topic">the dedicated documentation</a>.
                     </td>
                 </tr>
 
@@ -129,7 +129,7 @@
 
                     <td>
                         The locale object used to translate the given <code>reason</code> string.
-                        For more information, see <a href="Internationalisation.topic">the dedicated documentation</a>.
+                        For more information, see <a href="Internationalization.topic">the dedicated documentation</a>.
                     </td>
                 </tr>
 

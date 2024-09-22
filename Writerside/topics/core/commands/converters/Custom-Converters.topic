@@ -230,7 +230,7 @@
 					<td><code>String</code></td>
 
 					<td>
-						A <a href="Internationalisation.topic">translation key</a> referring to a short description
+						A <a href="Internationalization.topic">translation key</a> referring to a short description
 						explaining the type of data this converter handles.
 						Shown in help commands for <a href="Chat-Commands.topic"/> and errors for all command types.
 					</td>
@@ -255,7 +255,7 @@
 					<td><code>String?</code></td>
 
 					<td>
-						A <a href="Internationalisation.topic">translation bundle</a>, used to resolve translations for
+						A <a href="Internationalization.topic">translation bundle</a>, used to resolve translations for
 						this converter.
 						Defaults to <code>null</code>, which will result in the default Kord Extensions bundle being
 						used.
@@ -268,7 +268,7 @@
 					<td><code>String?</code></td>
 
 					<td>
-						A <a href="Internationalisation.topic">translation key</a> representing a longer description for
+						A <a href="Internationalization.topic">translation key</a> representing a longer description for
 						this converter's handled type than <code>signatureTypeString</code>.
 						Used in "invalid value" errors instead of <code>signatureTypeString</code> if provided.
 						Defaults to <code>null</code>.
