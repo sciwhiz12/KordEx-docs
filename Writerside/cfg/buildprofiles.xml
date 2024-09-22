@@ -15,11 +15,9 @@
 			<link-color>#5865F2</link-color>
 			<primary-color>#5865F2</primary-color>
 
-			<browser-edits-url>https://github.com/Kord-Extensions/docs/tree/root/</browser-edits-url>
 			<download-page>https://github.com/Kord-Extensions/kord-extensions</download-page>
 			<download-title>GitHub</download-title>
 			<header-logo>logo.png</header-logo>
-			<enable-browser-edits>true</enable-browser-edits>
 			<noindex-content>false</noindex-content>
 			<offline-docs>true</offline-docs>
 			<showDownloadButton>true</showDownloadButton>

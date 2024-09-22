@@ -165,6 +165,11 @@
                 </list>
             </li>
 
+			<li>
+				<b>When configured for i18n work:</b> automatic generation of translation classes containing your
+				translation bundle and translation keys.
+			</li>
+
             <li>
                 <p><b>When configured for plugin development:</b></p>
 
@@ -721,6 +726,151 @@
                             <a href="https://github.com/zafarkhaja/jsemver#range-expressions">JSemver range expression</a>
                             as the first argument to this function.
                         </p>
+                    </td>
+                </tr>
+            </table>
+        </chapter>
+
+        <chapter title="I18n Work" id="settings-i18n">
+            <primary-label ref="gradle-1.5.0" />
+
+            <p>
+                To configure your project for i18n work, use the <code>i18n { }</code> builder in the
+                <code>kordEx { }</code> builder.
+                For example:
+            </p>
+
+            <code-block lang="kotlin" collapsed-title="Example" collapsible="true">
+                kordEx {
+                    i18n {
+                        classPackage = "template.i18n"
+						translationBundle = "template.strings"
+                    }
+                }
+            </code-block>
+
+            <p>
+                Once configured for i18n work, the Gradle plugin will automatically generate a tree of translation
+				classes, containing your translation bundle and all of your translation keys.
+				The translation keys are taken from the corresponding base translation properties file in your
+				project's <path>src/main/resources/translations/</path> directory.
+            </p>
+
+			<p>
+				A translation class tree looks something like this:
+			</p>
+
+			<code-block lang="kotlin">
+				public object Translations {
+					public val bundle: Bundle = Bundle("template.strings")
+
+					public object Commands {
+						public object Slap {
+							/**
+							 * slaps {0} with their {1}
+							 */
+							public val action: Key = Key("commands.slap.action")
+								.withBundle(Translations.bundle)
+
+							/**
+							 * Ask the bot to slap another user
+							 */
+							public val description: Key = Key("commands.slap.description")
+								.withBundle(Translations.bundle)
+						}
+					}
+				}
+			</code-block>
+
+			<p>
+				For more information on the i18n system and how translations work, see
+				<a href="Internationalization.topic">the dedicated documentation</a>.
+			</p>
+
+            <table style="both">
+                <tr>
+                    <td>Property</td>
+                    <td>Description</td>
+                </tr>
+
+                <tr id="settings-i18n-required:header:text:center">
+                    <td colspan="2">
+                        Required Properties
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>classPackage</code></td>
+
+                    <td>
+                        <p>
+                            The package the plugin should use when generating your translation classes.
+							Generated classes will be placed within this package.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>translationBundle</code></td>
+
+                    <td>
+                        <p>
+                            The name of your
+							<a href="Internationalization.topic" anchor="basic-concepts-bundles">translation bundle</a>.
+							This is used to locate your default translations file, and is automatically added to each
+							<code>Key</code> object in the generated classes.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr id="settings-i18n-optional:header:text:center">
+                    <td colspan="2">
+                        Optional Properties
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>className</code></td>
+
+                    <td>
+                        <p>
+                            The name to use for the root class of the generated translation class tree.
+                        </p>
+
+						<p>
+							Defaults to <code>Translations</code>.
+						</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>configureSourceSet</code></td>
+
+                    <td>
+                        <p>
+                            Whether to automatically configure your project's source-sets to include the generated
+							translation classes.
+                        </p>
+
+						<p>
+							Defaults to <code>true</code>.
+						</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><code>outputDirectory</code></td>
+
+                    <td>
+                        <p>
+                            Where to place the generated translation classes.
+							Regardless of this setting, generated classes are additionally placed within a generated
+							directory structure matching the configured <code>classPackage</code> setting.
+                        </p>
+
+						<p>
+							Defaults to <path>build/generated/kordex/main/kotlin/</path>.
+						</p>
                     </td>
                 </tr>
             </table>

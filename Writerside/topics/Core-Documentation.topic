@@ -34,6 +34,11 @@
                summary="Learn about the extensive configuration options, and how to use them."
             />
 
+			<a href="Data-Collection.topic"
+               type="data"
+               summary="Learn about the data collection system, and how to configure or disable it."
+            />
+
             <a href="Extensions.topic"
                type="container"
                summary="The units that make up your bots functionality, keeping things powerful and clean."
@@ -47,6 +52,11 @@
             <a href="Events.topic"
                  type="start"
                  summary="Learn how to handle and respond to things that happen on Discord."
+            />
+
+            <a href="Internationalization.topic"
+                 type="world"
+                 summary="Learn how to translate and localize your project."
             />
 		</primary>
 

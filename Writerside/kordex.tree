@@ -7,6 +7,7 @@
                   start-page="Welcome.topic">
 
     <toc-element topic="Welcome.topic"/>
+    <toc-element topic="Changes.topic"/>
     <toc-element id="dokka :link :div:bottom" toc-title="Dokka API Docs" href="https://dokka.kordex.dev"/>
 
     <toc-element topic="About.topic">
@@ -65,7 +66,7 @@
 	        <toc-element topic="Message-Components.topic"/>
 	        <toc-element topic="Modals.topic"/>
         </toc-element>
-        <toc-element topic="Internationalisation.topic"/>
+        <toc-element topic="Internationalization.topic"/>
 
         <toc-element topic="Utilities.topic">
             <toc-element topic="Koin.topic"/>
@@ -82,7 +83,7 @@
         <toc-element topic="MongoDB.topic"/>
     </toc-element>
 
-    <toc-element topic="Functional-Modules.topic">
+	<toc-element topic="Functional-Modules.topic">
         <toc-element topic="Mappings.topic"/>
         <toc-element topic="Phishing.topic"/>
         <toc-element topic="PluralKit.topic"/>
@@ -98,8 +99,11 @@
         <toc-element topic="Token-Parser.topic"/>
         <toc-element topic="Unsafe.topic"/>
     </toc-element>
+	<toc-element topic="Other-Libraries.topic">
+		<toc-element topic="I18n-Generator.topic"/>
+	</toc-element>
 
-    <toc-element topic="Community-Projects.topic"/>
+	<toc-element topic="Community-Projects.topic"/>
 
     <toc-element id="discord :div:top :link" toc-title="Discord" href="https://discord.gg/nYzQWcjAmK"/>
     <toc-element id="github :link" toc-title="GitHub" href="https://github.com/Kord-Extensions/kord-extensions"/>
