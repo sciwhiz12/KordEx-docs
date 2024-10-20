@@ -281,16 +281,6 @@
 							<td>Type</td>
 							<td>Description</td>
 						</tr>
-
-						<tr>
-							<td>🏷️ <code>bundle</code></td>
-							<td><code>String?</code></td>
-
-							<td>
-								Translation bundle to use - default to <code>null</code>, which falls back to the
-								default Kord Extensions bundle.
-							</td>
-						</tr>
 					</table>
 				</chapter>
 			</chapter>
@@ -423,11 +413,22 @@
 
 						<tr>
 							<td><code>label</code></td>
-							<td><code>String</code></td>
+							<td><code>Key</code></td>
 
 							<td>
-								The button's label, for display on discord.
-								You must provide either this or <code>partialEmoji</code>, or both.
+								<p>
+									<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+										Key object
+									</a> representing the button's label, for display on discord.
+									You must provide either this or <code>partialEmoji</code>, or both.
+								</p>
+
+								<p>
+									<format style="bold">Note:</format> Locales will not be automatically added to the
+									Key object.
+									Remember to use <code>.withLocale(locale)</code> when passing a Key object to this
+									property.
+								</p>
 							</td>
 						</tr>
 
@@ -668,11 +669,23 @@
 
 						<tr>
 							<td><code>placeholder</code></td>
-							<td><code>String?</code></td>
+							<td><code>Key?</code></td>
 
 							<td>
-								Placeholder text to show before the user has selected any options.
-								Defaults to <code>null</code>.
+								<p>
+									<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+										Key object
+									</a> representing the placeholder text to show before the user has selected any
+									options.
+									Defaults to <code>null</code>.
+								</p>
+
+								<p>
+									<format style="bold">Note:</format> Locales will not be automatically added to the
+									Key object.
+									Remember to use <code>.withLocale(locale)</code> when passing a Key object to this
+									property.
+								</p>
 							</td>
 						</tr>
 					</table>

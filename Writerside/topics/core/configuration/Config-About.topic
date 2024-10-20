@@ -21,8 +21,8 @@
 
         <p>
             Because of how Kord Extensions is licensed, this ensures that your bot contains the required notice and way
-            to get the Kord Extensions source code, and you must not work around this, even though it's likely
-            possible.
+            to get the Kord Extensions source code.
+			<format style="bold">You must not work around this, regardless of how easy or difficult it may be.</format>
         </p>
 
         <p>
@@ -84,15 +84,6 @@
                     Defaults to <code>true</code>.
                 </td>
             </tr>
-
-            <tr>
-                <td><code>translationBundle</code></td>
-                <td><code>String?</code></td>
-
-                <td>
-                    Translation bundle, used to translate your section names and descriptions by default.
-                </td>
-            </tr>
         </table>
     </chapter>
 
@@ -112,7 +103,6 @@
 
         <code-block lang="kotlin" collapsible="true" collapsed-title="Example Usage">
             section("name", "description") {
-                bundle = "my-translation-bundle"
                 description = "section description"
 
                 message {
@@ -149,10 +139,10 @@
                         <p>
                             This builder is a receiver against the <code>MessageBuilder</code> type, and takes the
                             current event context's <code>Locale</code> as the first argument.
-                            This <code>Locale</code> object can be used with the provided <code>translate</code>
-                            function,
-                            if you need to use
-                            <a href="Internationalization.topic">the i18n system</a>.
+                            This <code>Locale</code> object can be used to translate
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key objects
+							</a> if you need to use <a href="Internationalization.topic">the i18n system</a>.
                         </p>
                     </td>
                 </tr>
@@ -174,35 +164,6 @@
                     <td>
                         Whether this section should respond to slash commands ephemerally.
                         If not provided, defaults to the setting provided in the <code>about { }</code> builder.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><code>translationBundle</code></td>
-                    <td><code>String?</code></td>
-
-                    <td>
-                        Translation bundle, used to translate the section name and description.
-                        If not provided, defaults to the setting provided in the <code>about { }</code> builder.
-                    </td>
-                </tr>
-            </table>
-        </chapter>
-
-        <chapter title="Functions" id="section-functions">
-            <table style="header-row">
-                <tr>
-                    <td>Function</td>
-                    <td>Description</td>
-                </tr>
-
-                <tr>
-                    <td><code>translate</code></td>
-
-                    <td>
-                        Convenience function providing quick access to
-                        <a href="Internationalization.topic">the i18n system</a>,
-                        allowing translation using the given translation key and locale.
                     </td>
                 </tr>
             </table>

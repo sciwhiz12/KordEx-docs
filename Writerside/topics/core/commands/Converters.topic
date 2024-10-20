@@ -182,7 +182,6 @@
             <chapter title="Properties" id="settings-all-properties">
                 <table style="both">
                     <tr>
-                        <td> </td>
                         <td>Name</td>
                         <td>Type</td>
                         <td>Description</td>
@@ -195,24 +194,28 @@
                     </tr>
 
                     <tr>
-                        <td>🌐</td>
                         <td><code>description</code></td>
-                        <td><code>String</code></td>
+                        <td><code>Key</code></td>
 
                         <td>
-                            <format style="bold">Required:</format> A short description of the argument, which explains
+                            <format style="bold">Required:</format>
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object
+							</a> representing a short description of the argument, which explains
                             what it's for.
                         </td>
                     </tr>
 
                     <tr>
-                        <td>🌐</td>
                         <td><code>name</code></td>
-                        <td><code>String</code></td>
+                        <td><code>Key</code></td>
 
                         <td>
                             <p>
-                                <format style="bold">Required:</format> The argument's name.
+                                <format style="bold">Required:</format>
+								<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+									Key object
+								</a> representing the argument's name.
                             </p>
 
                             <p>
@@ -605,19 +608,6 @@
                     </tr>
 
                     <tr>
-                        <td><code>translate</code></td>
-
-                        <td>
-                            There are a number of overloads for this function, which allows you to translate a given
-                            string key based on the resolved locale from the <code>context</code> property, or
-                            another given locale.
-                            For more information on translations, see
-                            <a href="Internationalization.topic">the dedicated documentation</a>,
-                            and examine the functions in your IDE for more information on their parameters.
-                        </td>
-                    </tr>
-
-                    <tr>
                         <td><code>Boolean.whenFalse</code></td>
 
                         <td>
@@ -643,14 +633,12 @@
             <chapter title="Properties" id="settings-all-validator-properties">
                 <table style="both">
                     <tr>
-                        <td> </td>
                         <td>Name</td>
                         <td>Type</td>
                         <td>Description</td>
                     </tr>
 
                     <tr>
-                        <td> </td>
                         <td><code>context</code></td>
                         <td><code>CommandContext</code></td>
 
@@ -660,39 +648,19 @@
                     </tr>
 
                     <tr>
-                        <td>🏷️</td>
-                        <td><code>defaultBundle</code></td>
-                        <td><code>String?</code></td>
-
-                        <td>
-                            <p>
-                                Translation bundle used by the
-                                <a href="Internationalization.topic">translations system</a>.
-                                Used to translate the <code>errorResponseKey</code>, and by the
-                                <code>translate</code> functions.
-                            </p>
-
-                            <p>
-                                Defaults to the bundle defined within the <code>context</code> property.
-                            </p>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>🌐</td>
                         <td><code>errorResponseKey</code></td>
-                        <td><code>String</code></td>
+                        <td><code>Key</code></td>
 
                         <td>
                             <p>
-                                Translation key used by the
-                                <a href="Internationalization.topic">translations system</a>
-                                to format the error message when validation fails.
+								<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+									Translation Key object,
+								</a> which is used to format the error message when validation fails.
                             </p>
 
                             <p>
                                 A plain string may not work here, as a single replacement value (the error message)
-                                must be inserted by the translations system.
+                                must be inserted by the translation system.
                             </p>
 
                             <p>
@@ -702,14 +670,13 @@
                     </tr>
 
                     <tr>
-                        <td> </td>
                         <td><code>message</code></td>
                         <td><code>String?</code></td>
 
                         <td>
                             <p>
                                 Human-readable error message.
-                                This message is usually provided by the relevant API functions, and isn't usually
+                                This message is usually provided by the relevant API functions and isn't usually
                                 specified manually.
                             </p>
 
@@ -720,7 +687,6 @@
                     </tr>
 
                     <tr>
-                        <td> </td>
                         <td><code>passed</code></td>
                         <td><code>Boolean</code></td>
 
@@ -732,7 +698,6 @@
                     </tr>
 
                     <tr>
-                        <td> </td>
                         <td><code>value</code></td>
                         <td><code>T</code></td>
 
@@ -760,11 +725,22 @@
                         <td><code>choice</code></td>
 
                         <td>
-                            Add a choice.
-                            This function takes a human-readable 🌐 <code>key</code> argument, which will be shown to
-                            the user on Discord when using <a href="Slash-Commands.topic" />.
-                            When the command is submitted, the corresponding <code>value</code> will be provided as the
-                            value for your argument.
+							<p>
+								Add a choice.
+							</p>
+
+							<p>
+								This function takes a
+								<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+									Key object,
+								</a> which will be shown to the user on Discord when using
+								<a href="Slash-Commands.topic" />.
+							</p>
+
+							<p>
+								When the command is submitted, the corresponding <code>value</code> will be provided
+								as the value for your argument.
+							</p>
                         </td>
                     </tr>
 
@@ -779,7 +755,10 @@
                             </p>
 
                             <p>
-                                This map's 🌐 string keys must be a human-readable representation of their corresponding
+                                This map's
+								<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+									Key objects
+								</a> must represent a human-readable representation of their corresponding
                                 values, as they'll be shown to the user on Discord.
                             </p>
 
@@ -1201,16 +1180,13 @@
                         <def title="Converter Properties" id="enum-properties">
                             <list>
                                 <li>
-                                    <format style="bold">Required</format>: 🌐 <code>typeName</code>
-                                    (<code>String</code>) — Human-readable short name for whatever the given enum
-                                    represents.
+                                    <format style="bold">Required</format>: <code>typeName</code>
+                                    (<code>Key</code>) —
+									<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+										Key object
+									</a> representing a human-readable short name for whatever the given enum
+									represents.
                                     Should be no more than two or three words.
-                                </li>
-
-                                <li>
-                                    🏷️ <code>bundle</code> (<code>String?</code>) — Optional
-                                    <a href="Internationalization.topic">translation bundle</a> to use to translate
-                                    this converter's strings, including the <code>typeName</code> property.
                                 </li>
 
                                 <li>

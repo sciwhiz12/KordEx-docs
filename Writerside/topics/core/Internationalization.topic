@@ -225,6 +225,37 @@
 			translations.
 		</p>
 
+		<chapter title="Empty Translations" id="writing-empty-translations">
+			<p>
+				For translation keys that support an empty value for specific locales, you may provide a special
+				value for the translation.
+				This value consists of three empty set characters (<code>∅∅∅</code>) and should contain nothing else.
+			</p>
+
+			<p>
+				<format style="bold">Note:</format> This value is not supported for all translations.
+				You can use it in the following places:
+			</p>
+
+			<list type="bullet">
+				<li>
+					<a href="Chat-Commands.topic" anchor="anchor-aliases">Chat command aliases</a>
+				</li>
+
+				<li>
+					Ignored words in duration parsers
+				</li>
+
+				<li>
+					<a href="Modals.topic" anchor="anchor-initial-value">Initial values for text input widgets</a>
+				</li>
+
+				<li>
+					Reset words for the PluralKit module
+				</li>
+			</list>
+		</chapter>
+
 		<chapter title="Placeholder Substitution" id="writing-translations-placeholders">
 			<p>
 				ICU Message Format allowed for two types of placeholders:
@@ -558,6 +589,11 @@
 				If any pre-defined named placeholders are present, they'll be used based on the
 				<code>presetPlaceholderPosition</code> setting.
 			</p>
+
+			<note>
+				If you call the <code>translate</code> function without any placeholders, and you have pre-defined
+				named placeholders set, this function will call <code>translateNamed</code> for you.
+			</note>
 
 			<p>
 				All translation functions include a version suffixed with <code>Locale</code>, which will use the

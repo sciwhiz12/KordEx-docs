@@ -144,7 +144,7 @@
 
         <code-block lang="kotlin" collapsible="true" collapsed-title="Example ModalForm subclass">
             class MyModal : ModalForm() {
-                override var title: String = "My Modal"
+                override var title: Key = Translations.Modals.myModal
 
                 val line = lineText {
                     label = "Line of Text"
@@ -233,24 +233,12 @@
 
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
-                    <td>🏷️</td>
-                    <td><code>bundle</code></td>
-                    <td><code>String?</code></td>
-                    <td>
-                        Translation bundle to use - default to <code>null</code>, which falls back to the extension's
-                        defined bundle.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td> </td>
                     <td><code>extension</code></td>
                     <td><code>Extension</code></td>
 
@@ -258,7 +246,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>kord</code></td>
 
                     <td>
@@ -271,7 +258,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>locking</code></td>
                     <td><code>Boolean</code></td>
 
@@ -286,18 +272,18 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>name</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        The command's name, which is used for invocation.
-                        This property must be set for the command to be registered, and has no default value.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the command's name, which is used to invoke it.
+                        This property must be set for the command to be registered and has no default value.
                     </td>
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>sentry</code></td>
                     <td>
                         <a href="Sentry.topic">
@@ -309,7 +295,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>translationsProvider</code></td>
 
                     <td>
@@ -318,7 +303,7 @@
                         </a>
                     </td>
 
-                    <td>Quick access to the bot's translations provider.</td>
+                    <td>Quick access to the bot's translation provider.</td>
                 </tr>
             </table>
         </chapter>
@@ -413,18 +398,6 @@
                         for this command execution, or <code>null</code> if this command was executed by a webhook.
                     </td>
                 </tr>
-
-                <tr>
-                    <td><code>translate</code></td>
-
-                    <td>
-                        There are a number of overloads for this function, which allows you to translate a given
-                        string key based on the resolved locale or another given locale.
-                        For more information on translations, see
-                        <a href="Internationalization.topic">the dedicated documentation</a>,
-                        and examine the functions in your IDE for more information on their parameters.
-                    </td>
-                </tr>
             </table>
         </chapter>
 
@@ -434,13 +407,6 @@
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
-                </tr>
-
-                <tr>
-                    <td>🏷️ <code>bundle</code></td>
-                    <td><code>String?</code></td>
-
-                    <td>The command's translation bundle, falling back to the extension's if not defined.</td>
                 </tr>
 
                 <tr>
@@ -466,10 +432,12 @@
 
                 <tr>
                     <td><code>commandName</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        The command's name.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the command's name.
                         For chat commands, this will be the name used to execute the command, which may be an alias.
                     </td>
                 </tr>

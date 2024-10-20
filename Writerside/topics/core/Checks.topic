@@ -58,9 +58,10 @@
                         </p>
 
                         <p>
-                            This function optionally takes a message explaining the failure,
+                            This function optionally takes a message
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object</a> explaining the failure,
                             which will be displayed to the user in most situations.
-                            Use the <code>translate</code> functions to provide a translated message.
                         </p>
                     </td>
                 </tr>
@@ -74,9 +75,11 @@
                         </p>
 
                         <p>
-                            This function optionally takes a message explaining the failure,
+                            This function optionally takes a message
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object
+							</a> explaining the failure,
                             which will be displayed to the user in most situations.
-                            Use the <code>translate</code> functions to provide a translated message.
                         </p>
                     </td>
                 </tr>
@@ -90,9 +93,11 @@
                         </p>
 
                         <p>
-                            This function optionally takes a message explaining the failure,
+                            This function optionally takes a message
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object
+							</a> explaining the failure,
                             which will be displayed to the user in most situations.
-                            Use the <code>translate</code> functions to provide a translated message.
                         </p>
                     </td>
                 </tr>
@@ -122,24 +127,12 @@
                 </tr>
 
                 <tr id="context-functions-extension:div:bottom">
-                    <td><code>translate</code></td>
+					<td><code>Boolean.whenFalse</code></td>
 
-                    <td>
-                        There are a number of overloads for this function, which allows you to translate a given
-                        string key based on the check's current locale or another given locale.
-                        For more information on translations, see
-                        <a href="Internationalization.topic">the dedicated documentation</a>,
-                        and examine the functions in your IDE for more information on their parameters.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><code>Boolean.whenFalse</code></td>
-
-                    <td>
-                        If the receiver is <code>false</code>, execute the provided callable block.
-                        Otherwise, do nothing.
-                    </td>
+					<td>
+						If the receiver is <code>false</code>, execute the provided callable block.
+						Otherwise, do nothing.
+					</td>
                 </tr>
 
                 <tr>
@@ -156,14 +149,12 @@
         <chapter title="Properties" id="context-properties">
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>cache</code></td>
                     <td><code>MutableStringKeyedMap&lt;Any&gt;</code></td>
 
@@ -181,32 +172,22 @@
                         </p>
                     </td>
                 </tr>
-
                 <tr>
-                    <td>🏷️</td>
-                    <td><code>defaultBundle</code></td>
-                    <td><code>String?</code></td>
-
-                    <td>
-                        Bundle to be used by the <code>translate</code> functions by default.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>🌐</td>
                     <td><code>errorResponseKey</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        Translation key to use when generating an error message for display on Discord, intended only
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Translation Key object
+						</a> to use when generating an error message for display on Discord, intended only
                         for formatting.
-                        Defaults to <code>checks.responseTemplate</code>, and must contain a single indexed argument to
-                        be replaced with the error message provided by the various <code>fail</code> functions.
+                        Defaults to <code>CoreTranslations.Checks.responseTemplate</code>, and must contain a single
+						ordinal placeholder to be replaced with the error message provided by the various
+						<code>fail</code> functions.
                     </td>
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>event</code></td>
                     <td><code>T: Event</code></td>
 
@@ -222,8 +203,7 @@
 
                     <td>
                         Relevant locale object for this check.
-                        Provided by whatever system the check belongs to, and used by the <code>translate</code>
-                        functions.
+                        Provided by whatever system the check belongs to and used to translate messages.
                     </td>
                 </tr>
 
@@ -234,7 +214,10 @@
 
                     <td>
                         Error message to return to the user, typically set by the <code>fail</code> functions.
-                        Will not be automatically translated, so use the <code>translate</code> functions if needed.
+                        Will not be automatically translated unless you pass a
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> to the failure functions.
                     </td>
                 </tr>
 

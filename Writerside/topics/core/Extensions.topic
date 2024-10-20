@@ -324,18 +324,6 @@
                 </tr>
 
                 <tr>
-                    <td>🏷️ <code>bundle</code></td>
-                    <td><code>String?</code></td>
-                    <td><code>null</code></td>
-
-                    <td>
-                        Translation bundle to be used for string translations in this extension by default.
-                        For more information,
-                        see <a href="Internationalization.topic">the dedicated documentation</a>.
-                    </td>
-                </tr>
-
-                <tr>
                     <td><code>intents</code></td>
                     <td><code>MutableSet &lt;Intent&gt;</code></td>
                     <td><code>{ }</code></td>

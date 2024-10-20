@@ -218,19 +218,6 @@
                         This may be useful for work related to <a href="Internationalization.topic"/>.
                     </td>
                 </tr>
-
-                <tr>
-                    <td><code>translate</code></td>
-
-                    <td>
-                        There are a number of overloads for this function.
-                        It allows you to translate a given string key based on the current event's locale, or
-                        another given locale.
-                        For more information on translations, see
-                        <a href="Internationalization.topic">the dedicated documentation</a>,
-                        and examine the functions in your IDE for more information on their parameters.
-                    </td>
-                </tr>
             </table>
         </chapter>
 

@@ -163,25 +163,25 @@
 
                     <table style="both">
                         <tr>
-                            <td> </td>
                             <td>Name</td>
                             <td>Type</td>
                             <td>Description</td>
                         </tr>
 
                         <tr id="modal-form-widgets-api-text-required:div:bottom">
-                            <td>🌐</td>
                             <td><code>label</code></td>
-                            <td><code>String</code></td>
+                            <td><code>Key</code></td>
 
                             <td>
-                                <format style="bold">Required:</format> A short, descriptive label that explains what
-                                the user should enter into the Widget.
+                                <format style="bold">Required:</format>
+								<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+									Key object
+								</a> representing a short, descriptive label that explains what the user should enter
+								into the Widget.
                             </td>
                         </tr>
 
                         <tr>
-                            <td> </td>
                             <td><code>id</code></td>
                             <td><code>String</code></td>
 
@@ -191,19 +191,25 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>🌐</td>
+                        <tr id="anchor-initial-value">
                             <td><code>initialValue</code></td>
-                            <td><code>String?</code></td>
+                            <td><code>Key?</code></td>
 
                             <td>
-                                An optional value to provide for this Widget.
-                                This will show as a pre-filled value on Discord, for the user to edit.
+								<p>
+									<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+										Key object
+									</a> representing an optional value to provide for this Widget.
+									This will show as a pre-filled value on Discord, for the user to edit.
+								</p>
+
+								<p>
+
+								</p>
                             </td>
                         </tr>
 
                         <tr>
-                            <td> </td>
                             <td><code>maxLength</code></td>
                             <td><code>Int</code></td>
 
@@ -213,7 +219,6 @@
                         </tr>
 
                         <tr>
-                            <td> </td>
                             <td><code>minLength</code></td>
                             <td><code>Int</code></td>
 
@@ -223,19 +228,24 @@
                         </tr>
 
                         <tr>
-                            <td>🌐</td>
                             <td><code>placeholder</code></td>
-                            <td><code>String?</code></td>
+                            <td><code>Key?</code></td>
 
                             <td>
-                                Optional placeholder text.
-                                This will show as text within the component on Discord, in a lighter font, and will be
-                                hidden when the user enters text into the component.
+								<p>
+									<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+										Key object
+									</a> representing some optional placeholder text.
+								</p>
+
+								<p>
+									This will show as text within the component on Discord, in a lighter font, and
+									will be hidden when the user enters text into the component.
+								</p>
                             </td>
                         </tr>
 
                         <tr>
-                            <td> </td>
                             <td><code>required</code></td>
                             <td><code>Boolean</code></td>
 
@@ -246,14 +256,22 @@
                         </tr>
 
                         <tr>
-                            <td> </td>
                             <td><code>translateInitialValue</code></td>
                             <td><code>Boolean</code></td>
 
                             <td>
-                                Whether to attempt to translate the <code>initialValue</code> when the Modal is sent
-                                to Discord.
-                                Defaults to <code>false</code>.
+								<p>
+									Whether to attempt to translate the <code>initialValue</code> when the Modal is sent
+									to Discord.
+									Defaults to <code>false</code>.
+								</p>
+
+								<p>
+									When this is set to <code>false</code>, the <code>key</code> property on the
+									<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+										Key object
+									</a> provided to <code>initialValue</code> will be used, instead of translating it.
+								</p>
                             </td>
                         </tr>
 
@@ -333,26 +351,12 @@
         <chapter title="Properties" id="modal-form-properties">
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
-                    <td>🏷️</td>
-                    <td><code>bundle</code></td>
-                    <td><code>String?</code></td>
-
-                    <td>
-                        Override this to provide a <a href="Internationalization.topic">translation bundle</a>
-                        to use to translate this Modal's title and its Widgets'
-                        labels, initial values, and placeholders.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td> </td>
                     <td><code>id</code></td>
                     <td><code>String</code></td>
 
@@ -364,24 +368,24 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>timeout</code></td>
                     <td><code>Duration</code></td>
 
                     <td>
-                        How long to wait before assuming that the Modal was closed by the user.
+                        How long to wait before assuming that the used closed the Modal.
                         Defaults to 15 minutes.
                     </td>
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>title</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        <format style="bold">Required:</format> Override this to set the Modal's title, which will be
-                        shown in the Discord client.
+                        <format style="bold">Required:</format>
+						Override this <a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> to set the Modal's title, which will be shown in the Discord client.
                     </td>
                 </tr>
             </table>

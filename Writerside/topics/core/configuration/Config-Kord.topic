@@ -49,8 +49,8 @@
                 <td> </td>
 
                 <td>
-                    <code>String</code>,
-                    <code>KordBuilder.()</code>
+                    <code>token: String</code>,
+                    <code>builder: KordBuilder.()</code>
                 </td>
 
                 <td>

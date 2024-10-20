@@ -734,6 +734,12 @@
         <chapter title="I18n Work" id="settings-i18n">
             <primary-label ref="gradle-1.5.0" />
 
+			<warning>
+				<p>
+					The Gradle plugin only supports i18n work when using Kord Extensions 2.3.0 or later.
+				</p>
+			</warning>
+
             <p>
                 To configure your project for i18n work, use the <code>i18n { }</code> builder in the
                 <code>kordEx { }</code> builder.

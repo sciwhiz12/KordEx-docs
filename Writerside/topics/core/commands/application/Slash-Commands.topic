@@ -228,7 +228,6 @@
         <chapter title="Properties" id="standalone-properties">
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
@@ -241,14 +240,15 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>description</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        <format style="bold">Required:</format> The command's description, which must be a string that
-                        explains what the command does.
-                        This string may not be longer than 100 characters.
+                        <format style="bold">Required:</format>
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the command's description, which should explain what the command does.
+						The description may not be longer than 100 characters.
                     </td>
                 </tr>
 
@@ -259,7 +259,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>parentCommand</code></td>
                     <td><code>SlashCommand?</code></td>
 
@@ -269,7 +268,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>parentGroup</code></td>
                     <td><code>SlashGroup?</code></td>
 
@@ -346,7 +344,6 @@
         <chapter title="Properties" id="command-group-properties">
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
@@ -359,15 +356,17 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>description</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
                         <p>
-                            <format style="bold">Required:</format> The command group's description, which must be a
-                            string that explains what the group represents.
-                            This string may not be longer than 100 characters.
+                            <format style="bold">Required:</format>
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object
+							</a> representing the command group's description, which should explain what the group
+							represents.
+                            The description may not be longer than 100 characters.
                         </p>
 
                         <p>
@@ -386,7 +385,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>parentCommand</code></td>
                     <td><code>SlashCommand?</code></td>
 

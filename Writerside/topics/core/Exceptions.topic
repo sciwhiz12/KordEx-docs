@@ -41,31 +41,21 @@
 
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>reason</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key?</code></td>
 
                     <td>
-                        String to be relayed to the actioning user,
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>🌐</td>
-                    <td><code>translationKey</code></td>
-                    <td><code>String?</code></td>
-
-                    <td>
-                        Translation key used to generate the <code>reason</code> string, if any.
-                        Defaults to `null`.
-                        For more information, see <a href="Internationalization.topic">the dedicated documentation</a>.
+						<p>
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Translation Key object
+							</a> used to generate the <code>reason</code> string.
+						</p>
                     </td>
                 </tr>
             </table>
@@ -110,26 +100,6 @@
 
                     <td>
                         The <code>Arguments</code> object containing the full set of arguments defined for this command.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>🏷️ <code>bundle</code></td>
-                    <td><code>String?</code></td>
-
-                    <td>
-                        The translation bundle used to generate the given <code>reason</code> string, if any.
-                        For more information, see <a href="Internationalization.topic">the dedicated documentation</a>.
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><code>locale</code></td>
-                    <td><code>Locale</code></td>
-
-                    <td>
-                        The locale object used to translate the given <code>reason</code> string.
-                        For more information, see <a href="Internationalization.topic">the dedicated documentation</a>.
                     </td>
                 </tr>
 
@@ -179,19 +149,23 @@
 
                 <tr>
                     <td><code>name</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        The name of the command that failed to be registered.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the name of the command that failed to be registered.
                     </td>
                 </tr>
 
                 <tr>
                     <td><code>reason</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        The human-readable string explaining why the command couldn't be registered.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the human-readable string explaining why the command couldn't be registered.
                     </td>
                 </tr>
             </table>
@@ -306,10 +280,12 @@
 
                 <tr>
                     <td><code>name</code></td>
-                    <td><code>String?</code></td>
+                    <td><code>Key?</code></td>
 
                     <td>
-                        The name of the command that failed to validate.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the name of the command that failed to validate.
                         This will be <code>null</code> if the command failed to validate because it wasn't given a name.
                     </td>
                 </tr>
@@ -369,8 +345,8 @@
 
             <warning>
                 <p>
-                    This is a legacy exception that was created, but never implemented. It's documented here in case it
-                    does end up being used someday.
+                    This is a legacy exception that was created but never implemented.
+					It's documented here in case it does end up being used someday.
                 </p>
 
                 <p>
@@ -431,7 +407,7 @@
 
         <chapter title="Duration Parser" id="parser-duration">
             <p>
-                This is a generic exception that's extended by more concrete types.
+                This is a generic exception, extended by more concrete types.
                 It's also thrown directly by duration parsers when:
             </p>
 
@@ -459,10 +435,12 @@
 
                 <tr>
                     <td><code>error</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        The human-readable string explaining what went wrong.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the human-readable string explaining what went wrong.
                     </td>
                 </tr>
             </table>

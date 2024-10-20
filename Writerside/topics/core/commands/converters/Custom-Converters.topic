@@ -218,19 +218,19 @@
 
 			<table style="both">
 				<tr>
-					<td> </td>
 					<td>Name</td>
 					<td>Type</td>
 					<td>Description</td>
 				</tr>
 
 				<tr>
-					<td>🌐</td>
-					<td><code>signatureTypeString</code></td>
-					<td><code>String</code></td>
+					<td><code>signatureType</code></td>
+					<td><code>Key</code></td>
 
 					<td>
-						A <a href="Internationalization.topic">translation key</a> referring to a short description
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> referring to a short description
 						explaining the type of data this converter handles.
 						Shown in help commands for <a href="Chat-Commands.topic"/> and errors for all command types.
 					</td>
@@ -243,45 +243,31 @@
 
 			<table style="both">
 				<tr>
-					<td> </td>
 					<td>Name</td>
 					<td>Type</td>
 					<td>Description</td>
 				</tr>
 
 				<tr>
-					<td>🏷️</td>
-					<td><code>bundle</code></td>
-					<td><code>String?</code></td>
+					<td><code>errorType</code></td>
+					<td><code>Key?</code></td>
 
 					<td>
-						A <a href="Internationalization.topic">translation bundle</a>, used to resolve translations for
-						this converter.
-						Defaults to <code>null</code>, which will result in the default Kord Extensions bundle being
-						used.
-					</td>
-				</tr>
-
-				<tr>
-					<td>🌐</td>
-					<td><code>errorTypeString</code></td>
-					<td><code>String?</code></td>
-
-					<td>
-						A <a href="Internationalization.topic">translation key</a> representing a longer description for
-						this converter's handled type than <code>signatureTypeString</code>.
-						Used in "invalid value" errors instead of <code>signatureTypeString</code> if provided.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing a longer description for
+						this converter's handled type than <code>signatureType</code>.
+						Used in "invalid value" errors instead of <code>signatureType</code> if provided.
 						Defaults to <code>null</code>.
 					</td>
 				</tr>
 
 				<tr>
-					<td> </td>
 					<td><code>showTypeInSignature</code></td>
 					<td><code>Boolean</code></td>
 
 					<td>
-						Whether the <code>signatureTypeString</code> should be shown in help commands for
+						Whether the <code>signatureType</code> should be shown in help commands for
 						<a href="Chat-Commands.topic"/>.
 						Defaults to <code>true</code>
 					</td>
@@ -289,8 +275,7 @@
 			</table>
 
 			<code-block lang="kotlin" collapsible="true" collapsed-title="Example: Snowflake Converter">
-			    override val signatureTypeString: String = "converters.snowflake.signatureType"
-                override val bundle: String = DEFAULT_KORDEX_BUNDLE
+			    override val signatureType: Key = "converters.snowflake.signatureType"
 			</code-block>
 		</chapter>
 
@@ -343,7 +328,7 @@
 
 					<li>
 						<code>named: String?</code> - Set when users provide values using keyword arguments.
-						<format style="bold">Note:</format> It's important your converter prioritises this
+						<format style="bold">Note:</format> It's important your converter prioritizes this
 						parameter when provided, instead of trying to parse values from the <code>parser</code>.
 					</li>
 				</list>
@@ -445,8 +430,7 @@
 			public class SnowflakeConverter(
 				override var validator: Validator&lt;Snowflake&gt; = null
 			) : SingleConverter&lt;Snowflake&gt;() {
-				override val signatureTypeString: String = &quot;converters.snowflake.signatureType&quot;
-				override val bundle: String = DEFAULT_KORDEX_BUNDLE
+				override val signatureType: Key = &quot;converters.snowflake.signatureType&quot;
 
 				override suspend fun parse(parser: StringParser?, context: CommandContext, named: String?): Boolean {
 					val arg: String = named ?: parser?.parseNext()?.data ?: return false

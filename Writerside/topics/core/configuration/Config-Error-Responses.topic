@@ -16,7 +16,9 @@
 
     <list>
         <li>
-            <code>message</code>: A <code>String</code> representing the error message text.
+            <code>message</code>: A <a href="Internationalization.topic" anchor="using-translations-translating-keys">
+				Key object
+			</a> representing the error message text.
         </li>
 
         <li>

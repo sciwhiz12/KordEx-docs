@@ -233,7 +233,6 @@
         <chapter title="Properties" id="standalone-properties">
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
@@ -246,28 +245,30 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>description</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
                         <format style="bold">Required:</format>
-                        The command's description.
-                        This should be a string that explains what the command does.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the command's description.
+                        This should explain what the command does.
                         If the string spans multiple lines, the first line should be a short summary of what the
                         command does, with a blank line underneath.
                     </td>
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>name</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
                         <format style="bold">Required:</format>
-                        The command's name, which is used to identify the command internally and for invoking the
-                        command on Discord.
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the command's name, which is used to identify the command internally and
+						for invoking the command on Discord.
                     </td>
                 </tr>
 
@@ -277,20 +278,26 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td> </td>
-                    <td><code>aliases</code></td>
-                    <td><code>Array &lt;String&gt;</code></td>
+                <tr id="anchor-aliases">
+                    <td><code>aliasKey</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        Array of alternative names that may be used to invoke this command.
-                        If an alias conflicts with the name of another command, the other command will take priority.
-                        Ignored if <code>aliasKey</code> is set.
+						<p>
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object
+							</a> representing a comma-separated list of alternative names that may be used to invoke
+							this command.
+						</p>
+
+						<p>
+							If an alias conflicts with the name of another command, the other command will take
+							priority.
+						</p>
                     </td>
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>allowKeywordArguments</code></td>
                     <td><code>Boolean</code></td>
 
@@ -302,7 +309,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>enabled</code></td>
                     <td><code>Boolean</code></td>
 
@@ -314,7 +320,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>hidden</code></td>
                     <td><code>Boolean</code></td>
 
@@ -326,7 +331,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>localeFallback</code></td>
                     <td><code>Boolean</code></td>
 
@@ -346,7 +350,6 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>aliasKey</code></td>
                     <td><code>String?</code></td>
 
@@ -358,14 +361,14 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
-                    <td><code>signature</code></td>
-                    <td><code>String?</code></td>
+                    <td><code>signatureKey</code></td>
+                    <td><code>Key?</code></td>
 
                     <td>
                         <p>
-                            <a href="Internationalization.topic">Translation key</a>
-                            referencing the command signature to be shown in help commands.
+							<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+								Key object
+							</a> representing the command signature to be shown in help commands.
                             By default, Kord Extensions will generate a signature automatically.
                             This property may be set if you wish to override it.
                         </p>
@@ -545,8 +548,14 @@
                     <td><code>Message.respondTranslated</code></td>
 
                     <td>
-                        <a href="Internationalization.topic">🌐 <code>key</code></a>,
-                        <a href="Internationalization.topic"><code>replacements</code></a>,
+                        <a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							<code>key</code>
+						</a>,
+
+                        <a href="Internationalization.topic" anchor="writing-translations-placeholders">
+							<code>placeholders</code>
+						</a>,
+
                         <code>useReply = true</code>
                     </td>
 
@@ -559,7 +568,8 @@
                             parameter directly provided to it.
                         </p>
 
-                        <p>
+						<p>
+							Overloads are provided which support both ordinal and named placeholders.
                             For more information,
                             see <a href="Internationalization.topic">the dedicated documentation</a>.
                         </p>

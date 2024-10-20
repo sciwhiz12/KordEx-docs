@@ -148,9 +148,14 @@
 
                         <tr>
                             <td><code>reason</code></td>
-                            <td><code>String</code></td>
+                            <td><code>Key</code></td>
 
-                            <td>A human-readable string, which is the error string returned by the failing check.</td>
+                            <td>
+								<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+									Key object
+								</a> representing a human-readable string, which is the error string returned by the
+								failing check.
+							</td>
                         </tr>
                     </table>
                 </chapter>

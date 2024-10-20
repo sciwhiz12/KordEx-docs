@@ -116,7 +116,6 @@
         <chapter title="Properties" id="command-properties">
             <table style="both">
                 <tr>
-                    <td> </td>
                     <td>Name</td>
                     <td>Type</td>
                     <td>Description</td>
@@ -129,12 +128,14 @@
                 </tr>
 
                 <tr>
-                    <td>🌐</td>
                     <td><code>name</code></td>
-                    <td><code>String</code></td>
+                    <td><code>Key</code></td>
 
                     <td>
-                        <format style="bold">Required:</format> The command's name, which is used to invoke the command
+                        <format style="bold">Required:</format>
+						<a href="Internationalization.topic" anchor="using-translations-translating-keys">
+							Key object
+						</a> representing the command's name, which is used to invoke the command
                         and is displayed on Discord.
                         Your command's name must follow
                         <a href="https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-naming">
@@ -149,7 +150,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>allowByDefault</code></td>
                     <td><code>Boolean</code></td>
 
@@ -163,7 +163,6 @@
                 </tr>
 
                 <tr>
-                    <td> </td>
                     <td><code>allowInDms</code></td>
                     <td><code>Boolean</code></td>
 
